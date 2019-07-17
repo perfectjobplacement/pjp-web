@@ -169,7 +169,7 @@
 	<section class="post-area section-gap">
 		<div class="container">
 			<div class="row" ng-if="!homeObj.jobObj.list.isLoading">
-				<div class="col-lg-8 post-list" ng-if="dataFilterObject.length">
+				<div class="col-lg-8 post-list" ng-if="homeObj.jobObj.list.data.length">
 					<ul class="cat-list">
 						<li class="pointer" ng-click="homeObj.cobj.getFilterData(1)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 1}"><a >Full Time</a></li>
 						<li class="pointer" ng-click="homeObj.cobj.getFilterData(2)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 2}"><a >part Time</a></li>
@@ -180,7 +180,7 @@
 						<h6 class="text-center text-orange">You are watching ({{homeObj.jobObj.list.totalJobs}} / {{homeObj.jobObj.list.data.length}}) jobs</h6>
 					</div>
 
-					<div class="form-group" ng-if="dataFilterObject.length">
+					<div class="form-group">
 						<input type="text" placeholder="Type here to get your job!" name="searchjob" class="form-control" ng-model="homeObj.jobObj.searchData">
 					</div>
 
