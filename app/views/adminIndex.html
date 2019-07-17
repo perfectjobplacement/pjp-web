@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <title>Admin</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta name="google" content="notranslate">
+        <meta name="fragment" content="!" />
+        <base href="/">
+
+        <meta name="keywords" content="Perfect Job Placement">
+        <meta name="description" content="Perfect Job Placement">
+
+        <meta property="fb:app_id" content="APP_ID">
+        <meta property="og:title" content="Perfect Job Placement">
+        <meta property="og:description" content="Perfect Job Placement">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="APP_URL">
+        <meta property="og:image" content="APP_LOGO">
+        <meta property="og:site_name" content="Perfect Job Placement">
+        <meta property="fb:admins" content="APP_ADMIN">
+
+        <link rel="icon" href="/img/logo/logo1.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"> 
+        <link rel="stylesheet" href="/iccaches/final.min.css">
+
+        <script type="text/javascript" src="/iccaches/script-1.min.js"></script>
+        <script type="text/javascript" src="/iccaches/script-admin-1.min.js"></script>
+    </head>
+
+  
+    <body id="app" class="app ic-body">
+
+        <style media="screen">
+            #front-spinner-bx {
+                background-color: white;
+                height: 100vh;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width:100%;
+                z-index: 102938;
+                display: table;
+            }
+            .fs-spin {
+                text-align: center;
+                display: table-cell;
+                height: 100%;
+                vertical-align: middle;
+            }
+            .fs-spin h5 {
+                color: #6e5cac;
+                margin-top: 10px;
+            }
+            .body-main-cn {
+                display: none;
+            }
+        </style>
+
+        <div id="front-spinner-bx">
+            <div class="fs-spin">
+                <img src="img/bars.svg" height="40">
+            </div>
+        </div>
+
+
+        <div data-ng-include="'/admin-angular/views/header.html'"></div>
+
+        <section class="body-main-cn">
+            <div ui-view="">
+            </div>
+        </section>
+
+        <form id="download-csv-helper" action="#" class="hide" method="POST"></form>
+        <div class="ib-backdrop"></div>
+    </body>
+</html>

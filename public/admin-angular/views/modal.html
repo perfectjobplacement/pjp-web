@@ -1,0 +1,714 @@
+
+
+
+<div class="modal fade full-modal" id="add-new-job" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" ng-form="addnewJobForm">
+			<div class="modal-header">
+				<h3 class="modal-title">Post Job</h3>
+				<button type="button" class="close" aria-label="Close" ng-click="job.create.closeModal()">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job Title</label>
+							<input type="text" class="form-control" name="jobTitle" ng-model="job.create.model.jobTitle" placeholder="Job Title" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.jobTitle.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job Work Type</label>
+							<div class="custom-1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="1" id="customCheck2" ng-model="job.create.model.jobWorkType">
+									<label class="custom-control-label" for="customCheck2">Full Time</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="2" id="customCheck1" ng-model="job.create.model.jobWorkType">
+									<label class="custom-control-label" for="customCheck1">Part Time</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="3" id="customCheck3" ng-model="job.create.model.jobWorkType">
+									<label class="custom-control-label" for="customCheck3">Both</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Qualification</label>
+							<select class="form-control" name="addqualification" ng-model="job.create.model.qualification" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.addqualification.$error.required }">
+								<option value="">--- Select Qualification ---</option>
+								<option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Select Cource</label>
+							<div class="multi-select-span" ng-if="job.create.model.qualification">
+								<span class="pointer" ng-repeat="row in globalvarObj.qualification" ng-if="row.qualifyIn == job.create.model.qualification" ng-click="g.adminData.multiSelect(job.create.model.department, row.name)">
+									<span class="position-relative">
+										<span class="badge badge-pill badge-primary">
+											<span ng-if="job.create.model.department.indexOf(row.name) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row.name}}
+										</span>
+									</span>
+								</span>
+							</div>
+							<div class="multi-select-span" ng-if="!job.create.model.qualification">
+								<span>Select Qualification</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Required Experience</label>
+							<select class="form-control" name="cexpRequired" ng-model="job.create.model.cexpRequired" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.cexpRequired.$error.required }">
+								<option value="">--- Select Experience ---</option>
+								<option value="1">Fresher</option>
+								<option value="2">6 Month To 1 Year</option>
+								<option value="3">1 To 2 Year</option>
+								<option value="4">3 To 5 Year</option>
+								<option value="5">5 To 10 Year</option>
+								<option value="6">10 Year+</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Candidate Type</label>
+							<div class="custom-1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="1" id="ctype1" ng-model="job.create.model.candidateType">
+									<label class="custom-control-label" for="ctype1">Male</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="2" id="ctype2" ng-model="job.create.model.candidateType">
+									<label class="custom-control-label" for="ctype2">Famale</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="3" id="ctype3" ng-model="job.create.model.candidateType">
+									<label class="custom-control-label" for="ctype3">Both</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job Position</label>
+							<input type="text" class="form-control" name="jobPosition" ng-model="job.create.model.jobPosition" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.jobPosition.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job Category</label>
+							<select class="form-control" name="jobCategory" ng-model="job.create.model.jobCategory" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.jobCategory.$error.required }">
+								<option value="">--- Select Category ---</option>
+								<option value="{{$index+1}}" ng-repeat="whRow in g.adminData.jobCategory">{{whRow}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Salary Type</label>
+							<div class="custom-1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="1" id="salaryType1" ng-model="job.create.model.salaryType">
+									<label class="custom-control-label" for="salaryType1">Monthly</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="2" id="salaryType2" ng-model="job.create.model.salaryType">
+									<label class="custom-control-label" for="salaryType2">Yearly</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Salary</label>
+							<input type="text" class="form-control" name="salary" ng-model="job.create.model.salary" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.salary.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job City</label>
+							<select class="form-control" name="addjobCity" ng-model="job.create.model.jobCity" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.addjobCity.$error.required }">
+								<option value="">--- Select City ---</option>
+								<option ng-repeat="row in globalvarObj.cites" ng-if="row.status" value="{{row._id}}">{{row.city}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Job Location (Area)</label>
+							<input type="text" class="form-control" name="jobLocation" ng-model="job.create.model.jobLocation" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.jobLocation.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Working Hours</label>
+							<select class="form-control" name="jobTiming" ng-model="job.create.model.jobTiming" ng-required="true" ng-class="{ 'text-error': job.create.isSubmited && addnewJobForm.jobTiming.$error.required }">
+								<option value="">--- Working Hours ---</option>
+								<option value="{{$index+1}}" ng-repeat="whRow in g.adminData.whPerDay">{{whRow}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Required Documents</label>
+							<div class="multi-select-span">
+								<span class="badge badge-pill badge-primary pointer mr-5" ng-repeat="row in g.adminData.requiredDocuments" ng-click="g.adminData.multiSelect(job.create.model.requiredDoc, row)">
+									<span ng-if="job.create.model.requiredDoc.indexOf(row) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row}}
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Facility</label>
+							<textarea class="form-control" name="facility" ng-model="job.create.model.facility"></textarea>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Required Skills</label>
+							<textarea class="form-control" name="workProfile" ng-model="job.create.model.workProfile"></textarea>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Note</label>
+							<textarea class="form-control" name="notes" ng-model="job.create.model.notes"></textarea>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Inteview Date</label>
+							<div class="custom-1">
+								<div class="custom-control-inline">
+									<div class="input-group">
+									  	<input type="text" class="form-control" aria-describedby="basic-addon1" name="interviewDateTime" ng-model="job.create.model.interviewDateFrom" placeholder="Start Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="job.create.opened1" close-text="Close" readonly="">
+									  	<div class="input-group-append">
+									    	<span class="input-group-text pointer" ng-click="job.create.opened1 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+									  	</div>
+									</div>
+								</div>
+								<div class="custom-control-inline">To</div>
+								<div class="custom-control-inline">
+									<div class="input-group">
+									  	<input type="text" class="form-control" aria-describedby="basic-addon2" name="interviewDateTime" ng-model="job.create.model.interviewDateTo" placeholder="End Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="job.create.opened2" close-text="Close" readonly="">
+									  	<div class="input-group-append">
+									    	<span class="input-group-text pointer" ng-click="job.create.opened2 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+									  	</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" ng-click="job.create.closeModal()">Close</button>
+
+		        <span ng-if="!job.create.isReqSent">
+		        	<button type="button" class="btn btn-primary" ng-click="job.create.submit(addnewJobForm)">Submit</button>
+		        </span>
+		        <span ng-if="job.create.isReqSent">
+		        	<button type="button" class="btn btn-primary" disabled="">Submiting...</button>
+		        </span>
+	      	</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- Register new candidates -->
+<div class="modal fade full-modal" id="candidate-register-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" ng-form="registerCandidateFrom">
+			<div class="modal-header">
+				<h3 class="modal-title">Candidate Register</h3>
+				<button type="button" class="close" aria-label="Close" ng-click="cdUser.create.closeModal()">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Name</label>
+							<input type="text" class="form-control" name="name" ng-model="cdUser.create.model.name" placeholder="Candidate name" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.name.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Email</label>
+							<input type="email" class="form-control" name="email" ng-model="cdUser.create.model.email" placeholder="Email" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.email.$error.required || registerCandidateFrom.email.$error.email }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Gender</label>
+							<div class="custom-1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="male" id="genderid1" ng-model="cdUser.create.model.gender">
+									<label class="custom-control-label" for="genderid1">Male</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" value="female" id="genderid2" ng-model="cdUser.create.model.gender">
+									<label class="custom-control-label" for="genderid2">Famale</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Mobile Number</label>
+							<input type="text" class="form-control" name="mobile" ng-model="cdUser.create.model.mobile" placeholder="Mobile number" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.mobile.$error.required }" maxlength="10" numbers-only>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>WhatsApp Number</label>
+							<input type="text" class="form-control" name="wpContact" ng-model="cdUser.create.model.wpContact" placeholder="Whatsapp contact number" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.wpContact.$error.required }" maxlength="10" numbers-only>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Current Location</label>
+							<input type="text" class="form-control" name="currentLocation" ng-model="cdUser.create.model.currentLocation" placeholder="Current Location" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.currentLocation.$error.required }">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Date Of Birth</label>
+							<div class="input-group">
+							  	<input type="text" class="form-control" name="birthDate" aria-describedby="basic-addon1" ng-model="cdUser.create.model.birthDate" placeholder="Date of birth" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="job.create.opened1" close-text="Close" readonly="" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.birthDate.$error.required }">
+							  	<div class="input-group-append">
+							    	<span class="input-group-text pointer" ng-click="job.create.opened1 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Qualification</label>
+							<select class="form-control" name="qualification" ng-model="cdUser.create.model.qualification" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.qualification.$error.required }">
+								<option value="">--- Select Qualification ---</option>
+								<option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Department</label>
+
+							<select class="form-control" name="department" ng-model="cdUser.create.model.department" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.department.$error.required }">
+								<option value="">--- Select Department ---</option>
+								<option ng-repeat="row in globalvarObj.qualification" value="{{row._id}}" ng-if="row.qualifyIn == cdUser.create.model.qualification">{{row.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Area Of Interest</label>
+
+							<div class="multi-select-span" ng-if="cdUser.create.model.qualification">
+								<span class="pointer" ng-repeat="row in globalvarObj.areaOfInterest" ng-if="row.department == cdUser.create.model.qualification" ng-click="g.adminData.multiSelect(cdUser.create.model.areaOfInterest, row.title)">
+									<span class="position-relative">
+										<span class="badge badge-pill badge-primary">
+											<span ng-if="cdUser.create.model.areaOfInterest.indexOf(row.title) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row.title}}
+										</span>
+									</span>
+								</span>
+							</div>
+							<div class="multi-select-span" ng-if="!cdUser.create.model.qualification">
+								<span>Select Area Of Interest</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Expected Salary</label>
+							<input type="text" class="form-control" name="expectedSalary" ng-model="cdUser.create.model.expectedSalary" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.expectedSalary.$error.required }" placeholder="ex - 12000">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Experience</label>
+							<select class="form-control" name="experience" ng-model="cdUser.create.model.experience" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.experience.$error.required }">
+								<option value="">--- Select Experience ---</option>
+								<option value="1">Fresher</option>
+								<option value="2">6 Month To 1 Year</option>
+								<option value="3">1 To 2 Year</option>
+								<option value="4">3 To 5 Year</option>
+								<option value="5">5 To 10 Year</option>
+								<option value="6">10 Year+</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>City</label>
+							<select class="form-control" name="city" ng-model="cdUser.create.model.city" ng-required="true" ng-class="{ 'text-error': cdUser.create.isSubmited && registerCandidateFrom.city.$error.required }">
+								<option value="">--- Select City ---</option>
+								<option ng-repeat="row in globalvarObj.cites" ng-if="row.status" value="{{row._id}}">{{row.city}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" ng-click="cdUser.create.closeModal()">Close</button>
+
+		        <span ng-if="!cdUser.create.isReqSent">
+		        	<button type="button" class="btn btn-primary" ng-click="cdUser.create.submit(registerCandidateFrom)">Submit</button>
+		        </span>
+		        <span ng-if="cdUser.create.isReqSent">
+		        	<button type="button" class="btn btn-primary" disabled="">Submiting...</button>
+		        </span>
+	      	</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- Mange Team member -->
+<div class="modal fade" id="manage-team-membe" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" ng-form="addNewMemberForm">
+            <div class="modal-header">
+                <h3 class="modal-title">Mange Team member</h3>
+                <button type="button" class="close" aria-label="Close" ng-click="stMgmt.siteObj.team.closeModal()">
+                    <i class="fa fa-window-close-o" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" name="fillname" ng-model="stMgmt.siteObj.team.model.fullname" placeholder="Full Name" ng-required="true" ng-class="{ 'text-error': stMgmt.siteObj.team.isSubmited && addNewMemberForm.fillname.$error.required }">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" class="form-control" name="position" ng-model="stMgmt.siteObj.team.model.position" placeholder="Position" ng-required="true" ng-class="{ 'text-error': stMgmt.siteObj.team.isSubmited && addNewMemberForm.position.$error.required }">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Mobile</label>
+                            <input type="text" class="form-control" name="mobile" ng-model="stMgmt.siteObj.team.model.mobile" placeholder="Mobile" ng-required="true" ng-class="{ 'text-error': stMgmt.siteObj.team.isSubmited && addNewMemberForm.mobile.$error.required }" numbers-only maxlength="10">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="memberemail" ng-model="stMgmt.siteObj.team.model.email" placeholder="Email" ng-required="true" ng-class="{ 'text-error': stMgmt.siteObj.team.isSubmited && addNewMemberForm.memberemail.$error.required }">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Facebook Profile Link</label>
+                            <input type="text" class="form-control" name="fblink" ng-model="stMgmt.siteObj.team.model.fblink" placeholder="Facebook">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Twitter Profile Link</label>
+                            <input type="text" class="form-control" name="twitterlink" ng-model="stMgmt.siteObj.team.model.twitterlink" placeholder="Twitter">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Linkedin Profile Link</label>
+                            <input type="text" class="form-control" name="linkedinlink" ng-model="stMgmt.siteObj.team.model.linkedinlink" placeholder="Linkedin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" ng-click="stMgmt.siteObj.team.closeModal()">Close</button>
+                <button type="button" class="btn btn-primary" ng-disabled="!addNewMemberForm.$valid" ng-click="stMgmt.siteObj.team.submit(addNewMemberForm)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade full-modal" id="candidates-list" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">{{jobMgmtObj.cdList.rowObj.jobTitle}}</h3>
+				<button type="button" class="close no-print" aria-label="Close" data-dismiss="modal">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row no-print" ng-if="!jobMgmtObj.cdList.loading && jobMgmtObj.cdList.data.length">
+					<div class="col-md-12 text-right">
+						<span ng-click="g.globalPrintFunction()" class="pointer" style="font-size: 25px;"><i class="fa fa-print" aria-hidden="true"></i></span>
+					</div>	
+				</div>
+
+				<div class="row" ng-if="!jobMgmtObj.cdList.loading">
+					<div class="col-md-12">
+						<div class="table-responsive mt-3" ng-if="jobMgmtObj.cdList.data.length && !jobMgmtObj.cdList.loading">
+							<table class="table table-bordered table-striped mb-0">
+							    <thead>
+							        <tr>
+							            <th>#</th>
+							            <th>Name</th>
+							            <th>Qualification</th>
+							            <th>Area Of Interest</th>
+							            <th>ExpectedSalary</th>
+							            <th>Contact</th>
+							            <th>Gender</th>
+							            <th>Experience</th>
+							            <th>City</th>
+							            <th>Register Date</th>
+							            <th class="yes-print">Remarks</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <tr ng-repeat="cRow in jobMgmtObj.cdList.data | filter: { name: candObj.list.searchname } | orderBy: '-createdAt'">
+							            <td>{{$index}}</td>
+							            <td>{{cRow.name}}</td>
+							            <td>{{cRow.qualificationName}}</td>
+							            <td><span class="badge badge-pill badge-primary ml-1" ng-repeat="arRow in cRow.areaOfInterest">{{arRow}}</span></td>
+							            <td>{{cRow.expectedSalary}}</td>
+							            <td>{{cRow.mobile}}</td>
+							            <td>{{cRow.gender}}</td>
+							            <td>{{g.adminData.candidateMinExp[cRow.experience]}}</td>
+							            <td>{{cRow.cityName}}</td>
+							            <td>{{cRow.createdAt | date: 'medium'}}</span></td>
+							            <td class="yes-print">-</td>
+							        </tr>
+							    </tbody>
+							</table>
+						</div>
+
+						<div ng-if="!jobMgmtObj.cdList.data.length && !jobMgmtObj.cdList.loading" class="no-data-cn text-center">
+							<h4>No data</h4>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="jobMgmtObj.cdList.loading" class="text-center loading-cn">
+					<h2>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</h2>
+				</div>
+			</div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="update-cp-user" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Update User</h3>
+				<button type="button" class="close no-print" aria-label="Close" ng-click="cpUserObj.list.edit.closeModal()">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-area" ng-form="editcpuserForm">
+	                <div class="row">
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>Company Name <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.companyname.$error.required">Required</span></label>
+	                            <input name="companyname" placeholder="Company Name" class="common-input form-control" ng-required="true" type="text" ng-model="cpUserObj.list.edit.model.companyName">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>Contact Person Name <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.contactPersonName.$error.required">Required</span></label>
+	                            <input name="contactPersonName" placeholder="Contact Person Name" class="common-input form-control" ng-required="true" type="text" ng-model="cpUserObj.list.edit.model.contactPersonName">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>Email 
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.email.$error.required">Required</span>
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.email.$error.pattern || editcpuserForm.email.$error.email">Invalid</span>
+	                            </label>
+	                            <input name="email" placeholder="Email" class="common-input form-control" ng-required="true" type="email" ng-model="cpUserObj.list.edit.model.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>Contact Number
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.contact.$error.required">Required</span>
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.contact.$error.pattern">Must be 10 digit number</span>
+	                            </label>
+	                            <input name="contact" placeholder="Contact" class="common-input form-control" ng-required="true" type="Number" ng-model="cpUserObj.list.edit.model.contact" ng-pattern="/^\+?\d{10}$/">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>WatsApp Contact Number
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.wpContact.$error.required">Required</span>
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.wpContact.$error.pattern">Must be 10 digit number</span>
+	                            </label>
+	                            <input name="wpContact" placeholder="WatsApp Contact (Optional)" class="common-input form-control" type="Number" ng-model="cpUserObj.list.edit.model.wpContact" ng-pattern="/^\+?\d{10}$/">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-6">
+	                        <div class="form-group">
+	                            <label>City
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.city.$error.required">Required</span>
+	                            </label>
+	                            <input name="city" placeholder="City" class="common-input form-control" type="text" ng-model="cpUserObj.list.edit.model.city">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-12">
+	                        <div class="form-group">
+	                            <label>Address
+	                                <span class="pull-right text-danger" ng-if="cpUserObj.list.edit.isSubmited && editcpuserForm.address.$error.required">Required</span>
+	                            </label>
+	                            <input name="address" placeholder="Address" class="common-input form-control" type="text" ng-model="cpUserObj.list.edit.model.address" ng-required="true">
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-12">
+	                        <div class="form-group">
+	                            <label>Company Website</label>
+	                            <input name="companyWebsite" placeholder="Website (Optional)" class="common-input form-control" type="text" ng-model="cpUserObj.list.edit.model.companyWebsite">
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" ng-click="cpUserObj.list.edit.closeModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="cpUserObj.list.edit.submit(editcpuserForm)">Save</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal fade full-modal" id="filter-candidates-list" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Filter List</h3>
+				<button type="button" class="close no-print" aria-label="Close" data-dismiss="modal" ng-click="candObj.fltObj.reset()">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row no-print" ng-if="!candObj.fltObj.isLoading && candObj.fltObj.list.data.length">
+					<div class="col-md-12 text-right">
+						<span ng-click="g.globalPrintFunction()" class="pointer" style="font-size: 25px;"><i class="fa fa-print" aria-hidden="true"></i></span>
+					</div>	
+				</div>
+
+				<div class="row" ng-if="!candObj.fltObj.isLoading">
+					<div class="col-md-12">
+						<div class="table-responsive mt-3" ng-if="candObj.fltObj.list.data.length && !candObj.fltObj.isLoading">
+							<table class="table table-bordered table-striped mb-0">
+							    <thead>
+							        <tr>
+							            <th>#</th>
+							            <th>Name</th>
+							            <th>Qualification</th>
+							            <th>Area Of Interest</th>
+							            <th>ExpectedSalary</th>
+							            <th>Contact</th>
+							            <th>Gender</th>
+							            <th>Experience</th>
+							            <th>City</th>
+							            <th>Register Date</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <tr ng-repeat="cRow in candObj.fltObj.list.data | filter: { name: candObj.list.searchname } | orderBy: '-createdAt'">
+							            <td>{{$index}}</td>
+							            <td>{{cRow.name}}</td>
+							            <td>{{cRow.qualificationName}}</td>
+							            <td><span class="badge badge-pill badge-primary ml-1" ng-repeat="arRow in cRow.areaOfInterest">{{arRow}}</span></td>
+							            <td>{{cRow.expectedSalary}}</td>
+							            <td>{{cRow.mobile}}</td>
+							            <td>{{cRow.gender}}</td>
+							            <td>{{g.adminData.candidateMinExp[cRow.experience]}}</td>
+							            <td>{{cRow.cityName}}</td>
+							            <td>{{cRow.createdAt | date: 'medium'}}</span></td>
+							        </tr>
+							    </tbody>
+							</table>
+						</div>
+
+						<div ng-if="!candObj.fltObj.list.data.length && !candObj.fltObj.isLoading" class="no-data-cn text-center">
+							<h4>No data</h4>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="candObj.fltObj.isLoading" class="text-center loading-cn">
+					<h2>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</h2>
+				</div>
+			</div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="candObj.fltObj.reset()">Close</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="common-delete-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"><i class="fa fa-question-circle" aria-hidden="true"></i> Delete Confirm</h4>
+				<button type="button" class="close no-print" aria-label="Close" data-dismiss="modal">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete this data? <span class="text-danger">This process can not be undo.</strong></p>
+			</div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" ng-click="g.submitDelete()">Yes</button>
+            </div>
+		</div>
+	</div>
+</div>

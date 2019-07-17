@@ -1,0 +1,186 @@
+<div class="contact-page" ng-controller="ContactController" style="margin-top: 85px;">
+    <section class="_features-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-feature card">
+                        <h4 class="app-title-text">
+                            Office Contact
+                        </h4>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                            </i>
+                            {{g.siteContent.data.officeC1 || '+91 78781 18188'}}
+                        </div>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                            </i>
+                            {{g.siteContent.data.officeC2 || '+91 63554 89383'}}
+                        </div>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-envelope-o mr-5">
+                            </i>
+                            {{g.siteContent.data.officeEmail || 'resume.pjp@gmail.com'}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-feature card">
+                        <h4 class="app-title-text">
+                            HR Contact
+                        </h4>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                            </i>
+                            {{g.siteContent.data.hrContact1 || '+91 79841 75602'}}
+                        </div>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                            </i>
+                            {{g.siteContent.data.hrContact2 || '+91 79841 75602'}}
+                        </div>
+                        <div class="contact-detail">
+                            <i aria-hidden="true" class="fa fa-envelope-o mr-5">
+                            </i>
+                            {{g.siteContent.data.hrContactEmail || 'hrd.pjob@gmail.com'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-page-area section-gap pt-5" ng-if="!g.loggedUser._id">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 form-area" ng-form="contactUs">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" type="radio" ng-click="conObj.inqObj.inquireyFor = 1; conObj.inqObj.palceHolder = 'Enter your name'" checked>
+                        <label class="custom-control-label" for="defaultInline1">
+                            Candidate Inquiry
+                        </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" type="radio" ng-click="conObj.inqObj.inquireyFor = 2; conObj.inqObj.palceHolder = 'Enter your Company name'">
+                        <label class="custom-control-label" for="defaultInline2">
+                            Company Inquiry
+                        </label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input class="common-input form-control" name="name" ng-class=" {'text-error': conObj.inqObj.isSubmited && contactUs.name.$error.required } " ng-model="conObj.inqObj.model.name" ng-required="true" placeholder="{{conObj.inqObj.palceHolder}}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="common-input form-control" name="email" ng-class=" {'text-error': conObj.inqObj.isSubmited && contactUs.email.$error.required } " ng-model="conObj.inqObj.model.email" ng-required="true" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" placeholder="Enter email address" type="email">
+                    </div>
+                    <div class="form-group">
+                        <input class="common-input form-control" maxlength="10" name="phone" ng-class=" {'text-error': conObj.inqObj.isSubmited && contactUs.phone.$error.required }" ng-model="conObj.inqObj.model.contact" ng-required="true" numbers-only="" placeholder="Mobile Number" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="common-input form-control" name="subject" ng-class=" {'text-error': conObj.inqObj.isSubmited && contactUs.subject.$error.required } " ng-model="conObj.inqObj.model.subject" ng-required="true" placeholder="Enter your subject" type="text">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="common-textarea mt-10 form-control" name="message" ng-model="conObj.inqObj.model.message" ng-required="true" placeholder="Messege (Optional)">
+                        </textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <div ng-if="!conObj.inqObj.isReqSent">
+                            <button class="primary-btn text-white" ng-click="conObj.inqObj.submit(contactUs)">
+                                Send Message
+                            </button>
+                        </div>
+                        <div ng-if="conObj.inqObj.isReqSent">
+                            <button class="primary-btn text-white" disabled="">
+                                Sending...
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6" ng-if="!g.loggedUser._id">
+                    <div class="row">
+                        <div class="col-lg-12 mb-15">
+                            <div class="single-feature">
+                                <h4 class="app-title-text">
+                                    Address
+                                </h4>
+                                <div class="contact-detail">
+                                    {{g.siteContent.data.Address || '55/D Gulabvihar,Opp.
+									Amarnath Temple Garden,
+									Behind Big Bazaar,
+									Rajkot-360005'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-15">
+                            <div class="single-feature">
+                                <h4 class="app-title-text">
+                                    Contact For Franchises
+                                </h4>
+                                <div class="contact-detail">
+                                    <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                                    </i>
+                                    {{g.siteContent.data.helpContact1 || '+91 88666 11661'}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-page-area section-gap" ng-if="g.loggedUser._id">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mb-15">
+                            <div class="single-feature">
+                                <h4 class="app-title-text">
+                                    Address
+                                </h4>
+                                <div class="contact-detail">
+                                    {{g.siteContent.data.Address || '55/D Gulabvihar,Opp.
+									Amarnath Temple Garden,
+									Behind Big Bazaar,
+									Rajkot-360005'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-15">
+                            <div class="single-feature">
+                                <h4 class="app-title-text">
+                                    Contact For Franchises
+                                </h4>
+                                <div class="contact-detail">
+                                    <i aria-hidden="true" class="fa fa-phone-square mr-5">
+                                    </i>
+                                    {{g.siteContent.data.helpContact1 || '+91 63535 05097'}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div aria-hidden="true" class="modal fade thankyoumodal" id="thankyou-contact" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">
+                        Thank you for trust with us!
+                    </h3>
+                    <button aria-label="Close" class="close text-white" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="body-text pt-25">
+                        We will touch you soon...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

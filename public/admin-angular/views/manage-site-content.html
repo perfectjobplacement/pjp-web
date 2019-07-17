@@ -1,0 +1,207 @@
+<div class="admin-dashboard-page" data-ng-controller="SiteMgmtController" ng-init="stMgmt.siteObj.appsSettings.init()">
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+            
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+                <div class="col-lg-12">
+                    <div class="pt-3 pb-2 mb-3 border-bottom">
+                        <h3 class="h3">Site Settings</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="height: 360px; overflow-y: auto;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>App Title</label>
+                                <input type="text" name="appTitle" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.appTitle">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Header Title</label>
+                                <input type="text" name="headerTitle" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.headerTitle">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>App Tagline</label>
+                                <input type="text" name="appTagline" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.appTagline">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jobs Count</label>
+                                <input type="text" name="headerTotalJob" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.headerTotalJob">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Contact For Franchises</label>
+                                <input type="text" name="helpContact1" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.helpContact1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Inquiry Contact</label>
+                                <input type="text" name="helpContact2" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.helpContact2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Office Contact 1</label>
+                                <input type="text" name="officeC1" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.officeC1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Office Contact 2</label>
+                                <input type="text" name="officeC2" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.officeC2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Office Contact Email</label>
+                                <input type="email" name="officeEmail" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.officeEmail">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Contact HR 1</label>
+                                <input type="text" name="hrContact1" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.hrContact1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Contact HR 2</label>
+                                <input type="text" name="hrContact2" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.hrContact2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Contact HR Email</label>
+                                <input type="text" name="hrContactEmail" class="form-control" ng-model="stMgmt.siteObj.appsSettings.model.hrContactEmail">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea class="form-control" name="Address" ng-model="stMgmt.siteObj.appsSettings.model.Address"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>IOS application link</label>
+                                <input class="form-control" name="appleAppLink" ng-model="stMgmt.siteObj.appsSettings.model.appleAppLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Android application link</label>
+                                <input class="form-control" name="androidAppLink" ng-model="stMgmt.siteObj.appsSettings.model.androidAppLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>[Social] Google link</label>
+                                <input class="form-control" name="googleLink" ng-model="stMgmt.siteObj.appsSettings.model.googleLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>[Social] Facebook link</label>
+                                <input class="form-control" name="facebookLink" ng-model="stMgmt.siteObj.appsSettings.model.facebookLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>[Social] Instagram link</label>
+                                <input class="form-control" name="instaLink" ng-model="stMgmt.siteObj.appsSettings.model.instaLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>[Social] Linkedin link</label>
+                                <input class="form-control" name="linkedinLink" ng-model="stMgmt.siteObj.appsSettings.model.linkedinLink">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>[Social] Join WhatsApp Link</label>
+                                <input class="form-control" name="whatsAppinLink" ng-model="stMgmt.siteObj.appsSettings.model.whatsAppinLink">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 text-right">
+                    <button class="btn btn-primary" ng-click="stMgmt.siteObj.appsSettings.submit()">Save</button>
+                    <hr />
+                </div>
+
+
+
+                <div class="col-lg-12">
+                    <div class="pt-3 pb-2 mb-3 border-bottom">
+                        <h3 class="h3">Manage Our Team <i class="fa fa-plus-square-o text-info pull-right pointer" aria-hidden="true" ng-click="stMgmt.siteObj.team.openModal()"></i></h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    
+                    <div class="table-responsive" ng-if="stMgmt.siteObj.team.data.length && !stMgmt.siteObj.team.loading">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead>
+                                <tr>
+                                    <th>key</th>
+                                    <th>Full Name</th>
+                                    <th>Position</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in stMgmt.siteObj.team.data | orderBy: 'fullname'">
+                                    <td>{{row._id}}</td>
+                                    <td>
+                                        <div>{{row.fullname}}</div>
+                                    </td>
+                                    <td>
+                                        <div>{{row.position}}</div>
+                                    </td>
+                                    <td>
+                                        <div>{{row.mobile}}</div>
+                                    </td>
+                                    <td>
+                                        <div>{{row.email}}</div>
+                                    </td>
+                                    <td>
+                                        <div><i ng-click="stMgmt.siteObj.team.openModal(row)" class="fa fa-pencil-square-o pointer ml-10" aria-hidden="true"></i>
+                                        <i ng-click="stMgmt.siteObj.team.delete.openModal(row)" class="fa fa-trash-o pointer ml-10" aria-hidden="true"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div ng-if="!stMgmt.siteObj.team.data.length && !stMgmt.siteObj.team.loading" class="no-data-cn text-center">
+                        <h4>No Team found!</h4>
+                    </div>
+
+                    <div ng-if="stMgmt.siteObj.team.loading" class="text-center loading-cn">
+                        <h2>
+                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            <span class="sr-only">Loading...</span>
+                        </h2>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div data-ng-include="'/admin-angular/views/modal.html'"></div>
+</div>

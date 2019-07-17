@@ -1,0 +1,89 @@
+<div class="job-management-page" data-ng-controller="userInquiryMgmtController" ng-init="userInqObj.list.init()">
+	
+	<div class="container-fluid">
+	    <div class="row">
+	        
+	        <div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+
+	        <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h3 class="h3">User Inquiries Management</h3>
+				</div>
+
+				<div class="row" ng-if="userInqObj.list.data.length && !userInqObj.list.loading">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<select class="form-control" ng-model="userInqObj.list.filter">
+								<option value="">--- All ----</option>
+								<option value="true">Read</option>
+								<option value="false">UnRead</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="table-responsive" ng-if="userInqObj.list.data.length && !userInqObj.list.loading">
+					<table class="table table-bordered table-striped mb-0">
+					    <thead>
+					        <tr>
+					            <th>#</th>
+					            <th>Email</th>
+					            <th>Name</th>
+					            <th>Contact</th>
+					            <th>Subject</th>
+					            <th>Message</th>
+					            <th>Inquiry At</th>
+					            <th>Is Read</th>
+					            <th>Action</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <tr ng-repeat="dataRow in userInqObj.list.data | orderBy: '-createdAt' | filter: {isRead: userInqObj.list.filter }" ng-class="{ 'text-success': !dataRow.isRead }">
+					            <td>{{$index+1}}</td>
+					            <td>
+									{{dataRow.email}}
+					            </td>
+					            <td>
+									{{dataRow.name}}
+					            </td>
+					            <td>
+									{{dataRow.contact}}
+					            </td>
+					            <td>
+									{{dataRow.subject}}
+					            </td>
+					            <td>
+									{{dataRow.message}}
+					            </td>
+					            <td>
+					            	{{dataRow.createdAt | date}}</span>
+					            </td>
+					            <td>
+					            	<span ng-if="!dataRow.isRead"><a class="pointer" ng-click="userInqObj.isRead.submit(dataRow)">Mark as read</a></span>
+					            	<span ng-if="dataRow.isRead"><a class="pointer text-danger" ng-click="userInqObj.isRead.submit(dataRow)">Read</a></span>
+					            </td>
+					            <td>
+					                <i ng-click="userInqObj.list.delete.openModal(dataRow)" class="fa fa-trash-o pointer ml-10" aria-hidden="true"></i>
+					            </td>
+					        </tr>
+					    </tbody>
+					</table>
+				</div>
+
+				<div ng-if="!userInqObj.list.data.length && !userInqObj.list.loading" class="no-data-cn text-center">
+					<h4>No data</h4>
+				</div>
+
+				<div ng-if="userInqObj.list.loading" class="text-center loading-cn">
+					<h2>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</h2>
+				</div>
+	        </main>
+	    </div>
+	</div>
+
+	<div data-ng-include="'/admin-angular/views/modal.html'"></div>
+</div>

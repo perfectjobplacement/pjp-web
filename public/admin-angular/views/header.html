@@ -1,0 +1,34 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow ic-nav-bar" ng-controller="AdminController">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-white pointer" ng-click="g.stateGo('dashboard')">
+        Perfect Job Placement
+    </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap" ng-if="g.loggedUser._id">
+            <button type="button" class="btn btn-primary btn-sm header-logged-user"><i class="fa fa-address-book-o" aria-hidden="true"></i> {{g.loggedUser.firstName}} {{g.loggedUser.lastName}}</button>
+            <button type="button" class="btn btn-primary btn-sm header-logged-user">
+                <a href="/users/signout" class="text-danger">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
+            </button>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="_row d-none d-block d-md-none" style="position: relative; top: 110px; margin: 0 25px; z-index: 2" ng-if="g.loggedUser._id">
+    <div class="col-xs-12">
+        <div class="form-group" ng-init="dbObj.comObj.dbsidebartabs = 'dashboard'">
+            <select class="form-control" ng-model="dbObj.comObj.dbsidebartabs" ng-change="g.stateGo(dbObj.comObj.dbsidebartabs)">
+                <option value="dashboard">Dashboard</option>
+                <option value="qualification">Manage Qualifictions</option>
+                <option value="location-mgmt">Mange Locations</option>
+                <option value="area-of-interest">Mange Area Of Interest</option>
+                <option value="sitecontent-mgmt">Mange Site Content</option>
+                <option value="jobs-mgmt">Manage Job</option>                
+                <option value="candidates-mgmt">Manage Candidates</option>
+                <option value="company-user-mgmt">Manage Company Users</option>
+                <option value="inquiry-mgmt">Manage User Inquiries</option>
+            </select>
+        </div>
+    </div>
+</div>

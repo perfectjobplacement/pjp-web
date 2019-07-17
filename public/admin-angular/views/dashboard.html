@@ -1,0 +1,13 @@
+<div class="admin-dashboard-page" data-ng-controller="AdminController">
+	
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+			
+			<main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+				<div data-ng-include="'/admin-angular/views/dashboard-section.html'" data-ng-controller="DashboardController" ng-init="dbObj.comObj.initGlobal()"></div>
+			</main>
+		</div>
+	</div>
+</div>

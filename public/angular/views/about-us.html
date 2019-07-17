@@ -1,0 +1,203 @@
+<div class="about-us-page" ng-controller="AboutusController" ng-init="absObj.team.init()">
+	<section class="service-area section-gap" id="service">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 pb-40 header-text">
+					<h1>Why Choose Us</h1>
+					<p>
+						"Place Yourself At Right Place"
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-user"></span>Expert Supporters</h4>
+						<p>
+							Find a good human resource is a difficult task so hear we provide the best service of the all time. We provide the best human resource for all type of filed.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-license"></span>Professional Service</h4>
+						<div><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Manpower Solution</div>
+						<div><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Job Solution</div>
+						<div><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Providing all types of Professional Service</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-phone"></span>Great Support</h4>
+						<p>
+							We understand that the human resource is the biggest assets of the organization and we understand the importance of it.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
+						<p>
+							To be the strongest bridge between the HR requirement of the organization and employment need of the people.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-diamond"></span>Highly recommended</h4>
+						<p>
+							We analyse the business requirements of our clients and provide the best solutions to ensure customer satisfaction.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-service">
+						<h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
+						<p>
+							To become the rank one job placement consultancy of India.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	<section class="feature-area">
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-3 feat-img no-padding">
+					<img class="img-fluid" src="img/pages/f1.jpg" alt="">
+				</div>
+				<div class="col-lg-3 no-padding feat-txt">
+					<h6 class="text-uppercase text-white">Basic & Common Overview</h6>
+					<h1>Who we are</h1>
+					<p class="text-white">
+						To be the strongest bridge between the HR requirement of the organization and employment need of the people.
+					</p>
+				</div>
+				<div class="col-lg-3 feat-img no-padding">
+					<img class="img-fluid" src="img/pages/f2.jpg" alt="">
+				</div>
+				<div class="col-lg-3 no-padding feat-txt mb-20">
+					<h6 class="text-uppercase text-white">Basic & Common Overview</h6>
+					<h1>What we do</h1>
+					<p class="text-white">
+						To find the best qualified and skilled candidates. And provide employment to the candidates.
+					</p>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	<section class="team-area section-gap" id="team">
+		<div class="container">
+			<div class="row">
+				<div class="menu-content pb-70 col-lg-12">
+					<div class="title text-center">
+						<h1 class="mb-10">Experienced Mentor Team</h1>
+						<p>"Place Yourself At Right Place"</p>
+					</div>
+				</div>
+			</div>						
+			<div class="row justify-content-center d-flex align-items-center">
+				<div class="col-md-3 single-team" ng-repeat="row in absObj.team.teamMember">
+				    <div class="thumb">
+				        <img class="img-fluid" src="img/pages/user-image.png" alt="">
+				        <div class="align-items-center justify-content-center d-flex">
+							<a href="{{row.fblink}}" target="_blank" class="pointer"><i class="fa fa-facebook"></i></a>
+							<a href="{{row.twitterlink}}" target="_blank" class="pointer"><i class="fa fa-twitter"></i></a>
+							<a href="{{row.linkedinlink}}" target="_blank" class="pointer"><i class="fa fa-linkedin"></i></a>
+				        </div>
+				    </div>
+				    <div class="meta-text mt-15 text-center">
+					    <h4>{{row.fullname}}</h4>
+					    <p>{{row.position}}</p>
+				    </div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	<div data-ng-include="'/angular/views/includes/Join-us-content.html'"></div>
+
+	<section class="testimonial-area section-gap" id="review">
+		<div class="container">
+			<div class="row">
+				<div class="menu-content pb-60 col-lg-12">
+					<div class="title text-center">
+						<h1 class="mb-10">Testimonial from our Clients</h1>
+						<p>Who are in extremely love with our service.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="active-review-carusel">
+					<div class="single-review">
+						<div class="title d-flex flex-row">
+							<h4><i class="fa fa-facebook-official" aria-hidden="true"></i> Chintan Jadav</h4>
+							<div class="star">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+							</div>
+						</div>
+						<p>
+							Best Services In Rajkot.. i got 100% Satisfaction ☺️ Thank You Perfect Job Placement.
+						</p>
+					</div>	
+					<div class="single-review">
+						<div class="title d-flex flex-row">
+							<h4><i class="fa fa-facebook-official" aria-hidden="true"></i> Kathiriya Jaydeep</h4>
+							<div class="star">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>								
+							</div>
+						</div>
+						<p>
+							Thank you so much perfect job placement Rajkot.
+						</p>
+					</div>	
+					<div class="single-review">
+						<div class="title d-flex flex-row">
+							<h4><i class="fa fa-facebook-official" aria-hidden="true"></i> Naitik Osalaniya</h4>
+							<div class="star">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>								
+							</div>
+						</div>
+						<p>
+							Good And fast service.
+						</p>
+					</div>	
+					<div class="single-review">
+						<div class="title d-flex flex-row">
+							<h4><i class="fa fa-facebook-official" aria-hidden="true"></i> Hiren Ram</h4>
+							<div class="star">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>								
+							</div>
+						</div>
+						<p>
+							Thank you so much perfect job placement Rajkot.
+						</p>
+					</div>								
+				</div>
+			</div>
+		</div>	
+	</section>
+</div>
+
+
+
+

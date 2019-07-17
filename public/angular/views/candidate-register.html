@@ -1,0 +1,180 @@
+<div class="about-us-page" ng-controller="CandidateRegisterController" ng-init="absObj.team.init()">
+	<section class="service-area section-gap" id="service" style="min-height: 500px;">
+
+		<div class="container mb-4">
+			<div class="card" style="background-color: #f1f1f1;">
+				<div class="disabled-wrapper" ng-if="newReg.post.selectedStep == 2"></div>
+
+				<div class="card-body">
+					<h6 class="pb-2 text-success">This is one time registration, If you are already register, Then you not need to register again.</h6>
+					<h5 class="m-0 text-success">આ એક વખત નોંધણી છે, જો તમે પહેલાથી જ નોંધણી કરાવી છે, તો તમારે ફરીથી નોંધણી કરવાની જરૂર નથી.</h5>
+					<div class="row pt-3" ng-form="confirmMobileForm">
+						<div class="col-md-10">
+							<div class="form-group">
+								<input type="text" numbers-only class="form-control" name="phone" ng-model="newReg.confirm.model.mobile" ng-required="true" ng-class="{ 'text-error': newReg.confirm.isSubmited && confirmMobileForm.phone.$error.required }" maxlength="10" placeholder="Enter mobile & confirm your availability.">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+					        	<div ng-if="!newReg.confirm.isReqSent"><button type="button" class="btn btn-primary" ng-click="newReg.confirm.submit(confirmMobileForm)">Continue</button></div>
+					        	<div ng-if="newReg.confirm.isReqSent"><button type="button" class="btn btn-primary">Process...</button></div>
+					        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="card">
+				<div class="card-body" ng-form="registerCandidateFrom" ng-if="newReg.post.selectedStep == 2">
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Name</label>
+								<input type="text" class="form-control" name="name" ng-model="newReg.post.model.name" placeholder="Candidate name" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.name.$error.required }">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Email</label>
+								<input type="email" class="form-control" name="email" ng-model="newReg.post.model.email" placeholder="Email" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.email.$error.required || registerCandidateFrom.email.$error.email }">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Gender</label>
+								<div class="custom-1">
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" value="male" id="genderid1" ng-model="newReg.post.model.gender">
+										<label class="custom-control-label" for="genderid1">Male</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" class="custom-control-input" value="female" id="genderid2" ng-model="newReg.post.model.gender">
+										<label class="custom-control-label" for="genderid2">Female</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Mobile Number</label>
+								<input type="text" numbers-only class="form-control" name="mobile" ng-model="newReg.post.model.mobile" placeholder="Mobile number" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.mobile.$error.required }" maxlength="10" readonly="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>WhatsApp Number</label>
+								<input type="text" numbers-only class="form-control" name="wpContact" ng-model="newReg.post.model.wpContact" placeholder="Whatsapp contact number" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.wpContact.$error.required }" maxlength="10">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Current Location</label>
+								<input type="text" class="form-control" name="currentLocation" ng-model="newReg.post.model.currentLocation" placeholder="Current Location" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.currentLocation.$error.required }">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Date Of Birth</label>
+				
+								<div class="input-group">
+								  	<input type="text" class="form-control" aria-describedby="basic-addon1" name="birthDate" ng-model="newReg.post.model.birthDate" placeholder="Date of birth" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="newReg.post.opened1" close-text="Close" readonly="" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.birthDate.$error.required }">
+								  	<div class="input-group-append">
+								    	<span class="input-group-text pointer" ng-click="newReg.post.opened1 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+								  	</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Qualification</label>
+								<select class="form-control" name="qualification" ng-model="newReg.post.model.qualification" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.qualification.$error.required }">
+									<option value="">--- Select Qualification ---</option>
+									<option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Department</label>
+
+								<select class="form-control" name="department" ng-model="newReg.post.model.department" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.department.$error.required }">
+									<option value="">--- Select Department ---</option>
+									<option ng-repeat="row in g.globalvarObj.qualification" value="{{row._id}}" ng-if="row.qualifyIn == newReg.post.model.qualification">{{row.name}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Area Of Interest</label>
+
+								<div class="multi-select-span" ng-if="newReg.post.model.qualification">
+									<span class="pointer mb-1" ng-repeat="row in g.globalvarObj.areaOfInterest" ng-if="row.department == newReg.post.model.qualification" ng-click="g.adminData.multiSelect(newReg.post.model.areaOfInterest, row.title)">
+										<span class="position-relative">
+											<span class="badge badge-pill badge-primary mb-2">
+												<span ng-if="newReg.post.model.areaOfInterest.indexOf(row.title) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row.title}}
+											</span>
+										</span>
+									</span>
+								</div>
+								<div class="multi-select-span" ng-if="!newReg.post.model.areaOfInterest">
+									<span>Select Area Of Interest</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Expected Salary</label>
+								<input type="text" class="form-control" name="expectedSalary" ng-model="newReg.post.model.expectedSalary" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.expectedSalary.$error.required }" placeholder="ex - 12000">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Experience</label>
+
+								<select class="form-control" name="experience" ng-model="newReg.post.model.experience" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.experience.$error.required }">
+									<option value="">--- Select Experience ---</option>
+									<option value="1">Fresher</option>
+									<option value="2">6 Month To 1 Year</option>
+									<option value="3">1 To 2 Year</option>
+									<option value="4">3 To 5 Year</option>
+									<option value="5">5 To 10 Year</option>
+									<option value="6">10 Year+</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>City</label>
+								<select class="form-control" name="city" ng-model="newReg.post.model.city" ng-required="true" ng-class="{ 'text-error': newReg.post.isSubmited && registerCandidateFrom.city.$error.required }">
+									<option value="">--- Select City ---</option>
+									<option ng-repeat="row in g.globalvarObj.cites" ng-if="row.status" value="{{row._id}}">{{row.city}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<hr>
+				        	<div ng-if="!newReg.post.isReqSent">
+				        		<button type="button" class="btn btn-primary" ng-click="newReg.post.submit(registerCandidateFrom)">Register</button>
+				        	</div>
+				        	<div ng-if="newReg.post.isReqSent">
+				        		<button type="button" class="btn btn-primary">Process...</button>
+				        	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div data-ng-include="'/angular/views/includes/modal.html'"></div>
+</div>
+
+
+
+

@@ -1,0 +1,71 @@
+<style type="text/css">
+    .header-contact-detail {
+        position: fixed;
+        top: 100px;
+        z-index: 2;
+        right: 0;
+        color: #fff;
+        font-weight: 700;
+        background: #111111;
+        padding: 7px 15px;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .header-contact-detail a {
+        color: #fff;
+    }
+</style>
+
+<div class="header-contact-detail">
+	<div class="mb-10">
+    	<a href="tel:78781 18188"><i class="fa fa-phone-square mr-5" aria-hidden="true"></i> {{g.siteContent.data.officeC1 || '+91-6353505097'}}</a>
+	</div>
+	<div>
+    	<a class="pointer" ng-click="g.postResume.openModal()"><i class="fa fa-file-text-o mr-5" aria-hidden="true"></i> Send Your Resume</a>
+    </div>
+</div>
+
+
+<div class="modal fade" id="upload-resume" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" ng-form="sendresumeForm">
+			<div class="modal-header">
+				<h3 class="modal-title">We will contact to you soon</h3>
+				<button type="button" class="close" aria-label="Close" data-dismiss="modal">
+		  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Subject</label>
+							<input type="text" name="userSubject" class="form-control" ng-model="g.postResume.model.subject" ng-required="true" ng-class="{ 'text-error': g.postResume.isSubmited && sendresumeForm.userSubject.$error.required }" placeholder="Subject...">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Message</label>
+							<textarea name="user-message" class="form-control" ng-model="g.postResume.model.message" placeholder="Message..."></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Attachment</label>
+							<div>
+								<input type="file" fileread="g.postResume.model.resume" name="resume" accept=".xlsx, .xls, .doc, .docx, .ppt, .pptx, .txt, .pdf">
+							</div>
+							<div class="mt-1">
+								<strong><p class="text-danger">Note: File should be, xlsx, .xls, .doc, .docx, .ppt, .pptx, .txt, .pdf</p></strong>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer text-center">
+		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-primary btn-sm" ng-click="g.postResume.submit(sendresumeForm)">Submit</button>
+	      	</div>
+		</div>
+	</div>
+</div>

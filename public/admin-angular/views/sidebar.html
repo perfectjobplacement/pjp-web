@@ -1,0 +1,86 @@
+<nav class="col-md-3 col-lg-2 bg-light sidebar d-none d-md-block">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/dashboard') }" ng-click="g.stateGo('dashboard')">
+                    <span><i class="fa fa-desktop mr-5" aria-hidden="true"></i> Dashboard</span>
+                </a>
+            </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span><i class="fa fa-list-alt mr-5" aria-hidden="true"></i> ADMIN</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/qualification') }" ng-click="g.stateGo('qualification')">
+                    Manage Qualifictions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/location-mgmt') }" ng-click="g.stateGo('location-mgmt')">
+                    Mange Locations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/area-of-interest') }" ng-click="g.stateGo('area-of-interest')">
+                    Area Of Interest
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/sitecontent-mgmt') }" ng-click="g.stateGo('sitecontent-mgmt')">
+                    Mange Site Content
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/jobs-mgmt') }" ng-click="g.stateGo('jobs-mgmt')">
+                    Manage Job
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/candidates-mgmt') }" ng-click="g.stateGo('candidates-mgmt')">
+                    Manage Candidates
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/company-user-mgmt') }" ng-click="g.stateGo('company-user-mgmt')">
+                    Manage Company Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/inquiry-mgmt') }" ng-click="g.stateGo('inquiry-mgmt')">
+                    Manage User Inquiries
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/track-contact') }" ng-click="g.stateGo('track-contact')">
+                    Track Contact
+                </a>
+            </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span><i class="fa fa-list-alt mr-5" aria-hidden="true"></i> OFFICE</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/advertisement') }" ng-click="g.stateGo('advertisement')">
+                    Advertisement
+                </a>
+            </li>
+        </ul>
+        <!-- <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/account') }" ng-click="g.stateGo('account')">
+                    Account 
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link pointer" ng-class="{ 'active': g.getActiveClass('/attendance') }" ng-click="g.stateGo('attendance')">
+                   Attendance 
+                </a>
+            </li>
+        </ul> -->
+    </div>
+</nav>

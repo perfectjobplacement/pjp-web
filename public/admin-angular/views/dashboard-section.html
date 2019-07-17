@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3">
+        Dashboard
+    </h1>
+</div>
+
+
+<div class="view-logs" ng-if="!dbObj.comObj.loading">
+    <div class="row">
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-success">Total Site Visitor</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span clsas="text-success">{{dbObj.comObj.totalCounts.getSiteVisitor || 0}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-info">Total Job Poster</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span clsas="text-info">{{dbObj.comObj.totalCounts.getOurClients || 0}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-success">Total Job Seeker</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span clsas="text-success">{{dbObj.comObj.totalCounts.getCandidateRegister || 0}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-info">Total Active Jobs</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span clsas="text-info">{{dbObj.comObj.totalCounts.getJobsBazaar || 0}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-success">Candidate Register</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span class="pointer" ng-click="cdUser.create.openModal()"><i class="fa fa-plus-square-o text-success" aria-hidden="true"></i></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-info">Post New Job</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span class="pointer" ng-click="job.create.openModal()"><i class="fa fa-plus-square-o text-info" aria-hidden="true"></i></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 mb-20">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5 class="text-success">Manage Job</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title m-0">
+                        <span class="pointer" ng-click="g.stateGo('jobs-mgmt')"><i class="fa fa-plus-square-o text-success" aria-hidden="true"></i></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="dbObj.comObj.loading" class="text-center loading-cn">
+    <h2>
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </h2>
+</div>
+
+<div data-ng-include="'/admin-angular/views/modal.html'"></div>

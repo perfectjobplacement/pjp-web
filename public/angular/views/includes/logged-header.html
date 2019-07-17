@@ -1,0 +1,65 @@
+<header id="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <!-- <a href="#!/home"><img alt="" class="float-left" src="img/logo/logo1.png" height="70" /> -->
+                <!-- <div class="logo-text-1">Perfect Job</div>
+                <div class="logo-text-2">Placement</div></a> -->
+                <h4 class="text-white">Perfect Job Placement</h4>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li id="close-sidebar-on-click" ng-class="{'active': g.getActiveClass('/home')}">
+                        <a href="#!/home">
+                            Home
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-class="{'active': g.getActiveClass('/aboutus')}">
+                        <a href="#!/aboutus">
+                            About Us
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-class="{'active': g.getActiveClass('/contact')}">
+                        <a href="#!/contact">
+                            Contact
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-class="{'active': g.getActiveClass('/user-dashboard')}" ng-if="g.loggedUser._id">
+                        <a href="#!/user-dashboard">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-if="!g.loggedUser._id" ng-class="{'active': g.getActiveClass('/user-register')}">
+                        <a class="pointer" href="#!/user-register">
+                           Register
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-if="!g.loggedUser._id" ng-class="{'active': g.getActiveClass('/login')}">
+                        <a class="pointer" href="#!/login">
+                            Job Post
+                        </a>
+                    </li>
+                    <li id="close-sidebar-on-click" ng-class="{'active': g.getActiveClass('')}" ng-if="g.loggedUser._id">
+                        <a class="pointer" href="/users/signout">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+
+<script type="text/javascript">
+    if ($(window).width() < 768) {
+        if ($('#nav-menu-container').length) {
+            $(document).on('click', '#close-sidebar-on-click', function(e) {
+                $('body').toggleClass('mobile-nav-active');
+                $('#mobile-nav-toggle i').toggleClass('lnr-cross lnr-menu');
+                $('#mobile-body-overly').toggle();
+            });
+        }
+    }
+</script>

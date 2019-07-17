@@ -1,0 +1,703 @@
+<div class="user-dashboard-page" ng-controller="UserDashboardController">
+    <section class="service-area mt-4 mb-5" id="service">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a aria-controls="job-mgmt" aria-selected="true" class="nav-link active" data-toggle="tab" href="#job-mgmt" id="job-mgmt-tab" role="tab">
+                                Manage Jobs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab" ng-click="udObj.profileObj.init()">
+                                Manage Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a aria-controls="change-pass" aria-selected="false" class="nav-link" data-toggle="tab" href="#change-pass" id="change-pass-tab" role="tab">
+                                Change Password
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content ic-tab-content p-3" id="myTabContent">
+                        
+                        <div aria-labelledby="job-mgmt-tab" class="tab-pane fade show active" id="job-mgmt" role="tabpanel">
+                            <div class="_container-fluid">
+                                <div class="row">
+                                    
+                                    <main class="col-lg-12">
+
+                                        <div class="row mb-15">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input type="text" ng-model="udObj.jobObj.searchJob" class="form-control" placeholder="Search job..." />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <select class="form-control" ng-model="udObj.jobObj.filterJob">
+                                                        <option value="">--- Filter Job ---</option>
+                                                        <option value="1">Deactive</option>
+                                                        <option value="2">Active</option>
+                                                        <option value="3">Closed</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pt-10">
+                                                    <a class="pointer text-orange" ng-click="udObj.jobObj.add.openModal()">Add New Job</a>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+
+                                        <div class="table-responsive" ng-if="udObj.jobObj.list.data.length && !udObj.jobObj.list.isLoading">
+                                            <table class="table table-bordered table-striped mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Job Title</th>
+                                                    <th>Job Status</th>
+                                                    <th>Created At</th>
+                                                    <th>Action</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="jobRow in jobMgmtObjFilter = (udObj.jobObj.list.data | orderBy: '-createdAt' | filter: { 'jobTitle': udObj.jobObj.searchJob, 'status': udObj.jobObj.filterJob })">
+                                                    <td>{{jobRow.jobTitle}}</td>
+                                                    <td>
+                                                        <span ng-if="jobRow.status == 1">Deactive</span>
+                                                        <span ng-if="jobRow.status == 2">Active</span>
+                                                        <span ng-if="jobRow.status == 3">Closed</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Created At: {{jobRow.createdAt | date}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <i ng-click="udObj.jobObj.edit.openModal(jobRow)" class="fa fa-pencil-square-o pointer ml-10" aria-hidden="true"></i>
+
+                                                        <i ng-click="udObj.jobObj.delete.submitl(jobRow, false)" ng-if="jobRow.isDelete" class="fa fa-trash-o pointer ml-10 text-danger" aria-hidden="true"></i>
+                                                        
+                                                        <i ng-click="udObj.jobObj.delete.submitl(jobRow, true)" ng-if="!jobRow.isDelete" class="fa fa-trash-o pointer ml-10" aria-hidden="true"></i>
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-info" ng-if="jobRow.status == 1">Under Review</span>
+                                                        <span class="text-info" ng-if="jobRow.status == 2">Approve</span>
+                                                    </td>
+                                                </tr>
+                                                <tr ng-if="!jobMgmtObjFilter.length">
+                                                    <td colspan="5">
+                                                        <div class="text-center">
+                                                            <h5>No data!</h5>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div ng-if="!udObj.jobObj.list.data.length && !udObj.jobObj.list.isLoading" class="no-data-cn text-center">
+                                            <h4>No data</h4>
+                                        </div>
+
+                                        <div ng-if="udObj.jobObj.list.isLoading" class="text-center loading-cn">
+                                            <h2>
+                                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                                <span class="sr-only">Loading...</span>
+                                            </h2>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
+                            <div class="creaditienl-boxes form-area container" ng-form="profileForm">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Company Name <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.companyname.$error.required">Required</span></label>
+                                            <input name="companyname" placeholder="Company Name" class="common-input form-control" ng-required="true" type="text" ng-model="udObj.profileObj.model.companyName">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Contact Person Name <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.contactPersonName.$error.required">Required</span></label>
+                                            <input name="contactPersonName" placeholder="Contact Person Name" class="common-input form-control" ng-required="true" type="text" ng-model="udObj.profileObj.model.contactPersonName">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Email 
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.email.$error.required">Required</span>
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.email.$error.pattern || profileForm.email.$error.email">Invalid</span>
+                                            </label>
+                                            <input name="email" placeholder="Email" class="common-input form-control" ng-required="true" type="email" ng-model="udObj.profileObj.model.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" autocomplete="off" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Contact Number
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.contact.$error.required">Required</span>
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.contact.$error.pattern">Must be 10 digit number</span>
+                                            </label>
+                                            <input type="text" numbers-only name="contact" placeholder="Contact" class="common-input form-control" ng-required="true" ng-model="udObj.profileObj.model.contact" ng-pattern="/^\+?\d{10}$/" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Whatsapp Contact Number
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.wpContact.$error.required">Required</span>
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.wpContact.$error.pattern">Must be 10 digit number</span>
+                                            </label>
+                                            <input type="text" numbers-only name="wpContact" placeholder="Whatsapp Contact (Optional)" class="common-input form-control" ng-model="udObj.profileObj.model.wpContact" ng-pattern="/^\+?\d{10}$/" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>City
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.city.$error.required">Required</span>
+                                            </label>
+                                            <input type="text" name="city" placeholder="City" class="common-input form-control" ng-model="udObj.profileObj.model.city">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Address
+                                                <span class="pull-right text-danger" ng-if="udObj.profileObj.isSubmited && profileForm.address.$error.required">Required</span>
+                                            </label>
+                                            <input name="address" placeholder="Address" class="common-input form-control" type="text" ng-model="udObj.profileObj.model.address" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Company Website</label>
+                                            <input name="companyWebsite" placeholder="Website (Optional)" class="common-input form-control" type="text" ng-model="udObj.profileObj.model.companyWebsite">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-right">
+                                        <hr>
+                                        <div class="form-group mb-0" ng-if="!udObj.profileObj.isReqSent">
+                                           <button class="btn btn-primary text-white" ng-click="udObj.profileObj.submit(profileForm)">Update</button>
+                                        </div>
+                                        <div class="form-group mb-0" ng-if="udObj.profileObj.isReqSent">
+                                           <button class="btn btn-primary text-white" disabled>Updating...</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div aria-labelledby="change-pass-tab" class="tab-pane fade" id="change-pass" role="tabpanel">
+                            <div class="creaditienl-boxes form-area container" ng-form="chPassForm">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Old Password <span class="pull-right text-danger" ng-if="udObj.chPassObj.isSubmited && chPassForm.oldPassword.$error.required">Required</span></label>
+                                            <input name="oldPassword" placeholder="Old Password" class="common-input form-control" ng-required="true" type="password" ng-model="udObj.chPassObj.model.oldPassword" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>New Password <span class="pull-right text-danger" ng-if="udObj.chPassObj.isSubmited && chPassForm.password.$error.required">Required</span></label>
+                                            <input name="password" placeholder="Password" class="common-input form-control" ng-required="true" type="password" ng-model="udObj.chPassObj.model.password" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-right">
+                                        <hr>
+                                        <div class="form-group mb-0" ng-if="!udObj.chPassObj.isReqSent">
+                                           <button class="btn btn-primary text-white" ng-click="udObj.chPassObj.submit(chPassForm)">Update</button>
+                                        </div>
+                                        <div class="form-group mb-0" ng-if="udObj.chPassObj.isReqSent">
+                                           <button class="btn btn-primary text-white" disabled>Updating...</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="modal fade full-modal" id="create-new-job" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" ng-form="addnewJobForm">
+                <div class="modal-header">
+                    <h3 class="modal-title">Post Job</h3>
+                    <button type="button" class="close" aria-label="Close" ng-click="udObj.jobObj.add.closeModal()">
+                        <i class="fa fa-window-close-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" class="form-control" name="jobTitle" ng-model="udObj.jobObj.add.model.jobTitle" placeholder="Job Title" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.jobTitle.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Work Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="customCheck2" ng-model="udObj.jobObj.add.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck2">Full Time</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="customCheck1" ng-model="udObj.jobObj.add.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck1">Part Time</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="3" id="customCheck3" ng-model="udObj.jobObj.add.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck3">Both</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Qualification</label>
+                                <select class="form-control" name="addqualification" ng-model="udObj.jobObj.add.model.qualification" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.addqualification.$error.required }">
+                                    <option value="">--- Select Qualification ---</option>
+                                    <option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Cource</label>
+                                <div class="multi-select-span" ng-if="udObj.jobObj.add.model.qualification">
+                                    <span class="pointer" ng-repeat="row in g.globalvarObj.qualification" ng-if="row.qualifyIn == udObj.jobObj.add.model.qualification" ng-click="g.adminData.multiSelect(udObj.jobObj.add.model.department, row.name)">
+                                        <span class="position-relative">
+                                            <span class="badge badge-pill badge-primary">
+                                                <span ng-if="udObj.jobObj.add.model.department.indexOf(row.name) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row.name}}
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="multi-select-span" ng-if="!udObj.jobObj.add.model.qualification">
+                                    <span>Select Qualification</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Experience</label>
+                                <select class="form-control" name="cexpRequired" ng-model="udObj.jobObj.add.model.cexpRequired" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.cexpRequired.$error.required }">
+                                    <option value="">--- Select Experience ---</option>
+                                    <option value="1">Fresher</option>
+                                    <option value="2">6 Month To 1 Year</option>
+                                    <option value="3">1 To 2 Year</option>
+                                    <option value="4">3 To 5 Year</option>
+                                    <option value="5">5 To 10 Year</option>
+                                    <option value="6">10 Year+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Candidate Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="ctype1" ng-model="udObj.jobObj.add.model.candidateType">
+                                        <label class="custom-control-label" for="ctype1">Male</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="ctype2" ng-model="udObj.jobObj.add.model.candidateType">
+                                        <label class="custom-control-label" for="ctype2">Famale</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="3" id="ctype3" ng-model="udObj.jobObj.add.model.candidateType">
+                                        <label class="custom-control-label" for="ctype3">Both</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Position</label>
+                                <input type="text" class="form-control" name="jobPosition" ng-model="udObj.jobObj.add.model.jobPosition" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.jobPosition.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Category</label>
+                                <select class="form-control" name="jobCategory" ng-model="udObj.jobObj.add.model.jobCategory" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.jobCategory.$error.required }">
+                                    <option value="">--- Select Category ---</option>
+                                    <option value="{{$index+1}}" ng-repeat="whRow in g.adminData.jobCategory">{{whRow}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Salary Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="salaryType1" ng-model="udObj.jobObj.add.model.salaryType">
+                                        <label class="custom-control-label" for="salaryType1">Monthly</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="salaryType2" ng-model="udObj.jobObj.add.model.salaryType">
+                                        <label class="custom-control-label" for="salaryType2">Yearly</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Salary</label>
+                                <input type="text" class="form-control" name="salary" ng-model="udObj.jobObj.add.model.salary" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.salary.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Number of candidates required</label>
+                                <input type="text" class="form-control" name="candidatesReq" ng-model="udObj.jobObj.add.model.numbersOfCandidatesRequired" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.candidatesReq.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job City</label>
+                                <select class="form-control" name="addjobCity" ng-model="udObj.jobObj.add.model.jobCity" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.addjobCity.$error.required }">
+                                    <option value="">--- Select City ---</option>
+                                    <option ng-repeat="row in g.globalvarObj.cites" ng-if="row.status" value="{{row._id}}">{{row.city}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Location (Area)</label>
+                                <input type="text" class="form-control" name="jobLocation" ng-model="udObj.jobObj.add.model.jobLocation" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.jobLocation.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Working Hours</label>
+                                <select class="form-control" name="jobTiming" ng-model="udObj.jobObj.add.model.jobTiming" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.add.isSubmited && addnewJobForm.jobTiming.$error.required }">
+                                    <option value="">--- Working Hours ---</option>
+                                    <option value="{{$index+1}}" ng-repeat="whRow in g.adminData.whPerDay">{{whRow}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Documents</label>
+                                <div class="multi-select-span">
+                                    <span class="badge badge-pill badge-primary pointer mr-5" ng-repeat="row in g.adminData.requiredDocuments" ng-click="g.adminData.multiSelect(udObj.jobObj.add.model.requiredDoc, row)">
+                                        <span ng-if="udObj.jobObj.add.model.requiredDoc.indexOf(row) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Facility</label>
+                                <textarea class="form-control" name="facility" ng-model="udObj.jobObj.add.model.facility"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Skills</label>
+                                <textarea class="form-control" name="workProfile" ng-model="udObj.jobObj.add.model.workProfile"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Note</label>
+                                <textarea class="form-control" name="notes" ng-model="udObj.jobObj.add.model.notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Inteview Date</label>
+                                <div class="custom-1">
+                                    <div class="custom-control-inline">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" name="interviewDateTime" ng-model="udObj.jobObj.add.model.interviewDateFrom" placeholder="Start Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="dbObj.postObj.opened1" close-text="Close" readonly="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text pointer" ng-click="dbObj.postObj.opened1 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control-inline">To</div>
+                                    <div class="custom-control-inline">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon2" name="interviewDateTime" ng-model="udObj.jobObj.add.model.interviewDateTo" placeholder="End Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="dbObj.postObj.opened2" close-text="Close" readonly="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text pointer" ng-click="dbObj.postObj.opened2 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" ng-click="udObj.jobObj.add.closeModal()">Close</button>
+                    <div ng-if="!udObj.jobObj.add.isReqSent">
+                        <button type="button" class="btn btn-primary" ng-click="udObj.jobObj.add.submit(addnewJobForm)">Save</button>
+                    </div>
+                    <div ng-if="udObj.jobObj.add.isReqSent">
+                        <button type="button" class="btn btn-primary" disabled="">Saving...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade full-modal" id="update-existing-job" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" ng-form="editJobForm">
+                <div class="modal-header">
+                    <h3 class="modal-title">Post Job</h3>
+                    <button type="button" class="close" aria-label="Close" ng-click="udObj.jobObj.edit.closeModal()">
+                        <i class="fa fa-window-close-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" class="form-control" name="jobTitle" ng-model="udObj.jobObj.edit.model.jobTitle" placeholder="Job Title" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.jobTitle.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Work Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="customCheck2" ng-model="udObj.jobObj.edit.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck2">Full Time</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="customCheck1" ng-model="udObj.jobObj.edit.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck1">Part Time</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="3" id="customCheck3" ng-model="udObj.jobObj.edit.model.jobWorkType">
+                                        <label class="custom-control-label" for="customCheck3">Both</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Qualification</label>
+                                <select class="form-control" name="addqualification" ng-model="udObj.jobObj.edit.model.qualification" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.addqualification.$error.required }">
+                                    <option value="">--- Select Qualification ---</option>
+                                    <option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Cource</label>
+                                <div class="multi-select-span" ng-if="udObj.jobObj.edit.model.qualification">
+                                    <span class="pointer" ng-repeat="row in g.globalvarObj.qualification" ng-if="row.qualifyIn == udObj.jobObj.edit.model.qualification" ng-click="g.adminData.multiSelect(udObj.jobObj.edit.model.department, row.name)">
+                                        <span class="position-relative">
+                                            <span class="badge badge-pill badge-primary">
+                                                <span ng-if="udObj.jobObj.edit.model.department.indexOf(row.name) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row.name}}
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="multi-select-span" ng-if="!udObj.jobObj.edit.model.qualification">
+                                    <span>Select Qualification</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Experience</label>
+                                <select class="form-control" name="cexpRequired" ng-model="udObj.jobObj.edit.model.cexpRequired" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.cexpRequired.$error.required }">
+                                    <option value="">--- Select Experience ---</option>
+                                    <option value="1">Fresher</option>
+                                    <option value="2">6 Month To 1 Year</option>
+                                    <option value="3">1 To 2 Year</option>
+                                    <option value="4">3 To 5 Year</option>
+                                    <option value="5">5 Year +</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Candidate Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="ctype1" ng-model="udObj.jobObj.edit.model.candidateType">
+                                        <label class="custom-control-label" for="ctype1">Male</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="ctype2" ng-model="udObj.jobObj.edit.model.candidateType">
+                                        <label class="custom-control-label" for="ctype2">Famale</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="3" id="ctype3" ng-model="udObj.jobObj.edit.model.candidateType">
+                                        <label class="custom-control-label" for="ctype3">Both</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Position</label>
+                                <input type="text" class="form-control" name="jobPosition" ng-model="udObj.jobObj.edit.model.jobPosition" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.jobPosition.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Category</label>
+                                <select class="form-control" name="jobCategory" ng-model="udObj.jobObj.edit.model.jobCategory" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.jobCategory.$error.required }">
+                                    <option value="">--- Select Category ---</option>
+                                    <option value="{{$index+1}}" ng-repeat="whRow in g.adminData.jobCategory">{{whRow}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Salary Type</label>
+                                <div class="custom-1">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="1" id="salaryType1" ng-model="udObj.jobObj.edit.model.salaryType">
+                                        <label class="custom-control-label" for="salaryType1">Monthly</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="2" id="salaryType2" ng-model="udObj.jobObj.edit.model.salaryType">
+                                        <label class="custom-control-label" for="salaryType2">Yearly</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Salary</label>
+                                <input type="text" class="form-control" name="salary" ng-model="udObj.jobObj.edit.model.salary" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.salary.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Number of candidates required</label>
+                                <input type="text" class="form-control" name="candidatesReq" ng-model="udObj.jobObj.edit.model.numbersOfCandidatesRequired" ng-required="true" ng-class="{ 'text-error': udObj.jobObj.edit.isSubmited && addnewJobForm.candidatesReq.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job City</label>
+                                <select class="form-control" name="addjobCity" ng-model="udObj.jobObj.edit.model.jobCity" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.addjobCity.$error.required }">
+                                    <option value="">--- Select City ---</option>
+                                    <option ng-repeat="row in g.globalvarObj.cites" ng-if="row.status" value="{{row._id}}">{{row.city}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Job Location (Area)</label>
+                                <input type="text" class="form-control" name="jobLocation" ng-model="udObj.jobObj.edit.model.jobLocation" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.jobLocation.$error.required }">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Working Hours</label>
+                                <select class="form-control" name="jobTiming" ng-model="udObj.jobObj.edit.model.jobTiming" ng-required="true" ng-class="{ 'text-error': jobMgmtObj.edit.isSubmited && editJobForm.jobTiming.$error.required }">
+                                    <option value="">--- Working Hours ---</option>
+                                    <option value="{{$index+1}}" ng-repeat="whRow in g.adminData.whPerDay">{{whRow}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Documents</label>
+                                <div class="multi-select-span">
+                                    <span class="badge badge-pill badge-primary pointer mr-5" ng-repeat="row in g.adminData.requiredDocuments" ng-click="g.adminData.multiSelect(udObj.jobObj.edit.model.requiredDoc, row)">
+                                        <span ng-if="udObj.jobObj.edit.model.requiredDoc.indexOf(row) != -1"><i class="fa fa-check-square" aria-hidden="true"></i></span> {{row}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Facility</label>
+                                <textarea class="form-control" name="facility" ng-model="udObj.jobObj.edit.model.facility"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Required Skills</label>
+                                <textarea class="form-control" name="workProfile" ng-model="udObj.jobObj.edit.model.workProfile"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Note</label>
+                                <textarea class="form-control" name="notes" ng-model="udObj.jobObj.edit.model.notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Inteview Date</label>
+                                <div class="custom-1">
+                                    <div class="custom-control-inline">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" name="interviewDateTime1" ng-model="udObj.jobObj.edit.model.interviewDateFrom" placeholder="Start Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="jobMgmtObj.edit.opened1" close-text="Close" readonly="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text pointer" ng-click="jobMgmtObj.edit.opened1 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control-inline">To</div>
+                                    <div class="custom-control-inline">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon2" name="interviewDateTime1" ng-model="udObj.jobObj.edit.model.interviewDateTo" placeholder="End Date" uib-datepicker-popup="{{g.adminData.dpFormat}}" is-open="jobMgmtObj.edit.opened2" close-text="Close" readonly="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text pointer" ng-click="jobMgmtObj.edit.opened2 = true"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" ng-click="udObj.jobObj.edit.closeModal()">Close</button>
+                    <div ng-if="!udObj.jobObj.edit.isReqSent">
+                        <button type="button" class="btn btn-primary" ng-click="udObj.jobObj.edit.submit(editJobForm)">Save</button>
+                    </div>
+                    <div ng-if="udObj.jobObj.edit.isReqSent">
+                        <button type="button" class="btn btn-primary" disabled="">Saving...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,133 @@
+<div class="job-management-page" data-ng-controller="QualificationController" ng-init="qlObj.list.init()">
+	
+	<div class="container-fluid">
+	    <div class="row">
+	        
+	        <div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+
+	        <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+				<div class="pt-3 pb-2 mb-3 border-bottom">
+					<h3 class="h3">Qualifications</h3>
+				</div>
+
+				<div class="row" ng-if="!qlObj.list.loading">
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<select class="form-control" ng-model="qlObj.add.model.qualifyIn">
+								<option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<div class="input-group mb-3">
+							  	<input type="text" ng-model="qlObj.add.model.name" class="form-control" placeholder="Qualification" aria-describedby="basic-addon2" />
+							  	<div class="input-group-append">
+							    	<button class="btn btn-primary" type="button" ng-disabled="!qlObj.add.model.name" ng-click="qlObj.add.submit()">ADD</button>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="form-group">
+						    <h5 class="pt-2">
+						    	Data Available: <span class="text-info">{{qlObj.list.count}} / {{qlObj.list.data.length}}</span>
+						    </h5>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+						    <input type="text" ng-model="qlObj.list.filterData" class="form-control" placeholder="Search data" aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+				
+
+				<div class="table-responsive" ng-if="qlObj.list.data.length && !qlObj.list.loading">
+					<table class="table table-bordered table-striped">
+					    <thead>
+					        <tr>
+					            <th>#</th>
+					            <th>Qualification</th>
+					            <th>In Area</th>
+					            <th>Action</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <tr ng-repeat="row in qlObj.list.data | orderBy: 'qualifyIn' | filter: { 'name': qlObj.list.filterData }">
+					            <td>{{$index}}</td>
+					            <td>
+					            	<div>{{row.name}}</div>
+					            </td>
+					            <td>
+					            	<div>{{g.adminData.categoryObject[row.qualifyIn]}}</div>
+					        	</td>
+					            <td>
+									<i ng-click="qlObj.edit.openModal(row)" class="fa fa-pencil-square-o pointer ml-10" aria-hidden="true"></i>
+					                <i ng-click="qlObj.delete.openModal(row)" class="fa fa-trash-o pointer ml-10" aria-hidden="true"></i>
+					                <i ng-click="qlObj.edit.activeQa(row, false)" ng-if="row.status" class="fa fa-toggle-on pointer ml-10" aria-hidden="true"></i>
+					                <i ng-click="qlObj.edit.activeQa(row, true)" ng-if="!row.status" class="fa fa-toggle-off pointer ml-10" aria-hidden="true"></i>
+					            </td>
+					        </tr>
+					    </tbody>
+					</table>
+				</div>
+
+
+				<div ng-if="!qlObj.list.data.length && !qlObj.list.loading" class="no-data-cn text-center">
+					<h4>No data</h4>
+				</div>
+
+				<div ng-if="qlObj.list.loading" class="text-center loading-cn">
+					<h2>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</h2>
+				</div>
+	        </main>
+	    </div>
+	</div>
+
+	<div data-ng-include="'/admin-angular/views/modal.html'"></div>
+
+
+
+	<div class="modal fade" id="update-qualification" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Update Qualification</h4>
+					<button type="button" class="close no-print" aria-label="Close" ng-click="qlObj.edit.closeModal()">
+			  			<i class="fa fa-window-close-o" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-area" ng-form="editcpuserForm">
+		                <div class="row">
+		                    <div class="col-lg-12">
+		                        <div class="form-group">
+		                            <select class="form-control" ng-model="qlObj.edit.model.qualifyIn">
+					            		<option ng-repeat="row in g.adminData.categoryArray" value="{{row.key}}">{{row.name}}</option>
+					            	</select>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-12">
+		                        <div class="form-group">
+		                            <input type="text" ng-model="qlObj.edit.model.name" class="form-control" placeholder="Qualification" aria-describedby="basic-addon2" />
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+				</div>
+
+				<div class="modal-footer">
+	                <button type="button" class="btn btn-secondary btn-sm" ng-click="qlObj.edit.closeModal()">Cancel</button>
+	                <button type="button" class="btn btn-primary btn-sm" ng-click="qlObj.edit.submit()" ng-disabled="!qlObj.edit.model.qualifyIn || !qlObj.edit.model.name">Save</button>
+	            </div>
+			</div>
+		</div>
+	</div>
+
+</div>

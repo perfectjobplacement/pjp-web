@@ -1,0 +1,323 @@
+<div class="dashboard-page" ng-controller="HomeController" ng-init="homeObj.jobObj.init()">
+	<div class="advertisement-section" ng-if="homeObj.advObj && homeObj.advObj._id">
+		<div class="adv-image">
+			<img ng-src="assets/uploads/advertisement/{{homeObj.advObj.image}}">
+		</div>
+		<div class="adv-title">
+			{{homeObj.advObj.title}}
+		</div>
+		<div class="adv-sub-subTitle">
+			{{homeObj.advObj.subTitle}}
+		</div>
+		<div class="adv-description">
+			{{homeObj.advObj.description}}
+		</div>
+	</div>
+
+	<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row fullscreen d-flex align-items-center justify-content-center" style="height: 60vh">
+				<div class="banner-content col-lg-12">
+					<h1 class="text-white">
+						<span class="text-orange">{{g.siteContent.data.headerTitle || 'Perfect Job Placement'}}</span> Providing <span>{{g.siteContent.data.headerTotalJob || '555'}}+</span> Jobs
+					</h1>
+
+					<h4 class="text-white mt-30">
+						{{g.siteContent.data.appTagline || 'Place Yourself At Right Place'}}
+					</h4>
+					<div class="footer-bottom" style="padding-top: 20px;">
+                        <div class="footer-social text-center">
+                            <a href="https://plus.google.com/u/0/100247083268164825478" target="_blank">
+                                <i class="fa fa-google-plus" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.facebook.com/PerfectJobPlacemmentRajkot/" target="_blank">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.instagram.com/perfect_job_rajkot/" target="_blank">
+                               <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/perfect-job-placement-rajkot-748417164/" target="_blank">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.justdial.com/Rajkot/Perfect-Job-Placement-Rajkot-Opposite-Amarnath-Temple-Garden-150-Feet-Ring-Road/0281PX281-X281-180524165329-C9D9_BZDET?xid=UmFqa290IFBlcmZlY3QgSm9iIFBsYWNlbWVudCBSYWprb3Q=" target="_blank">
+                                Jd
+                            </a>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="features-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="single-feature">
+						<h4 class="app-title-text">Looking for job?</h4>
+						<p class="app-desc-text">
+							Find a good job is a difficult task so hear we provide the best service of the all time. We provide the best job resource for all type of filed.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="single-feature">
+						<h4 class="app-title-text">Looking for Manpower?</h4>
+						<p class="app-desc-text">
+							Find a good human resource is a difficult task so hear we provide the best service of the all time. We provide the best human resource for all type of filed.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	<section class="popular-post-area pt-100" ng-if="dataFilterObject.length">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-30 col-lg-10">
+					<div class="title text-center">
+						<h1 class="mb-10">Recent Job Opening</h1>
+						<p><strong>"Get your dream job."</strong></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row align-items-center">
+				<div style="width: 500px; margin: 0 auto;">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ng-if="!homeObj.jobObj.list.isLoading">
+						<div class="carousel-inner recent-job-slider">
+							<div class="carousel-item" ng-class="{ 'active': $index == 0 }" ng-repeat="sJobRow in homeObj.jobObj.list.data| limitTo:3 | orderBy: '-createdAt'">
+								<div class="item-1 text-center pb-3">
+									<i ng-if="sJobRow.jobCategory == '1'" class="theme-color fa fa-industry font-50" aria-hidden="true"></i>
+									<i ng-if="sJobRow.jobCategory == '2'" class="theme-color fa fa-laptop font-50" aria-hidden="true"></i>
+									<i ng-if="sJobRow.jobCategory == '3'" class="theme-color fa fa-briefcase font-50" aria-hidden="true"></i>
+									<i ng-if="sJobRow.jobCategory == '4'" class="theme-color fa fa-handshake-o font-50" aria-hidden="true"></i>
+									<i ng-if="sJobRow.jobCategory == '5'" class="theme-color fa fa-building-o font-50" aria-hidden="true"></i>
+									<i ng-if="sJobRow.jobCategory == '6'" class="theme-color fa fa-question-circle-o font-50" aria-hidden="true"></i>
+								</div>
+								<div class="text-center">
+									<a><h4 class="text-white">{{sJobRow.jobTitle}}</h4></a>
+									<p class="text-white m-0"><b>Position:</b> {{sJobRow.jobPosition}}</p>
+								</div>
+								<div class="text-center">
+									<p class="text-white m-o"><b>Required Qualification:</b> {{g.adminData.categoryObject[sJobRow.qualification]}}</p>
+								</div>
+								<div class="text-center">
+									<div class="mt-3 text-white">
+										<span><b><i class="fa fa-map-marker" aria-hidden="true"></i></span> City:</b> {{sJobRow.cityName}}
+										<span style="margin-left: 20px;"><b><i class="fa fa-inr" aria-hidden="true"></i></span> Salary:</b> <strong>{{sJobRow.salary}}</strong>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+					<div ng-if="homeObj.jobObj.list.isLoading" class="text-center loading-cn">
+						<h2>
+							<i class="fa fa-spinner fa-pulse fa-fw"></i>
+							<span class="sr-only">Loading recent job...</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	
+	<section class="feature-cat-area pt-100" id="category">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-60 col-lg-10">
+					<div class="title text-center">
+						<h1 class="mb-10">Featured Job Categories</h1>
+						<p><strong>"Place Yourself At Right Place"</strong></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row display-not-in-mobile">
+				<div class="col-lg-2 col-md-4 col-sm-6" ng-repeat="cat in homeObj.cobj.category">
+					<div class="single-fcat pointer" ng-click="homeObj.cobj.gotoLocation(1, cat.id)">
+						<i class="theme-color {{cat.iconClass}} font-50" aria-hidden="true"></i>
+						<p>{{cat.name}}</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row display-in-mobile">
+				<div class="col-md-12">
+					<select class="form-control" ng-change="homeObj.cobj.gotoLocation('1', homeObj.selectedJocategory)" ng-model="homeObj.selectedJocategory">
+						<option value="">- Select Job By Categories -</option>
+						<option value="{{cat.id}}" ng-repeat="cat in homeObj.cobj.category">{{cat.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="post-area section-gap">
+		<div class="container">
+			<div class="row" ng-if="!homeObj.jobObj.list.isLoading">
+				<div class="col-lg-8 post-list" ng-if="dataFilterObject.length">
+					<ul class="cat-list">
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(1)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 1}"><a >Full Time</a></li>
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(2)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 2}"><a >part Time</a></li>
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(3)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 3}"><a >Both</a></li>
+					</ul>
+					
+					<div class="cat-list">
+						<h6 class="text-center text-orange">You are watching ({{homeObj.jobObj.list.totalJobs}} / {{homeObj.jobObj.list.data.length}}) jobs</h6>
+					</div>
+
+					<div class="form-group" ng-if="dataFilterObject.length">
+						<input type="text" placeholder="Type here to get your job!" name="searchjob" class="form-control" ng-model="homeObj.jobObj.searchData">
+					</div>
+
+					<div class="single-post position-relative" ng-repeat="jobRow in dataFilterObject = (homeObj.jobObj.list.data | filter: homeObj.jobObj.searchData || homeObj.cobj.filter.filterObj) | orderBy: '-createdAt'">
+						<div class="row">
+							<span class="job-work-timing"><span ng-if="jobRow.jobWorkType != 3">{{g.adminData.jobWorkType[jobRow.jobWorkType]}}</span>
+							<span ng-if="jobRow.jobWorkType == 3">Part Time & Full Time</span></span>
+
+							<div class="col-md-2 text-center">
+								<i ng-if="jobRow.jobCategory == '1'" class="theme-color mb-3 fa fa-industry font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '2'" class="theme-color mb-3 fa fa-laptop font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '3'" class="theme-color mb-3 fa fa-briefcase font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '4'" class="theme-color mb-3 fa fa-handshake-o font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '5'" class="theme-color mb-3 fa fa-building-o font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '6'" class="theme-color mb-3 fa fa-question-circle-o font-50" aria-hidden="true"></i>
+								<div>
+									<span><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+									{{jobRow.totalView || 0}}</span>
+								</div>
+							</div>
+
+							<div class="col-md-10">
+								<div class="titles">
+									<h4>{{jobRow.jobTitle}} - <span class="text-orange f-w-400 font-size-16">{{g.adminData.candidateMinExp[jobRow.cexpRequired]}}</span></h4>
+									<h6><span class="f-w-600">Position:</span> {{jobRow.jobPosition}}</h6>
+									<h6><span class="f-w-600"><i class="fa fa-inr" aria-hidden="true"></i> Salary:</span> {{jobRow.salary}} <span class="f-w-600 text-orange">(Monthly)</span></h6>
+									<h6><span class="f-w-600"><i class="fa fa-map-marker" aria-hidden="true"></i> City:</span> {{jobRow.cityName}} - ({{jobRow.jobLocation}})</h6>
+									<h6>
+										<span class="f-w-600">Required Qualification:</span> {{g.adminData.categoryObject[jobRow.qualification]}}
+										<span ng-if="jobRow.department.length"> - <span ng-repeat="drow in jobRow.department" class="f-w-600 text-orange">[{{drow}}] </span></span>
+									</h6>
+									<h6>
+										<span class="f-w-600">Created At: </span>{{jobRow.createdAt | date}}
+									</h6>
+
+									<button type="button" class="btn btn-primary btn-sm ic-btn" ng-click="homeObj.jobObj.preview.open(jobRow)">View Job Details</button>
+									<button type="button" class="btn btn-secondary btn-sm ic-btn" ng-click="homeObj.jobObj.applyjob.openModal(jobRow)">Apply Job</button>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+					<div ng-if="homeObj.jobObj.list.isLoadMore" class="text-center loading-cn">
+						<h2>
+							<i class="fa fa-spinner fa-pulse fa-fw"></i>
+							<span class="sr-only">Loading...</span>
+						</h2>
+					</div>
+
+					<div ng-if="!homeObj.jobObj.list.isLoadMore && dataFilterObject.length">
+						<a class="text-uppercase loadmore-btn mx-auto d-block pointer primary-btn text-white" ng-if="homeObj.jobObj.list.totalJobs > homeObj.jobObj.list.data.length" ng-click="homeObj.jobObj.init(true)">Load More Jobs</a>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 sidebar" ng-if="dataFilterObject.length">
+					<div class="single-slidebar">
+						<h4>Jobs By Location</h4>
+						
+						<div class="row display-in-mobile">
+							<div class="col-md-12">
+								<select class="form-control" ng-change="homeObj.cobj.gotoLocation('category/2/', homeObj.selectedJobLocation)" ng-model="homeObj.selectedJobLocation">
+									<option value="">- Select Job Location -</option>
+									<option value="{{row._id}}" ng-repeat="row in homeObj.jobObj.list.jobsByLocation">{{row.city}} <span class="text-orange"> ({{row.count}} - Jobs)</span></option>
+								</select>
+							</div>
+						</div>
+
+						<ul class="cat-list display-not-in-mobile">
+							<li class="pointer" ng-repeat="row in homeObj.jobObj.list.jobsByLocation">
+								<a class="justify-content-between d-flex" href="#!/category/2/{{row._id}}">
+									<p>{{row.city}}</p>
+									<span>{{row.count}}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-12 text-center" ng-if="!dataFilterObject.length">
+					<h4>Sorry we have not any job opening.</h4>
+				</div>
+			</div>
+
+			<div ng-if="homeObj.jobObj.list.isLoading" class="text-center loading-cn">
+				<h2>
+					<i class="fa fa-spinner fa-pulse fa-fw"></i>
+					<span class="sr-only">Loading...</span>
+				</h2>
+			</div>
+		</div>	
+	</section>
+
+
+	<div data-ng-include="'/angular/views/includes/Join-us-content.html'"></div>
+
+
+	<section class="download-area section-gap" id="app">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 download-left">
+					<img class="img-fluid" src="img/d1.png" alt="">
+				</div>
+				<div class="col-lg-6 download-right">
+					<h1>Download the <br>
+					Perfect Job Placement App Today!</h1>
+					<p class="subs">
+						“PERFECT JOB PLACEMENT, RAJKOT“ is the fastest growing organization which helps to find the best human resource to the organizations.
+					</p>
+					<div class="d-flex flex-row">
+						<div class="buttons" ng-click="homeObj.cobj.commingSoon()">
+							<i class="fa fa-apple" aria-hidden="true"></i>
+							<div class="desc">
+								<a class="pointer" data-toggle="tooltip" title="Coming Soon..." data-placement="top">
+									<p>
+										<span>Available</span> <br>
+										on App Store
+									</p>
+								</a>
+							</div>
+						</div>
+						<div class="buttons" ng-click="homeObj.cobj.commingSoon()">
+							<i class="fa fa-android" aria-hidden="true"></i>
+							<div class="desc">
+								<a class="pointer" data-toggle="tooltip" title="Coming Soon..." data-placement="top">
+									<p>
+										<span>Available</span> <br>
+										on Play Store
+									</p>
+								</a>
+							</div>
+						</div>									
+					</div>						
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<div data-ng-include="'/angular/views/includes/modal.html'"></div>
+</div>

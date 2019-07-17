@@ -1,0 +1,96 @@
+<div data-ng-controller="UserController" class="public-form-container">
+    <section class="contact-page-area section-gap">
+        <div class="auth-container container auth-box signup-box">
+            <form ng-submit="uObj.cuObj.add.submit(signupForm)" novalidate="">
+                <div class="creaditienl-boxes form-area" ng-form="signupForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Company Name <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.companyname.$error.required">Required</span></label>
+                                <input name="companyname" placeholder="Company Name" class="common-input form-control" ng-required="true" type="text" ng-model="uObj.cuObj.add.model.companyName">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Contact Person Name <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.contactPersonName.$error.required">Required</span></label>
+                                <input name="contactPersonName" placeholder="Contact Person Name" class="common-input form-control" ng-required="true" type="text" ng-model="uObj.cuObj.add.model.contactPersonName">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Email 
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.email.$error.required">Required</span>
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.email.$error.pattern || signupForm.email.$error.email">Invalid</span>
+                                </label>
+                                <input name="email" placeholder="Email" class="common-input form-control" ng-required="true" type="email" ng-model="uObj.cuObj.add.model.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Create Password <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.password.$error.required">Required</span></label>
+                                <input name="password" placeholder="Password" class="common-input form-control" ng-required="true" type="password" ng-model="uObj.cuObj.add.model.password">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Contact Number
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.contact.$error.required">Required</span>
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.contact.$error.pattern">Must be 10 digit number</span>
+                                </label>
+                                <input name="contact" numbers-only placeholder="Contact" class="common-input form-control" ng-required="true" type="text" ng-model="uObj.cuObj.add.model.contact" ng-pattern="/^\+?\d{10}$/" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Whatsapp Contact Number
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.wpContact.$error.required">Required</span>
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.wpContact.$error.pattern">Must be 10 digit number</span>
+                                </label>
+                                <input name="wpContact" placeholder="Whatsapp Contact (Optional)" class="common-input form-control" type="text" numbers-only ng-model="uObj.cuObj.add.model.wpContact" ng-pattern="/^\+?\d{10}$/" ng-required="true" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>City
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.city.$error.required">Required</span>
+                                </label>
+                                <input name="city" placeholder="City" class="common-input form-control" type="text" ng-model="uObj.cuObj.add.model.city" ng-required="true">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Address
+                                    <span class="pull-right text-danger" ng-if="uObj.cuObj.add.isSubmited && signupForm.address.$error.required">Required</span>
+                                </label>
+                                <input name="address" placeholder="Address" class="common-input form-control" type="text" ng-model="uObj.cuObj.add.model.address" ng-required="true">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Company Website</label>
+                                <input name="companyWebsite" placeholder="Website (Optional)" class="common-input form-control" type="text" ng-model="uObj.cuObj.add.model.companyWebsite">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <hr>
+                            <div class="form-group text-center" ng-if="!uObj.cuObj.add.isReqSent">
+                               <button class="primary-btn text-white">Register</button>
+                            </div>
+                            <div class="form-group text-center" ng-if="uObj.cuObj.add.isReqSent">
+                               <button class="primary-btn text-white" disabled>Submiting...</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="divider"></div>
+                            <section class="additional-info">
+                                <p class="text-center mb-0">
+                                    <a class="ic-link-1" href="#!/login">Sign In</a>
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

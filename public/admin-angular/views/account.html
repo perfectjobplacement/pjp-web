@@ -1,0 +1,77 @@
+<div class="job-management-page" data-ng-controller="AccountController" ng-init="advObj.list.init()">
+	
+	<div class="container-fluid">
+	    <div class="row">
+
+	        <div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+
+	        <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+				<div class="pt-3 pb-2 mb-3 border-bottom">
+					<h3 class="h3">
+						<span>Account Management</span>
+					</h3>
+				</div>
+
+				<div class="card" ng-init="accObj.empObj.init()">
+				  	<div class="card-header">
+				    	<h4>Employee</h4>
+				  	</div>
+				  	<div class="card-body">
+					    <div class="table-responsive" ng-if="!accObj.empObj.isloading">
+							<table class="table table-bordered table-striped mb-0">
+							    <thead>
+							        <tr>
+							            <th>#</th>
+							            <th>Full Name</th>
+							            <th>Email</th>
+							            <th>Address</th>
+							            <th>Contact</th>
+							            <th>Action</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <tr ng-repeat="advRow in accObj.empObj.data | orderBy: 'timestamp'">
+							            <td>{{$index}}</td>
+							            <td>{{advRow.fullname}}</td>
+							            <td>{{advRow.email}}</td>
+							            <td>
+											{{advRow.address}}
+							            </td>
+							            <td>
+											{{advRow.contact}}
+							            </td>
+							            <td>
+							                <span ng-if="!advRow.isDelete"><i ng-click="accObj.empObj.delete.submit(false, advRow)" class="fa fa-trash-o pointer ml-10" aria-hidden="true"></i></span>
+							                <span ng-if="advRow.isDelete"><i ng-click="accObj.empObj.delete.submit(true, advRow, $index)" class="fa fa-trash-o pointer ml-10 text-danger" aria-hidden="true"></i></span>
+							            	<i ng-click="advObj.add.openModal(advRow)" class="fa fa-pencil-square-o pointer ml-10" aria-hidden="true"></i>
+							            </td>
+							        </tr>
+							        <tr ng-form="empForm">
+							            <td>#</td>
+							            <td><input class="form-control" type="text" name="fullname" ng-model="accObj.empObj.add.model.fullname" ng-required="true" ng-class="{'text-error': accObj.empObj.add.isSubmited && empForm.fullname.$error.required}"></td>
+							            <td><input class="form-control" type="email" name="email" ng-model="accObj.empObj.add.model.email" ng-required="true" ng-class="{'text-error': accObj.empObj.add.isSubmited && empForm.email.$error.required}"></td>
+							            <td><input class="form-control" type="text" name="address" ng-model="accObj.empObj.add.model.address" ng-required="true" ng-class="{'text-error': accObj.empObj.add.isSubmited && empForm.address.$error.required}"></td>
+							            <td><input class="form-control" type="number" name="contact" ng-model="accObj.empObj.add.model.contact" ng-required="true" ng-class="{'text-error': accObj.empObj.add.isSubmited && empForm.contact.$error.required}"></td>
+							            <td>
+							                <button class="btn btn-primary btn-sm" ng-click="accObj.empObj.add.submit(empForm)">Add</button>
+							            </td>
+							        </tr>
+							    </tbody>
+							</table>
+						</div>
+				  	</div>
+				</div>
+
+				<div ng-if="advObj.list.loading" class="text-center loading-cn">
+					<h2>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</h2>
+				</div>
+	        </main>
+	    </div>
+	</div>
+	
+</div>
+
+

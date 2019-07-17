@@ -1,0 +1,50 @@
+<div class="attendence-page" data-ng-controller="AttendanceController" ng-init="atdObj.list.init()">
+	
+	<div class="container-fluid">
+	    <div class="row">
+
+	        <div class="admin-sidebar" data-ng-include="'/admin-angular/views/sidebar.html'"></div>
+
+	        <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+				<div class="pt-3 pb-2 mb-3 border-bottom">
+					<h3 class="h3">
+						<span>Attendence</span>
+					</h3>
+				</div>
+
+				<div class="input-group mb-3">
+					<select class="form-control" ng-model="atdObj.cal.model.attEmploy">
+						<option value="">-- Select User --</option>
+						<option ng-repeat="empRow in atdObj.list.data" value="{{empRow._id}}">{{empRow.fullname}}</option>
+					</select>
+					<select class="form-control" ng-model="atdObj.cal.model.attType">
+						<option value="">-- Select Type --</option>
+						<option value="1">Full Day</option>
+						<option value="1">Half Day</option>
+						<option value="1">Leave</option>
+					</select>
+					<div class="input-group-prepend">
+						<button class="btn btn-info btn-sm">Save</button>
+					</div>
+				</div>
+
+				<div class="card mt-5 calendar">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-2" ng-repeat="dayRow in atdObj.cal.data">
+								<div class="cal-cell" ng-class="{'bg-warning': dayRow.dayname == 'Sunday', 'bg-success': dayRow.day == atdObj.cal.today }">
+									<div class="day mb-1"><span class="badge badge-info">{{dayRow.day}}</span></div>
+									<div class="dayname">{{dayRow.dayname}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+	        </main>
+	    </div>
+	</div>
+
+</div>
+
+

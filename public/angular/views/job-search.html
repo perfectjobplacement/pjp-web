@@ -1,0 +1,184 @@
+<div class="category-page" ng-controller="HomeController" ng-init="homeObj.jobjByFilter.init()" style="min-height: 100vh;">
+	<section class="feature-cat-area pt-100" id="category" ng-if="!homeObj.jobjByFilter.list.isLoading">
+		<div class="container">
+			<div class="row display-not-in-mobile">
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/1">
+							<i class="theme-color fa fa-industry font-50" aria-hidden="true"></i>
+						</a>
+						<p>Industrial</p>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/2">
+							<i class="theme-color fa fa-laptop font-50" aria-hidden="true"></i>
+						</a>
+						<p>Computer</p>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/3">
+							<i class="theme-color fa fa-briefcase font-50" aria-hidden="true"></i>
+						</a>
+						<p>Account</p>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/4">
+							<i class="theme-color fa fa-handshake-o font-50" aria-hidden="true"></i>
+						</a>
+						<p>Sales & Marketing</p>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/5">
+							<i class="theme-color fa fa-building-o font-50" aria-hidden="true"></i>
+						</a>
+						<p>Back Office</p>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6">
+					<div class="single-fcat pointer">
+						<a href="#!/category/1/6">
+							<i class="theme-color fa fa-question-circle-o font-50" aria-hidden="true"></i>
+						</a>
+						<p>Others</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row display-in-mobile">
+				<div class="col-md-12">
+					<select class="form-control" ng-change="homeObj.cobj.gotoLocation('category/1/', homeObj.selectedJocategory)" ng-model="homeObj.selectedJocategory">
+						<option value="">- Select Job By Categories -</option>
+						<option value="1">Industrial</option>
+						<option value="2">Computer</option>
+						<option value="3">Account</option>
+						<option value="4">Sales & Marketing</option>
+						<option value="5">Back Office</option>
+						<option value="6">Others</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="post-area section-gap" ng-if="!homeObj.jobjByFilter.list.isLoading">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 post-list" ng-if="homeObj.jobjByFilter.data.length">
+					<ul class="cat-list">
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(1)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 1}"><a>Full Time</a></li>
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(2)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 2}"><a>part Time</a></li>
+						<li class="pointer" ng-click="homeObj.cobj.getFilterData(3)" ng-class="{'active-btn': homeObj.cobj.filter.isActive == 3}"><a>Both</a></li>
+					</ul>
+					
+					<div class="cat-list">
+						<h6 class="text-center text-orange">You are watching ({{homeObj.jobObj.list.totalJobs}} / {{homeObj.jobObj.list.data.length}}) jobs</h6>
+					</div>
+
+					<div class="form-group">
+						<input type="text" placeholder="Type here to get your job!" name="searchjob" class="form-control" ng-model="homeObj.jobObj.searchData">
+					</div>
+
+					<div class="single-post position-relative" ng-repeat="jobRow in dataFilterObject = (homeObj.jobjByFilter.data | filter: homeObj.jobObj.searchData || homeObj.cobj.filter.filterObj) | orderBy: '-createdAt'">
+						<div class="row">
+							<span class="job-work-timing"><span ng-if="jobRow.jobWorkType != 3">{{g.adminData.jobWorkType[jobRow.jobWorkType]}}</span>
+							<span ng-if="jobRow.jobWorkType == 3">Part Time & Full Time</span></span>
+
+							<div class="col-md-2 text-center">
+								<i ng-if="jobRow.jobCategory == '1'" class="theme-color mb-3 fa fa-industry font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '2'" class="theme-color mb-3 fa fa-laptop font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '3'" class="theme-color mb-3 fa fa-briefcase font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '4'" class="theme-color mb-3 fa fa-handshake-o font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '5'" class="theme-color mb-3 fa fa-building-o font-50" aria-hidden="true"></i>
+								<i ng-if="jobRow.jobCategory == '6'" class="theme-color mb-3 fa fa-question-circle-o font-50" aria-hidden="true"></i>
+
+								<div>
+									<span><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+									{{jobRow.totalView || 0}}</span>
+								</div>
+							</div>
+
+							<div class="col-md-10">
+								<div class="titles">
+									<h4>{{jobRow.jobTitle}} - <span class="text-orange f-w-400 font-size-16">{{g.adminData.candidateMinExp[jobRow.cexpRequired]}}</span></h4>
+									<h6><span class="f-w-600">Position:</span> {{jobRow.jobPosition}}</h6>
+									<h6><span class="f-w-600"><i class="fa fa-inr" aria-hidden="true"></i> Salary:</span> {{jobRow.salary}} <span class="f-w-600 text-orange">(Monthly)</span></h6>
+									<h6><span class="f-w-600"><i class="fa fa-map-marker" aria-hidden="true"></i> City:</span> {{jobRow.cityName}} - ({{jobRow.jobLocation}})</h6>
+									<h6>
+										<span class="f-w-600">Required Qualification:</span> {{g.adminData.categoryObject[jobRow.qualification]}}
+										<span ng-if="jobRow.department.length"> - <span ng-repeat="drow in jobRow.department" class="f-w-600 text-orange">[{{drow}}] </span></span>
+									</h6>
+
+									<button type="button" class="btn btn-primary btn-sm ic-btn" ng-click="homeObj.jobObj.preview.open(jobRow)">View Job Details</button>
+									<button type="button" class="btn btn-secondary btn-sm ic-btn" ng-click="homeObj.jobObj.applyjob.openModal(jobRow)">Apply Job</button>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+					<div ng-if="homeObj.jobObj.list.isLoadMore" class="text-center loading-cn">
+						<h2>
+							<i class="fa fa-spinner fa-pulse fa-fw"></i>
+							<span class="sr-only">Loading...</span>
+						</h2>
+					</div>
+
+					<div ng-if="!homeObj.jobObj.list.isLoadMore && dataFilterObject.length">
+						<a class="text-uppercase loadmore-btn mx-auto d-block pointer primary-btn text-white" ng-if="homeObj.jobObj.list.totalJobs > homeObj.jobObj.list.data.length" ng-click="homeObj.jobObj.init(true)">Load More Jobs</a>
+					</div>
+
+					<div class="col-md-12 text-center no-data-c" ng-if="!homeObj.jobjByFilter.data.length">
+						<h4>Sorry we have No job for this category!</h4>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 sidebar" ng-if="homeObj.jobjByFilter.data.length">
+					<div class="single-slidebar">
+						<h4>Jobs By Location</h4>
+						
+						<div class="row display-in-mobile">
+							<div class="col-md-12">
+								<select class="form-control" ng-change="homeObj.cobj.gotoLocation('category/2/', homeObj.selectedJobLocation)" ng-model="homeObj.selectedJobLocation">
+									<option value="">- Select Job Location -</option>
+									<option value="{{row._id}}" ng-repeat="row in homeObj.jobObj.list.jobsByLocation">{{row.city}} <span class="text-orange"> ({{row.count}} - Jobs)</span></option>
+								</select>
+							</div>
+						</div>
+
+						<ul class="cat-list display-not-in-mobile">
+							<li class="pointer" ng-repeat="row in homeObj.jobObj.list.jobsByLocation">
+								<a class="justify-content-between d-flex" href="#!/category/2/{{row._id}}">
+									<p>{{row.city}}</p>
+									<span>{{row.count}}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-12 text-center no-data-c" ng-if="!homeObj.jobjByFilter.data.length">
+					<h4>Sorry we have No job for this category!</h4>
+				</div>
+			</div>
+		</div>	
+	</section>
+	
+	<div ng-if="homeObj.jobjByFilter.list.isLoading" class="text-center loading-cn" style="padding-bottom: 150px;">
+		<h2>
+			<i class="fa fa-spinner fa-pulse fa-fw"></i>
+			<span class="sr-only">Loading...</span>
+		</h2>
+	</div>
+
+	<div data-ng-include="'/angular/views/includes/modal.html'"></div>
+</div>
+
+
+
