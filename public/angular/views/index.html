@@ -73,7 +73,7 @@
 		</div>	
 	</section>
 
-	<section class="popular-post-area pt-100" ng-if="dataFilterObject.length">
+	<section class="popular-post-area pt-100" ng-if="homeObj.jobObj.list.data.length">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="menu-content pb-30 col-lg-10">
@@ -235,7 +235,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 sidebar" ng-if="dataFilterObject.length">
+				<div class="col-lg-4 sidebar" ng-if="homeObj.jobObj.list.data.length">
 					<div class="single-slidebar">
 						<h4>Jobs By Location</h4>
 						
@@ -259,7 +259,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-12 text-center" ng-if="!dataFilterObject.length">
+				<div class="col-md-12 text-center" ng-if="!homeObj.jobObj.list.data.length">
 					<h4>Sorry we have not any job opening.</h4>
 				</div>
 			</div>
