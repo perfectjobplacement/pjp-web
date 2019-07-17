@@ -77,6 +77,6 @@ app.use('/', routes);
 var server = http.createServer(app);
 
 
-server.listen(process.env.PORT || 5000, function() {
+server.listen(process.env.PORT || 3000, function() {
 	console.log('Express server listening on port: 3000');
 });
