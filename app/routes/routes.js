@@ -76,6 +76,7 @@ router.all('/api/v1/app/jobs-by-location', cors(), ctrl.siteMgmt.getJobsByLocati
 router.all('/api/v1/app/check-contact/unique', cors(), ctrl.siteMgmt.checkUniqueContact);
 router.all('/api/v1/app/track/unique-contact', cors(), ctrl.siteMgmt.uniqueContact);
 router.all('/api/v1/app/get/get-assets-data', cors(), ctrl.siteMgmt.getAssetsData);
+router.all('/api/v1/app/post/job-view', cors(), ctrl.siteMgmt.postJobViews);
 
 
 

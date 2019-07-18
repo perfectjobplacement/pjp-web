@@ -266,6 +266,24 @@ exports.uniqueContact = function(req, res) {
 };
 
 
+/**
+ *
+ */
+exports.postJobViews = function(req, res) {
+	jobsModel.update({
+        _id: req.body.jobId,
+    },{
+    	$set:{ 'totalView': req.body.totalView },
+   	}).exec(function(err, result) {
+        res.json({
+        	status: true,
+        	result: result,
+        	err: err,
+        });
+    });
+};
+
+
 
 /**
  *
