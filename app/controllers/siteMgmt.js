@@ -49,8 +49,6 @@ var getCityName = function(result, cb) {
  *
  */
 exports.getCurrentJobs = function(req, res) {
-	
-
 	if (!req.body.skip) {
 		req.body.skip = 0;
 	}
@@ -58,15 +56,23 @@ exports.getCurrentJobs = function(req, res) {
 	var finalRes = function(fresponse) {
 		getCityName(fresponse, function(result) {
 			jobsModel.countDocuments({ status: 2 }).exec(function(err, count) {
-
 				var remainingCount = 0;
 
 				if (req.body.skip == 0) {
 					remainingCount = (count - result.length);
 				}
+
 				if (req.body.skip != 0) {
 					var total = (req.body.skip+result.length);
 					remainingCount = (count - total);
+				}
+
+				if (result && result.length) {
+					for (var i in result) {
+						if (!result[i].totalView) {
+							result[i].totalView = 0;
+						}
+					}
 				}
 
 				res.json({
@@ -74,7 +80,7 @@ exports.getCurrentJobs = function(req, res) {
 					count: count,
 					remainingCount: remainingCount,
 				});
-	        });
+			});
 		});
 	}
 
@@ -196,6 +202,14 @@ exports.getAppJobsByFilter = function(req, res) {
 	var finalRes = function(fresponse) {
 		getCityName(fresponse, function(result) {
 			jobsModel.countDocuments(condition).exec(function(err, count) {
+				if (result && result.length) {
+					for (var i in result) {
+						if (!result[i].totalView) {
+							result[i].totalView = 0;
+						}
+					}
+				}
+
 				res.json({
 					result: result,
 					count: count
