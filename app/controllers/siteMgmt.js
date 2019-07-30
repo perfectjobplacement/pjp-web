@@ -87,7 +87,7 @@ exports.getCurrentJobs = function(req, res) {
 
 	jobsModel.find({
 		status: 2
-	}).sort({createdAt: -1}).skip(req.body.skip).limit(100).lean().exec(function(err, jobResponse) {
+	}).sort({createdAt: -1}).skip(req.body.skip).limit(250).lean().exec(function(err, jobResponse) {
 		if (jobResponse && jobResponse.length) {
 			finalRes(jobResponse);
 		} else{
@@ -238,6 +238,7 @@ exports.checkUniqueContact = function(req, res) {
 
 		var insertContact = function(msg) {
 			req.body.createdAt = new Date().getTime();
+			req.body.platform = 'Android';
 			var contactForm = new trackContact(req.body);
 
 			contactForm.save(function(err, saveRes) {

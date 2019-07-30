@@ -86,6 +86,7 @@ var CandidateRegister = new Schema({
 var TrackUniqueContact = new Schema({
 	jobId: String,
 	contact: String,
+	platform: String,
 	createdAt: Number,
 	status: {type: Boolean, default: false},
 });
@@ -115,6 +116,7 @@ var JobsBazaar = new Schema({
 	interviewDateTo: Date,
 	requiredDoc: [],
 	createdAt: Number,
+	updatedAt: Number,
 	totalView: Number,
 	createdBy: String,
 	status: {type: Number, default: 1}
@@ -122,6 +124,10 @@ var JobsBazaar = new Schema({
 
 JobsBazaar.index({
 	status: true,
+});
+
+JobsBazaar.index({
+	jobCity: true,
 });
 
 JobsBazaar.index({

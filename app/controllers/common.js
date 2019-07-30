@@ -41,7 +41,6 @@ exports.getSingle = function(req, res) {
  *
  */
 exports.getData = function(req, res) {
-
 	if (!req.body.model) {
 		res.json([]);
 		return;
@@ -103,6 +102,8 @@ exports.getEditData = function(req, res) {
     if (!req.body.model) {
         return res.json([]);
     }
+
+    req.body.updatedAt = new Date().getTime();
 
     var commonModel = mongoose.model(req.body.model);
 
