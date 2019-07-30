@@ -231,7 +231,7 @@ exports.filterJobsCandidates = function(req, res) {
 
     async.parallel({
         getCandidates: function(callback) {
-            CandidateRegister.find(condition).exec(function(err, caRes) {
+            CandidateRegister.find(condition).lean().exec(function(err, caRes) {
                 callback(null, caRes);
             });
         },
@@ -248,11 +248,12 @@ exports.filterJobsCandidates = function(req, res) {
     }, function(err, results) {
 
     	if (results.getCandidates && results.getCandidates.length) {
-    		var finaldata = JSON.parse(JSON.stringify(results.getCandidates));
+    		
+    		var finaldata = results.getCandidates;
 
     		for (var i in results.getQualification) {
 				for (var j in finaldata) {
-					if (finaldata[j].qualification == results.getQualification[i].qualifyIn) {
+					if (finaldata[j].department == results.getQualification[i]._id) {
 						finaldata[j].qualificationName = results.getQualification[i].name;
 					}
 				}
@@ -265,7 +266,7 @@ exports.filterJobsCandidates = function(req, res) {
 					}
 				}
 			}
-			
+
 			res.json(finaldata);
     		return;
     	}

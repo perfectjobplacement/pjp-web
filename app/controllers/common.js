@@ -287,7 +287,6 @@ exports.postUpdateData = function(req, res) {
  *
  */
 exports.postAddData = function(req, res) {
-
 	if (!req.body.model) {
 		res.json([]);
 		return;
@@ -498,7 +497,6 @@ exports.SendResumrViaEmail = function(req, res) {
         html: compiledHTML,
         attachments: attachments
     }, (mailError, mailResponse) => {
-    	console.log(mailError);
         res.json(true);
     });
 };

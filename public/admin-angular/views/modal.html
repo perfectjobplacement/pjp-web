@@ -652,7 +652,7 @@
 							        </tr>
 							    </thead>
 							    <tbody>
-							        <tr ng-repeat="cRow in candObj.fltObj.list.data | filter: { name: candObj.list.searchname } | orderBy: '-createdAt'">
+							        <tr ng-repeat="cRow in candObj.fltObj.list.data | filter: { name: candObj.list.searchname } | orderBy: '-createdAt' track by $index">
 							            <td>{{$index}}</td>
 							            <td>{{cRow.name}}</td>
 							            <td>{{cRow.qualificationName}}</td>
