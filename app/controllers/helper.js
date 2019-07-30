@@ -8,10 +8,6 @@ var nodemailer = require('nodemailer'),
 
 
 
-
-/**
- *
- */
 exports.sendMail = (mailOptions, cb) => {
 	const transport = nodemailer.createTransport(smtpTransport({
 		secure: true,
@@ -32,11 +28,6 @@ exports.sendMail = (mailOptions, cb) => {
 	});
 };
 
-
-
-/**
- *
- */
 exports.sendHTMLEmail = function(view, dynamicFields, mailOptions) {
     fs.readFile(__dirname + '/../views/email-templates/' + view, 'utf8', function(err, htmlData) {
         var template = hbs.compile(htmlData);
@@ -46,11 +37,6 @@ exports.sendHTMLEmail = function(view, dynamicFields, mailOptions) {
     });
 };
 
-
-
-/**
- *
- */
 exports.fixedFiledName = function(name) {
 
 	if (typeof(name) == 'string') {
@@ -59,3 +45,11 @@ exports.fixedFiledName = function(name) {
 
 	return name;
 };
+
+exports.sortByKeyDesc = function(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key];
+        var y = b[key];
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    });
+}

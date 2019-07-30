@@ -72,6 +72,15 @@ exports.getJobList = function(req, res) {
 				return;
 			}
 
+			if (responseData.length) {
+				for (var i in responseData) {
+					if (responseData[i].updatedAt) {
+						responseData[i].createdAt = responseData[i].updatedAt;
+					}
+				}
+				responseData = helperCTRL.sortByKeyDesc(responseData, 'createdAt');
+			}
+
 			res.json({
 				status: true,
 				data: responseData
