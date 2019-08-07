@@ -11,7 +11,7 @@
 					<div class="row pt-3" ng-form="confirmMobileForm">
 						<div class="col-md-10">
 							<div class="form-group">
-								<input type="text" numbers-only class="form-control" name="phone" ng-model="newReg.confirm.model.mobile" ng-required="true" ng-class="{ 'text-error': newReg.confirm.isSubmited && confirmMobileForm.phone.$error.required }" maxlength="10" placeholder="Enter mobile & confirm your availability.">
+								<input type="text" numbers-only class="form-control" name="phone" ng-model="newReg.confirm.model.mobile" ng-required="true" ng-class="{ 'text-error': newReg.confirm.isSubmited && confirmMobileForm.phone.$error.required || confirmMobileForm.phone.$error.minlength }" maxlength="10" minlength="10" placeholder="Enter mobile & confirm your availability.">
 							</div>
 						</div>
 						<div class="col-md-2">
