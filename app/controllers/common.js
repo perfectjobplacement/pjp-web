@@ -59,7 +59,6 @@ exports.getData = function(req, res) {
 		}
 
 		res.json(responseData);
-		return;
 	});
 };
 
@@ -114,7 +113,6 @@ exports.getCondition = function(req, res) {
 		}
 
 		res.json(responseData);
-		return;
 	});
 };
 
@@ -183,7 +181,6 @@ exports.commonUploadFile = function(req, res) {
 				image: fileName,
 				status: true
 			});
-			return;
 		});
 	});
 };
@@ -338,7 +335,6 @@ exports.postAddData = function(req, res) {
 			result: result
 		});
 	});
-	return;
 }
 
 
@@ -368,7 +364,6 @@ exports.getDeleteData = function(req, res) {
 			status: true,
 			responseIds: req.body._id
 		});
-		return;
 	});
 };
 
@@ -400,7 +395,6 @@ exports.getDeleteDataCondition = function(req, res) {
 		res.json({
 			status: true
 		});
-		return;
 	});
 };
 

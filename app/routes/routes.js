@@ -25,8 +25,8 @@ router.get('/admin', ctrl.home.index1);
 
 
 // Common routes
-router.post('/api/common/add-data', cors(), ctrl.common.postAddData);
-router.post('/api/common/get-data', ctrl.common.getData);
+router.all('/api/common/add-data', cors(), ctrl.common.postAddData);
+router.all('/api/common/get-data', cors(), ctrl.common.getData);
 router.post('/api/common/get-condition', cors(), ctrl.common.getCondition);
 router.post('/api/common/single-data', ctrl.common.getSingle);
 router.post('/api/common/edit-data', ctrl.common.getEditData);

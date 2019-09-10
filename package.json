@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/narupareliya/perfect-job-placement.git"
+    "url": "git+https://github.com/perfectjobplacement/pjp-web.git"
   },
   "keywords": [
     "ExpressJS",
@@ -18,9 +18,9 @@
   "author": "Nalin Rupareliya",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/narupareliya/perfect-job-placement/issues"
+    "url": "https://github.com/perfectjobplacement/pjp-web/issues"
   },
-  "homepage": "https://github.com/narupareliya/perfect-job-placement",
+  "homepage": "https://github.com/perfectjobplacement/pjp-web",
   "dependencies": {
     "async": "^1.5.2",
     "bindings": "^1.3.0",

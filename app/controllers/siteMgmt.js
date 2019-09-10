@@ -293,7 +293,7 @@ exports.postJobViews = function(req, res) {
 	jobsModel.update({
         _id: req.body.jobId,
     },{
-    	$set:{ 'totalView': req.body.totalView },
+    	$inc: { totalView: 1 }
    	}).exec(function(err, result) {
         res.json({
         	status: true,
