@@ -64,6 +64,32 @@ exports.getData = function(req, res) {
 };
 
 
+/**
+ *
+ */
+exports.loadMore = function(req, res) {
+	if (!req.body.model) {
+		res.json([]);
+		return;
+	}
+
+	var commonModel = mongoose.model(req.body.model);
+
+	commonModel.find({}).skip(req.body.skip)
+	.limit(30).sort({ createdAt: -1 })
+	.lean()
+	.exec(function(err, response) {
+		commonModel.count({}).exec(function(err, count) {
+	        res.json({
+	        	status: true,
+	        	result: response,
+	        	count: count,
+	        });
+	    });
+    });
+};
+
+
 
 /**
  *

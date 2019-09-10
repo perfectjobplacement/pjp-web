@@ -91,6 +91,8 @@
 					            <th>#</th>
 					            <th>Name</th>
 					            <th>Qualification</th>
+					            <th>Gender</th>
+					            <th>Work Experience</th>
 					            <th>Contact</th>
 					            <th>City</th>
 					            <th>Register Date</th>
@@ -102,6 +104,8 @@
 					            <td>{{$index}}</td>
 					            <td>{{cRow.name}}</td>
 					            <td>{{cRow.departmentName}}</td>
+					            <td>{{cRow.gender}}</td>
+					            <td>{{g.adminData.candidateMinExp[cRow.experience]}}</td>
 					            <td>
 									{{cRow.mobile}}
 					            </td>
@@ -122,6 +126,10 @@
 
 				<div ng-if="!candObj.list.data.length && !candObj.list.loading" class="no-data-cn text-center">
 					<h4>No data</h4>
+				</div>
+
+				<div ng-if="candObj.list.data.length && !candObj.list.loading" class="no-data-cn text-center pt-3">
+					<button class="btn btn-primary" ng-click="candObj.list.loadMore()">Load More</button>
 				</div>
 
 				<div ng-if="candObj.list.loading" class="text-center loading-cn">

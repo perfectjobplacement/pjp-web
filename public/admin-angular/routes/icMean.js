@@ -60,62 +60,6 @@ appModule.run(function($rootScope, $timeout, $state, $location) {
         }
         return '';
     }
-
-
-    /**
-     *
-     */
-    $rootScope.g.downloadCSV = function(action, inputObj) {
-
-
-        /**
-         *
-         */
-        var convertInptuFormHtmlObj = function() {
-
-            var returnHtml = '<input type="hidden" name="isDownloadCSV"  value="true" />';
-
-            for (var f1Row in inputObj) {
-
-                if (f1Row == 'csvData') {
-                    var tmpData = JSON.stringify(inputObj[f1Row]);
-                    returnHtml += '<input type="hidden" name="' + f1Row + '"  value=' + tmpData + ' />';
-                } else {
-
-                    if (f1Row == 'fieldCheck' || f1Row == 'fieldNM' || f1Row == 'condition' || f1Row == 'valueDt') {
-                        var tmpData = JSON.stringify(inputObj[f1Row]);
-                        returnHtml += '<input type="hidden" name="' + f1Row + '"  value=' + tmpData + ' />';
-                    } else {
-
-
-                        //
-                        if (f1Row == 'tierNM' || f1Row == 'tierNMCSV') {
-                            var tmpData = inputObj[f1Row];
-                            returnHtml += '<input type="hidden" name="' + f1Row + '"  value=' + tmpData + ' />';
-
-                        } else {
-                            returnHtml += '<input type="hidden" name="' + f1Row + '"  value="' + inputObj[f1Row] + '" />';
-                        }
-
-                    }
-
-                }
-
-            }
-
-            return returnHtml;
-
-        }
-
-
-        //
-        $("#download-csv-helper").attr('action', action);
-        $("#download-csv-helper").html(convertInptuFormHtmlObj());
-
-        $timeout(function() {
-            $("#download-csv-helper").submit();
-        }, 500);
-    }
 });
 
 

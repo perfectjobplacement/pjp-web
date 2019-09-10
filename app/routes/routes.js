@@ -33,6 +33,7 @@ router.post('/api/common/edit-data', ctrl.common.getEditData);
 router.post('/api/common/delete', ctrl.common.getDeleteData);
 router.post('/api/common/delete-condition', ctrl.common.getDeleteDataCondition);
 router.post('/api/common/file/upload/:key', multipartMiddleware, ctrl.common.commonUploadFile);
+router.post('/api/common/get/load-more', ctrl.common.loadMore);
 
 router.post('/api/site/user-visitor', ctrl.common.siteVisitor);
 router.post('/api/v1/post/resume', ctrl.common.SendResumrViaEmail);
@@ -63,10 +64,6 @@ router.all('/api/site/get-jobsby-filter', ctrl.siteMgmt.getJobsByFilter);
 
 // User dashboars
 router.post('/api/v1/get-client-jobs', ctrl.userDashboard.getAllJobs);
-
-//
-router.post('/api/v1/download/csv-data', ctrl.manageAdminCtrl.downloadCsv);
-
 
 
 // Mobile Routes

@@ -27,24 +27,47 @@ appModule.controller('CandidateMgmtController', ['$scope', '$http', '$location',
 		$scope.candObj.list = {};
 		$scope.candObj.list.loading = false;
 		$scope.candObj.list.data = [];
+		$scope.candObj.list.count = 0;
+		var ismoreReq = false;
 
-		$scope.candObj.list.init = function() {
-			$scope.candObj.list.loading = true;
+		var getd = function() {
+			$http.post('/api/common/get/load-more', {
+				skip: $scope.candObj.list.data.length,
+				model: 'CandidateRegister',
+			}).success(function(response) {
+				if (response && response.status) {
+					response = response.result;
+					$scope.candObj.list.count = response.count;
 
-			icdb.get('CandidateRegister', function(response) {
-				
-				if (response && response.length) {
 					for (var row in response) {
-						response[row] = manageDataRow(response[row]);
+						$scope.candObj.list.data.push(manageDataRow(response[row]));
 					}
 				}
 
-				$scope.candObj.list.data = response;
-
 				$timeout(function() {
 					$scope.candObj.list.loading = false;
+					ismoreReq = false;
 				}, 10);
+			}).error(function(err) {
+				alertService.flash('error', 'Server not responding.');
+				$scope.candObj.list.data = [];
+				$scope.candObj.list.loading = false;
+				ismoreReq = false;
 			});
+		}
+
+		$scope.candObj.list.init = function() {
+			$scope.candObj.list.loading = true;
+			getd();
+		}
+
+		$scope.candObj.list.loadMore = function() {
+			if (ismoreReq) {
+				return;
+			}
+
+			ismoreReq = true;
+			getd();
 		}
 
 

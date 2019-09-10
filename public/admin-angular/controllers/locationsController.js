@@ -272,17 +272,49 @@ appModule.controller('LocationController', ['$scope', '$http', '$location', '$ui
 		$scope.tcObj.data = [];
 		$scope.tcObj.loading = false;
 
-		$scope.tcObj.init = function(row) {
-			$scope.tcObj.loading = true;
+		$scope.tcObj.count = 0;
+		var ismoreReq = false;
 
-			icdb.get('TrackUniqueContact', function(result) {
-				$scope.tcObj.data = result;
+		var getd = function() {
+			$http.post('/api/common/get/load-more', {
+				skip: $scope.tcObj.data.length,
+				model: 'TrackUniqueContact',
+			}).success(function(response) {
+				if (response && response.status) {
+					response = response.result;
+					$scope.tcObj.count = response.count;
+
+					for (var row in response) {
+						$scope.tcObj.data.push(response[row]);
+					}
+				}
 
 				$timeout(function() {
 					$scope.tcObj.loading = false;
+					ismoreReq = false;
 				}, 10);
-	        });
+			}).error(function(err) {
+				alertService.flash('error', 'Server not responding.');
+				$scope.tcObj.data = [];
+				$scope.tcObj.loading = false;
+				ismoreReq = false;
+			});
 		}
+
+		$scope.tcObj.init = function() {
+			$scope.tcObj.loading = true;
+			getd();
+		}
+
+		$scope.tcObj.loadMore = function() {
+			if (ismoreReq) {
+				return;
+			}
+
+			ismoreReq = true;
+			getd();
+		}
+
 
 		$scope.tcObj.delete = function(row) {
 			$('#common-delete-modal').modal('show');

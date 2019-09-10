@@ -25,12 +25,7 @@ appModule.controller('companyUserMgmtController', ['$scope', '$http', '$location
 
 
 		$scope.cpUserObj.downloadCSV = function() {
-			var pssingObj = {
-				model: 'OurClients',
-				csvName: 'Company Users'
-			};
-
-			$rootScope.g.downloadCSV('/api/v1/download/csv-data', pssingObj);
+			
 		}
 
 
