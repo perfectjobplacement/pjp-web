@@ -27,43 +27,43 @@ router.get('/admin', ctrl.home.index1);
 // Common routes
 router.all('/api/common/add-data', cors(), ctrl.common.postAddData);
 router.all('/api/common/get-data', cors(), ctrl.common.getData);
-router.post('/api/common/get-condition', cors(), ctrl.common.getCondition);
-router.post('/api/common/single-data', ctrl.common.getSingle);
-router.post('/api/common/edit-data', ctrl.common.getEditData);
-router.post('/api/common/delete', ctrl.common.getDeleteData);
-router.post('/api/common/delete-condition', ctrl.common.getDeleteDataCondition);
-router.post('/api/common/file/upload/:key', multipartMiddleware, ctrl.common.commonUploadFile);
-router.post('/api/common/get/load-more', ctrl.common.loadMore);
+router.all('/api/common/get-condition', cors(), ctrl.common.getCondition);
+router.all('/api/common/single-data', ctrl.common.getSingle);
+router.all('/api/common/edit-data', cors(), ctrl.common.getEditData);
+router.all('/api/common/delete', ctrl.common.getDeleteData);
+router.all('/api/common/delete-condition', ctrl.common.getDeleteDataCondition);
+router.all('/api/common/file/upload/:key', multipartMiddleware, ctrl.common.commonUploadFile);
+router.all('/api/common/get/load-more', ctrl.common.loadMore);
 
-router.post('/api/site/user-visitor', ctrl.common.siteVisitor);
-router.post('/api/v1/post/resume', ctrl.common.SendResumrViaEmail);
+router.all('/api/site/user-visitor', ctrl.common.siteVisitor);
+router.all('/api/v1/all/resume', ctrl.common.SendResumrViaEmail);
 
 
 // Auth routes
-router.post('/api/user/register', ctrl.users.register);
-router.post('/api/user/login', ctrl.users.login);
-router.post('/api/user/forgot-pass', ctrl.users.forgotPassword);
-router.post('/api/user/change-pass', ctrl.users.changePassword);
-router.get('/users/me', ctrl.users.me);
-router.get('/users/signout', ctrl.users.signout);
+router.all('/api/user/register', ctrl.users.register);
+router.all('/api/user/login', ctrl.users.login);
+router.all('/api/user/forgot-pass', ctrl.users.forgotPassword);
+router.all('/api/user/change-pass', ctrl.users.changePassword);
+router.all('/users/me', ctrl.users.me);
+router.all('/users/signout', ctrl.users.signout);
 
 // Admin Route
-router.get('/api/admin-user/register', ctrl.adminUsers.register);
-router.post('/api/admin-user/login', ctrl.adminUsers.login);
-router.get('/api/admin/get/dashboard-counts', ctrl.adminUsers.getDbCount);
+router.all('/api/admin-user/register', ctrl.adminUsers.register);
+router.all('/api/admin-user/login', ctrl.adminUsers.login);
+router.all('/api/admin/get/dashboard-counts', ctrl.adminUsers.getDbCount);
 
 //
-router.post('/api/admin/get-data/with-condition', ctrl.manageAdminCtrl.getDataWithCondition);
-router.post('/api/admin/get-job/all', ctrl.manageAdminCtrl.getJobList);
-router.post('/api/admin/get-candidates/by-job', ctrl.manageAdminCtrl.getJobsCandidates);
-router.post('/api/admin/filter-candidates', ctrl.manageAdminCtrl.filterJobsCandidates);
+router.all('/api/admin/get-data/with-condition', ctrl.manageAdminCtrl.getDataWithCondition);
+router.all('/api/admin/get-job/all', ctrl.manageAdminCtrl.getJobList);
+router.all('/api/admin/get-candidates/by-job', ctrl.manageAdminCtrl.getJobsCandidates);
+router.all('/api/admin/filter-candidates', ctrl.manageAdminCtrl.filterJobsCandidates);
 
 // Other routes
 router.all('/api/site/get-jobs', ctrl.siteMgmt.getCurrentJobs);
 router.all('/api/site/get-jobsby-filter', ctrl.siteMgmt.getJobsByFilter);
 
 // User dashboars
-router.post('/api/v1/get-client-jobs', ctrl.userDashboard.getAllJobs);
+router.all('/api/v1/get-client-jobs', ctrl.userDashboard.getAllJobs);
 
 
 // Mobile Routes
@@ -74,6 +74,8 @@ router.all('/api/v1/app/check-contact/unique', cors(), ctrl.siteMgmt.checkUnique
 router.all('/api/v1/app/track/unique-contact', cors(), ctrl.siteMgmt.uniqueContact);
 router.all('/api/v1/app/get/get-assets-data', cors(), ctrl.siteMgmt.getAssetsData);
 router.all('/api/v1/app/post/job-view', cors(), ctrl.siteMgmt.postJobViews);
+router.all('/api/v1/app/login', cors(), ctrl.siteMgmt.login);
+router.all('/api/v1/app/get-jobs-id', cors(), ctrl.siteMgmt.getJobsId);
 
 
 

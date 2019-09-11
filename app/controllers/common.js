@@ -122,7 +122,6 @@ exports.getCondition = function(req, res) {
  *
  */
 exports.getEditData = function(req, res) {
-
     if (!req.body.model) {
         return res.json([]);
     }
@@ -143,7 +142,7 @@ exports.getEditData = function(req, res) {
 
         res.json({
             status: true,
-            result: result
+            result: req.body
         });
     });
 };
@@ -322,7 +321,6 @@ exports.postAddData = function(req, res) {
 	var commonFormData = new commonModel(req.body);
 
 	commonFormData.save(function(err, result) {
-
 		if (err) {
 			res.json({
 				status: false

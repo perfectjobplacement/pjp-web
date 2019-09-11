@@ -12,6 +12,7 @@ var trackContact = mongoose.model('TrackUniqueContact');
 var qualificationModel = mongoose.model('Qualifications');
 var locationsModel = mongoose.model('JobLocations');
 var areaOfInterestModel = mongoose.model('AreaOfInterest');
+var candidateRegisterModel = mongoose.model('CandidateRegister');
 
 
 var getCityName = function(result, cb) {
@@ -244,6 +245,7 @@ exports.checkUniqueContact = function(req, res) {
 		var insertContact = function(msg) {
 			req.body.createdAt = new Date().getTime();
 			req.body.platform = 'Android';
+
 			var contactForm = new trackContact(req.body);
 
 			contactForm.save(function(err, saveRes) {
@@ -301,6 +303,57 @@ exports.postJobViews = function(req, res) {
         	err: err,
         });
     });
+};
+
+
+/**
+ *
+ */
+exports.login = function(req, res) {
+	candidateRegisterModel.findOne({
+        mobile: parseInt(req.body.mobile),
+    }).exec(function(err, response) {
+    	if (!response._id) {
+	        res.json({
+	        	status: false,
+	        	message: 'Uesr not found.'
+	        });
+	        return;
+    	}
+
+    	if (response.password != req.body.password) {
+	        res.json({
+	        	status: false,
+	        	message: 'Password is invalid.'
+	        });
+	        return;
+    	}
+
+    	res.json({
+			status: true,
+			result: response
+		});
+    });
+};
+
+
+/**
+ *
+ */
+exports.getJobsId = function(req, res) {
+	trackContact.find({
+		contact: req.body.mobile,
+	}, {
+		jobId: true,
+	}).exec(function(err, contactRes) {
+		var ids = [];
+
+		for (var i in contactRes) {
+			ids.push(contactRes[i].jobId);
+		}
+
+		res.json(ids);
+	});
 };
 
 

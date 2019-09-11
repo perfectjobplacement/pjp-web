@@ -65,6 +65,7 @@ var Inquiry = new Schema({
 var CandidateRegister = new Schema({
 	name: String,
 	email: String,
+	password: String,
 	image: String,
 	resume: String,
 	mobile: Number,
