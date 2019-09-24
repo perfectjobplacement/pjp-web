@@ -34,7 +34,9 @@ appModule.controller('HomeController', ['$scope', '$http', '$location', '$uibMod
         }];
 
 
-
+        $scope.homeObj.initads = function() {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
 
         // ------------------- Common Section ------------------------
 
@@ -58,14 +60,11 @@ appModule.controller('HomeController', ['$scope', '$http', '$location', '$uibMod
 
         $scope.homeObj.cobj.getAdvertisement();
 
-        
 
-        //
         $scope.homeObj.cobj.filter = {
             isActive: 3
         };
 
-        //
         $scope.homeObj.cobj.getFilterData = function(key) {
 
             if (key == 3) {
