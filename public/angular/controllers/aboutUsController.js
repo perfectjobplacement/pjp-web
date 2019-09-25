@@ -17,5 +17,8 @@ appModule.controller('AboutusController', ['$scope', '$http', '$location', '$uib
         }
 
 
+        $scope.absObj.initads = function() {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
 	}
 ]);
