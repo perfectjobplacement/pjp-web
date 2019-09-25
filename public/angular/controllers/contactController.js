@@ -1,11 +1,17 @@
 'use strict';
 
-appModule.controller('ContactController', ['$scope', '$http', '$location', '$uibModal', '$stateParams', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
-    function($scope, $http, $location, $uibModal, $stateParams, $rootScope, $timeout, $state, icdb, alertService) {
+appModule.controller('ContactController', ['$scope', '$http', '$location', '$stateParams', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
+    function($scope, $http, $location, $stateParams, $rootScope, $timeout, $state, icdb, alertService) {
 
     	$scope.conObj = {};
         $scope.conObj.init = {};
 
+
+        $scope.conObj.initAds = function() {
+            $timeout(function() {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }, 1000);
+        }
 
 
         // -------------- Post Inquirey -------------------
@@ -17,7 +23,6 @@ appModule.controller('ContactController', ['$scope', '$http', '$location', '$uib
         $scope.conObj.inqObj.inquireyFor = 1;
 
         $scope.conObj.inqObj.submit = function(form) {
-
             if (!form.$valid) {
                 $scope.conObj.inqObj.isSubmited = true;
                 return;

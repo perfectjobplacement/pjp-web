@@ -1,12 +1,18 @@
 'use strict';
 
-appModule.controller('CandidateRegisterController', ['$scope', '$http', '$location', '$uibModal', '$stateParams', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
-    function($scope, $http, $location, $uibModal, $stateParams, $rootScope, $timeout, $state, icdb, alertService) {
-
-        
+appModule.controller('CandidateRegisterController', ['$scope', '$http', '$location', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
+    function($scope, $http, $location, $rootScope, $timeout, $state, icdb, alertService) {
 
         $scope.newReg = {};
         $scope.newReg.commonData = {};
+
+
+        $scope.newReg.initAds = function() {
+            $timeout(function() {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }, 1000);
+        }
+
 
         // ---------------------------------------------------------------------
         // Apply for job
@@ -56,13 +62,11 @@ appModule.controller('CandidateRegisterController', ['$scope', '$http', '$locati
         }
 
 
-
        
         $scope.newReg.post.isReqSent = false;
         $scope.newReg.post.isSubmited = false;
 
         $scope.newReg.post.submit = function(form, status) {
-            
             if (!form.$valid) {
                 $scope.newReg.post.isSubmited = true;
                 return;
@@ -70,9 +74,7 @@ appModule.controller('CandidateRegisterController', ['$scope', '$http', '$locati
 
             $scope.newReg.post.isReqSent = true;
 
-
             icdb.insert('CandidateRegister', $scope.newReg.post.model, function(response) {
-
                 icdb.insert('TrackUniqueContact', {
                     jobId: '',
                     contact: $scope.newReg.post.model.mobile

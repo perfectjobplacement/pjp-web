@@ -2,9 +2,14 @@
 appModule.controller('UserController', ['$scope', '$http', '$location', '$uibModal', '$stateParams', '$rootScope', 'alertService', '$timeout', '$state',
     function($scope, $http, $location, $uibModal, $stateParams, $rootScope, alertService, $timeout, $state) {
 
-
         $scope.uObj = {};
 
+
+        $scope.uObj.initAds = function() {
+            $timeout(function() {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }, 1000);
+        }
 
 
         // ------------------ Company user signup --------------------

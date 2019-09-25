@@ -109,11 +109,6 @@ appModule.run(function($rootScope, $timeout, $location, icdb, $http, alertServic
     }
 
     $rootScope.g.siteContent.init();
-
-
-    $rootScope.g.initAds = function() {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    }
 });
 
 

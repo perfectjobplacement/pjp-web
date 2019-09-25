@@ -11,14 +11,11 @@ var gutil = require('gulp-util');
 var ngAnnotate = require('gulp-ng-annotate');
 
 
-
 gulp.task('sass', function() {
     return gulp.src('./public/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./public/css/sass'));
 });
-
-
 
 gulp.task('default', function() {
     nodemon({
@@ -29,8 +26,6 @@ gulp.task('default', function() {
     });
     gulp.watch('./public/sass/*.scss', ['sass']);
 });
-
-
 
 var script1 = [
     './public/libs/jquery/dist/jquery.js',
@@ -65,7 +60,6 @@ gulp.task('min-js-1', function() {
         .pipe(gulp.dest('public/iccaches/'));
 });
 
-
 var script2 = [
     './public/js/icConfig.js',
     './public/angular/routes/icMean.js',
@@ -80,7 +74,6 @@ var script2 = [
     './public/angular/services/icMean.js',
 ];
 
-
 gulp.task('min-js-2', function() {
     return gulp.src(script2)
         .pipe(concat('script-2.min.js'))
@@ -89,7 +82,6 @@ gulp.task('min-js-2', function() {
         .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(gulp.dest('public/iccaches/'));
 });
-
 
 var script3 = [
     './public/js/icConfig.js',
@@ -111,7 +103,6 @@ var script3 = [
     './public/admin-angular/services/icMean.js',
 ];
 
-
 gulp.task('min-js-3', function() {
     return gulp.src(script3)
         .pipe(concat('script-admin-1.min.js'))
@@ -120,7 +111,6 @@ gulp.task('min-js-3', function() {
         .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(gulp.dest('public/iccaches/'));
 });
-
 
 var cssFiles = [
     './public/css/bootstrap.min.css',
@@ -137,13 +127,11 @@ var cssFiles = [
     './public/css/sass/global.css',
 ];
 
-
 gulp.task('min-css', function() {
     return gulp.src(cssFiles)
         .pipe(concat('final.min.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('./public/iccaches/'));
 });
-
 
 gulp.task('compile', ['sass', 'min-js-1', 'min-js-2', 'min-js-3', 'min-css']);
