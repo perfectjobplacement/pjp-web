@@ -121,7 +121,7 @@ exports.getJobsByLocation = function(req, res) {
 		city: true
 	}).lean().exec(function(err, cityRes) {
 
-		if (cityRes.length) {
+		if (cityRes && cityRes.length) {
 			var cityids = [];
 			var cityArray = [];
 
@@ -313,7 +313,7 @@ exports.login = function(req, res) {
 	candidateRegisterModel.findOne({
         mobile: parseInt(req.body.mobile),
     }).exec(function(err, response) {
-    	if (!response._id) {
+    	if (!(response && response._id)) {
 	        res.json({
 	        	status: false,
 	        	message: 'Uesr not found.'
@@ -322,9 +322,32 @@ exports.login = function(req, res) {
     	}
 
     	if (response.password != req.body.password) {
+			res.json({
+				status: false,
+				message: 'Password is invalid.'
+			});
+			return;
+    	}
+
+    	res.json({
+			status: true,
+			result: response
+		});
+    });
+};
+
+
+/**
+ *
+ */
+exports.resetPass = function(req, res) {
+	candidateRegisterModel.findOne({
+        mobile: parseInt(req.body.mobile),
+    }).exec(function(err, response) {
+    	if (!(response && response._id)) {
 	        res.json({
 	        	status: false,
-	        	message: 'Password is invalid.'
+	        	message: 'Uesr not found.'
 	        });
 	        return;
     	}

@@ -76,6 +76,7 @@ router.all('/api/v1/app/get/get-assets-data', cors(), ctrl.siteMgmt.getAssetsDat
 router.all('/api/v1/app/post/job-view', cors(), ctrl.siteMgmt.postJobViews);
 router.all('/api/v1/app/login', cors(), ctrl.siteMgmt.login);
 router.all('/api/v1/app/get-jobs-id', cors(), ctrl.siteMgmt.getJobsId);
+router.all('/api/v1/app/password/reset', cors(), ctrl.siteMgmt.resetPass);
 
 
 

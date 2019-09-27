@@ -314,25 +314,45 @@ exports.postAddData = function(req, res) {
 		return;
 	}
 
-	var commonModel = mongoose.model(req.body.model);
-	req.body.model = '';
-	req.body.createdAt = new Date().getTime();
-	
-	var commonFormData = new commonModel(req.body);
+	var save = function(data) {
+		var commonModel = mongoose.model(data.model);
+		data.model = '';
+		data.createdAt = new Date().getTime();
+		var commonFormData = new commonModel(data);
 
-	commonFormData.save(function(err, result) {
-		if (err) {
+		commonFormData.save(function(err, result) {
+			if (err) {
+				res.json({
+					status: false
+				});
+				return;
+			}
+
 			res.json({
-				status: false
+				status: true,
+				result: result
 			});
-			return;
-		}
-
-		res.json({
-			status: true,
-			result: result
 		});
-	});
+	}
+
+	if (req.body.model == 'CandidateRegister' && req.body.isReg) {
+		save(req.body);
+
+		var tcm = mongoose.model('TrackUniqueContact');
+		var data = {
+			jobId: req.body.jobId || '',
+			contact: req.body.mobile,
+			platform: 'Android',
+			createdAt: new Date().getTime()
+		};
+
+		var formData = new tcm(data);
+
+		formData.save(function(err, result) {});
+		return;
+	} else {
+		save(req.body);
+	}
 }
 
 
