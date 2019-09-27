@@ -352,9 +352,14 @@ exports.resetPass = function(req, res) {
 	        return;
     	}
 
+		candidateRegisterModel.update({
+		    mobile: parseInt(req.body.mobile),
+		},{
+			password: req.body.mobile
+		}).exec(function(err, result) {});
+
     	res.json({
 			status: true,
-			result: response
 		});
     });
 };
@@ -365,7 +370,7 @@ exports.resetPass = function(req, res) {
  */
 exports.getJobsId = function(req, res) {
 	trackContact.find({
-		contact: req.body.mobile,
+		contact: req.body.mobile
 	}, {
 		jobId: true,
 	}).exec(function(err, contactRes) {
