@@ -44,7 +44,8 @@ globalObj.candidateMinExp = {
     '2': '6 Month To 1 Year',
     '3': '1 To 2 Year',
     '4': '3 To 5 Year',
-    '5': '5 Year +'
+    '5': '5 To 10 Year',
+    '6': '10 Year +'
 };
 
 globalObj.candidateGenderType = {
