@@ -336,19 +336,31 @@ exports.postAddData = function(req, res) {
 	}
 
 	if (req.body.model == 'CandidateRegister' && req.body.isReg) {
-		save(req.body);
-
 		var tcm = mongoose.model('TrackUniqueContact');
-		var data = {
-			jobId: req.body.jobId || '',
-			contact: req.body.mobile,
-			platform: 'Android',
-			createdAt: new Date().getTime()
-		};
 
-		var formData = new tcm(data);
+		tcm.findOne({ contact: req.body.mobile }).exec(function(err, cdRes) {
+			if (cdRes && cdRes._id) {
+				res.json({
+					status: false,
+					message: 'You are allready register.'
+				});
+				return;
+			}
 
-		formData.save(function(err, result) {});
+			var data = {
+				jobId: req.body.jobId || '',
+				contact: req.body.mobile,
+				platform: 'Android',
+				createdAt: new Date().getTime()
+			};
+
+			var formData = new tcm(data);
+
+			formData.save(function(err, result) {
+				console.log("result >>>", result);
+				save(req.body);
+			});
+		});
 		return;
 	} else {
 		save(req.body);
