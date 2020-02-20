@@ -8,11 +8,11 @@ var mongoose = require('mongoose'),
     async = require('async'),
     helperCTRL = require('./helper');
 
-
-
-
-
-
+/**
+ * Database Model
+ */
+var userModel = mongoose.model('AdminUsers');
+var ourClients = mongoose.model('OurClients');
 
 /**
  * Logout
@@ -22,13 +22,9 @@ exports.signout = function(req, res) {
     if (res.session && res.session.user) {
         res.session.user = undefined;
     }
-
     req.session = null;
     res.redirect('/');
 };
-
-
-
 
 /**
  * Send User
@@ -38,12 +34,10 @@ exports.me = function(req, res) {
 };
 
 
-
 /**
  * Register
  */
 exports.register = function(req, res) {
-    var userModel = mongoose.model('AdminUsers');
 
     userModel.find({}).exec(function(err, response) {
 
@@ -78,7 +72,6 @@ exports.register = function(req, res) {
  * Login
  */
 exports.login = function(req, res) {
-    var userModel = mongoose.model('AdminUsers');
 
     // var response = {
     //     "_id" : "5d1c8bc7d5b5ecd65cfda184",
@@ -135,7 +128,6 @@ exports.login = function(req, res) {
  * Forgot Password
  */
 exports.forgotPassword = function(req, res) {
-    var ourClients = mongoose.model('OurClients');
 
     ourClients.findOne({
         email: req.body.email.toLowerCase()
@@ -206,13 +198,8 @@ exports.forgotPassword = function(req, res) {
  * Change Password
  */
 exports.changePassword = function(req, res) {
-    var ourClients = mongoose.model('OurClients');
 
-    ourClients.update({
-        _id: req.body._id
-    }, {
-        password: req.body.password
-    }).exec(function(err, result) {
+    ourClients.update({_id: req.body._id},{password: req.body.password}).exec(function(err, result) {
 
         if (err) {
             res.json({
@@ -220,9 +207,7 @@ exports.changePassword = function(req, res) {
             });
             return;
         }
-
         req.session.user.password = req.body.password;
-
         res.json({
             status: true,
         });
@@ -238,7 +223,6 @@ exports.changePassword = function(req, res) {
  */
 exports.getDbCount = function(req, res) {
     var siteVisitor = mongoose.model('SiteVisitor');
-    var ourClients = mongoose.model('OurClients');
     var candidateRegister = mongoose.model('CandidateRegister');
     var jobsBazaar = mongoose.model('JobsBazaar');
 
@@ -247,21 +231,25 @@ exports.getDbCount = function(req, res) {
         getSiteVisitor: function(callback) {
             siteVisitor.find({}).count(function(err, count) {
                 callback(null, count)
+                console.log("Site Visitor")
             });
         },
         getOurClients: function(callback) {
             ourClients.find({}).count(function(err, count) {
                 callback(null, count)
+                console.log("Our Clients")
             });
         },
         getCandidateRegister: function(callback) {
             candidateRegister.find({}).count(function(err, count) {
                 callback(null, count)
+                console.log("Candidate Regidsters")
             });
         },
         getJobsBazaar: function(callback) {
             jobsBazaar.find({ status: 2 }).count(function(err, count) {
                 callback(null, count)
+                console.log("Job Bazar")
             });
         }
     }, function(err, results) {

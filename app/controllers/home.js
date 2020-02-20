@@ -14,7 +14,6 @@ exports.index = function(req, res) {
 		userId = req.session.user._id;
 	}
 
-
 	if (req.session.user && req.session.user.isAdmin) {
 		res.redirect('/admin#!/dashboard');
 		return;	
@@ -24,8 +23,6 @@ exports.index = function(req, res) {
 		userId: userId
 	});
 }
-
-
 
 
 /**

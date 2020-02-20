@@ -24,14 +24,7 @@ var getCityName = function(result, cb) {
 		}
 	}
 
-	cityModel.find({
-		_id: {
-			$in: jobCityids,
-		}
-	}, {
-		city: true
-	}).lean().exec(function(err, cityRes) {
-
+	cityModel.find({_id: {$in: jobCityids,}}, {city: true}).lean().exec(function(err, cityRes) {
 		for (var i in result) {
 			for (var j in cityRes) {
 				if (cityRes[j]._id == result[i].jobCity) {
@@ -39,7 +32,6 @@ var getCityName = function(result, cb) {
 				}
 			}
 		}
-
 		cb(result);
 	});
 }
@@ -77,7 +69,6 @@ exports.getCurrentJobs = function(req, res) {
 							result[i].createdAt = result[i].updatedAt;
 						}
 					}
-
 					result = helperCTRL.sortByKeyDesc(result, 'createdAt');
 				}
 
@@ -91,9 +82,7 @@ exports.getCurrentJobs = function(req, res) {
 	}
 
 
-	jobsModel.find({
-		status: 2
-	}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec(function(err, jobResponse) {
+	jobsModel.find({status: 2}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec(function(err, jobResponse) {
 		if (jobResponse && jobResponse.length) {
 			finalRes(jobResponse);
 		} else{
@@ -117,9 +106,7 @@ exports.getJobsByLocation = function(req, res) {
 	}
 
 
-	cityModel.find({}, {
-		city: true
-	}).lean().exec(function(err, cityRes) {
+	cityModel.find({},{city: true}).lean().exec(function(err, cityRes) {
 
 		if (cityRes && cityRes.length) {
 			var cityids = [];
@@ -129,10 +116,7 @@ exports.getJobsByLocation = function(req, res) {
 				cityids.push(cityRes[j]._id);
 			}
 
-
-			jobsModel.find({ jobCity: { $in: cityids }}, {
-				jobCity: true,
-			}).exec(function(err, jobResponse) {
+			jobsModel.find({ jobCity: { $in: cityids }}, {jobCity: true,}).exec(function(err, jobResponse) {
 				for (var i in jobResponse) {
 					if (!cityArray[jobResponse[i].jobCity]) {
 						cityArray[jobResponse[i].jobCity] = [];
@@ -152,7 +136,6 @@ exports.getJobsByLocation = function(req, res) {
 						cttArr.push(cityRes[i]);
 					}
 				}
-
 				res.json(cttArr);
 			});
 		} else {
@@ -169,7 +152,6 @@ exports.getJobsByLocation = function(req, res) {
  */
 exports.getJobsByFilter = function(req, res) {
 	req.body.condition.status = 2;
-
 	var finalRes = function(result) {
 		jobsModel.countDocuments(req.body.condition).exec(function(err, count) {
 			res.json({
@@ -179,13 +161,8 @@ exports.getJobsByFilter = function(req, res) {
         });
 	}
 
-
 	jobsModel.find(req.body.condition).skip(req.body.skip).limit(100).lean().exec(function(err, jobResponse) {
-		if (jobResponse && jobResponse.length) {
-			finalRes(jobResponse);
-		} else{
-			finalRes(jobResponse);
-		}
+		finalRes(jobResponse);
 	});
 };
 
@@ -215,7 +192,6 @@ exports.getAppJobsByFilter = function(req, res) {
 						}
 					}
 				}
-
 				res.json({
 					result: result,
 					count: count
@@ -280,9 +256,7 @@ exports.checkUniqueContact = function(req, res) {
  *
  */
 exports.uniqueContact = function(req, res) {
-	trackContact.find({
-		contact: req.body.contact,
-	}).exec(function(err, uniqueRes) {
+	trackContact.find({contact: req.body.contact}).exec(function(err, uniqueRes) {
 		res.json(uniqueRes.length);
 	});
 };
@@ -292,11 +266,7 @@ exports.uniqueContact = function(req, res) {
  *
  */
 exports.postJobViews = function(req, res) {
-	jobsModel.update({
-        _id: req.body.jobId,
-    },{
-    	$inc: { totalView: 1 }
-   	}).exec(function(err, result) {
+	jobsModel.update({_id: req.body.jobId,},{$inc: { totalView: 1 }}).exec(function(err, result) {
         res.json({
         	status: true,
         	result: result,
@@ -310,9 +280,7 @@ exports.postJobViews = function(req, res) {
  *
  */
 exports.login = function(req, res) {
-	candidateRegisterModel.findOne({
-        mobile: parseInt(req.body.mobile),
-    }).exec(function(err, response) {
+	candidateRegisterModel.findOne({mobile: parseInt(req.body.mobile)}).exec(function(err, response) {
     	if (!(response && response._id)) {
 	        res.json({
 	        	status: false,
@@ -347,17 +315,11 @@ exports.resetPass = function(req, res) {
     	if (!(response && response._id)) {
 	        res.json({
 	        	status: false,
-	        	message: 'Uesr not found.'
+	        	message: 'User not found.'
 	        });
 	        return;
     	}
-
-		candidateRegisterModel.update({
-		    mobile: parseInt(req.body.mobile),
-		},{
-			password: req.body.mobile
-		}).exec(function(err, result) {});
-
+		candidateRegisterModel.update({mobile: parseInt(req.body.mobile)},{password: req.body.mobile}).exec(function(err, result) {});
     	res.json({
 			status: true,
 		});
@@ -369,22 +331,14 @@ exports.resetPass = function(req, res) {
  *
  */
 exports.getJobsId = function(req, res) {
-	trackContact.find({
-		contact: req.body.mobile
-	}, {
-		jobId: true,
-	}).exec(function(err, contactRes) {
+	trackContact.find({contact: req.body.mobile},{jobId: true}).exec(function(err, contactRes) {
 		var ids = [];
-
 		for (var i in contactRes) {
 			ids.push(contactRes[i].jobId);
 		}
-
 		res.json(ids);
 	});
 };
-
-
 
 /**
  *

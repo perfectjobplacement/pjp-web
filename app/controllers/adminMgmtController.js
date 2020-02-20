@@ -9,11 +9,6 @@ var mongoose = require('mongoose'),
     helperCTRL = require('./helper');
 
 
-
-
-
-
-
 /**
  * Logout
  */
@@ -50,7 +45,6 @@ exports.getDataWithCondition = function(req, res) {
 
 
 
-
 /**
  * Get job list with user data
  */
@@ -65,7 +59,7 @@ exports.getJobList = function(req, res) {
 
 		var finalres = function() {
 			if(err) {
-				res.json({
+				res.json({ 
 					status: false,
 					data: []
 				});
@@ -80,7 +74,6 @@ exports.getJobList = function(req, res) {
 				}
 				responseData = helperCTRL.sortByKeyDesc(responseData, 'createdAt');
 			}
-
 			res.json({
 				status: true,
 				data: responseData
@@ -92,8 +85,6 @@ exports.getJobList = function(req, res) {
 			for (var i in responseData) {
 				cities.push(responseData[i].jobCity);
 			}
-
-
 			cityModel.find({
 				_id: { $in: cities }
 			}).exec(function(err, citesRes) {
@@ -104,7 +95,6 @@ exports.getJobList = function(req, res) {
 						}
 					}
 				}
-
                 finalres();
             });
 		} else {
@@ -112,7 +102,6 @@ exports.getJobList = function(req, res) {
 		}
 	});
 };
-
 
 
 
@@ -127,7 +116,7 @@ exports.getJobsCandidates = function(req, res) {
 	var contactNumber = [];
 
 
-	TrackUniqueContactModel.find({ jobId:  req.body.jobId }, { contact: true }).exec(function(err, trackData) {
+	TrackUniqueContactModel.find({ jobId: req.body.jobId },{ contact: true }).exec(function(err, trackData) {
 
 		if(err) {
 			res.json({
@@ -161,11 +150,10 @@ exports.getJobsCandidates = function(req, res) {
 			qualification: true,
 			expectedSalary: true,
 			createdAt: true,
-		}).exec(function(err, caRes) {
+		}).lean().exec(function(err, caRes) {
 
 			if (caRes.length) {
-
-				caRes = JSON.parse(JSON.stringify(caRes));
+				console.log("CARES:",caRes)
 
 				var qlname = [];
 				for (var row in caRes) {
@@ -181,7 +169,6 @@ exports.getJobsCandidates = function(req, res) {
 							}
 						}
 					}
-
 					res.json({
 						status: true,
 						data: caRes
@@ -210,7 +197,6 @@ exports.filterJobsCandidates = function(req, res) {
 	var cityModel = mongoose.model('JobLocations');
 
 	var condition = {};
-
 
 	if (req.body.filter.experience) {
 		condition.experience = req.body.filter.experience;
@@ -270,7 +256,6 @@ exports.filterJobsCandidates = function(req, res) {
 			res.json(finaldata);
     		return;
     	}
-
         res.json([]);
     });
 };

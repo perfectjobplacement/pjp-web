@@ -63,7 +63,6 @@ appModule.controller('UserDashboardController', ['$scope', '$http', '$location',
        		$scope.udObj.profileObj.model = angular.copy($rootScope.g.loggedUser);
        	}
 
-
        	$scope.udObj.profileObj.submit = function(form) {
        		if (!form.$valid) {
        			$scope.udObj.profileObj.isSubmited = true;

@@ -7,10 +7,10 @@ var mongoose = require('mongoose'),
     hbs = require('hbs'),
     helperCTRL = require('./helper');
 
-
-
-
-
+/**
+ * Database model
+ */
+var ourClients = mongoose.model('OurClients');
 
 
 /**
@@ -21,12 +21,9 @@ exports.signout = function(req, res) {
     if (res.session && res.session.user) {
         res.session.user = undefined;
     }
-
     req.session = null;
     res.redirect('/');
 };
-
-
 
 
 /**
@@ -37,17 +34,13 @@ exports.me = function(req, res) {
 };
 
 
-
 /**
  * Register
  */
 exports.register = function(req, res) {
 
-    var ourClients = mongoose.model('OurClients');
-
     req.body.email = req.body.email.toLowerCase();
     req.body.createdAt = new Date().getTime();
-
 
     ourClients.find({
         email: req.body.email
@@ -60,8 +53,6 @@ exports.register = function(req, res) {
             });
             return;
         } 
-
-
         var user = new ourClients(req.body);
         user.save(function(err, userResponse) {
             
@@ -69,7 +60,6 @@ exports.register = function(req, res) {
                 res.json({status: false});
                 return;    
             }
-
             res.json({
                 status: true,
                 userExist: false
@@ -84,7 +74,6 @@ exports.register = function(req, res) {
  * Login
  */
 exports.login = function(req, res) {
-    var ourClients = mongoose.model('OurClients');
 
     ourClients.findOne({
         email: req.body.email.toLowerCase(),
@@ -115,12 +104,10 @@ exports.login = function(req, res) {
 }
 
 
-
 /**
  * Forgot Password
  */
 exports.forgotPassword = function(req, res) {
-    var ourClients = mongoose.model('OurClients');
 
     ourClients.findOne({
         email: req.body.email.toLowerCase()
@@ -164,13 +151,7 @@ exports.forgotPassword = function(req, res) {
                         msg: 'Problem into email send'
                     });
                 }
-
-                ourClients.update({
-                     email: req.body.email.toLowerCase()
-                }, {
-                    password: newPassword
-                } ).exec(function(err, result) {});
-
+                ourClients.update({email: req.body.email.toLowerCase()},{password: newPassword}).exec(function(err, result) {});
                 return res.json({
                     status: 2
                 });
@@ -186,26 +167,17 @@ exports.forgotPassword = function(req, res) {
 }
 
 
-
 /**
  * Change Password
  */
 exports.changePassword = function(req, res) {
-    var ourClients = mongoose.model('OurClients');
-
-    ourClients.update({
-        _id: req.body._id
-    }, {
-        password: req.body.password
-    }).exec(function(err, result) {
-
+    ourClients.update({_id: req.body._id}, {password: req.body.password}).exec(function(err, result) {
         if (err) {
             res.json({
                 status: false
             });
             return;
         }
-
         req.session.user.password = req.body.password;
 
         res.json({

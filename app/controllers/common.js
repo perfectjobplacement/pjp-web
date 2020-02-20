@@ -15,9 +15,6 @@ var filePath = {
 	2: __dirname + '/../../public/assets/uploads/advertisement/',
 };
 
-
-
-
 /**
  *
  */
@@ -27,15 +24,11 @@ exports.getSingle = function(req, res) {
 		res.json([]);
 		return;
 	}
-
 	var commonModel = mongoose.model(req.body.model);
-
 	commonModel.findById(req.body._id, function(err, result) {
 		res.json(result);
 	});
 };
-
-
 
 /**
  *
@@ -62,7 +55,6 @@ exports.getData = function(req, res) {
 	});
 };
 
-
 /**
  *
  */
@@ -87,8 +79,6 @@ exports.loadMore = function(req, res) {
 	    });
     });
 };
-
-
 
 /**
  *
@@ -116,8 +106,6 @@ exports.getCondition = function(req, res) {
 	});
 };
 
-
-
 /**
  *
  */
@@ -139,15 +127,12 @@ exports.getEditData = function(req, res) {
 		if (req.body.model == 'OurTeam') {
 			req.session.user = req.body;
 		}
-
         res.json({
             status: true,
             result: req.body
         });
     });
 };
-
-
 
 /**
  *
@@ -183,8 +168,6 @@ exports.commonUploadFile = function(req, res) {
 		});
 	});
 };
-
-
 
 /**
  *
@@ -225,11 +208,7 @@ exports.postUpdateChildData = function(req, res) {
 		updateData._id = mongoose.Types.ObjectId(childEntityId);
 		push[entityKey] = updateData;
 
-		commonModel.update({
-			'_id': entityId
-		}, {
-			$pull: pull
-		}).exec(function(err, result) {
+		commonModel.update({'_id': entityId}, {$pull: pull}).exec(function(err, result) {
 
 			if (err) {
 				res.json({
@@ -238,13 +217,7 @@ exports.postUpdateChildData = function(req, res) {
 				});
 				return;
 			}
-
-
-			commonModel.update({
-				'_id': entityId
-			}, {
-				$push: push
-			}).exec(function(err, result) {
+			commonModel.update({'_id': entityId}, {$push: push}).exec(function(err, result) {
 
 				if (err) {
 					res.json({
@@ -253,7 +226,6 @@ exports.postUpdateChildData = function(req, res) {
 					});
 					return;
 				}
-
 				var sendRS = function() {
 					res.json({
 						status: true,
@@ -284,8 +256,6 @@ exports.postUpdateChildData = function(req, res) {
 	}
 }
 
-
-
 /**
  *
  */
@@ -295,15 +265,10 @@ exports.postUpdateData = function(req, res) {
 		return res.json([]);
 	}
 
-	commonModel.update({
-		'_id': req.body.entityId
-	}, req.body ).exec(function(err, result) {
+	commonModel.update({'_id': req.body.entityId}, req.body ).exec(function(err, result) {
 		res.json(result);
 	});
 }
-
-
-
 
 /**
  *
@@ -327,7 +292,6 @@ exports.postAddData = function(req, res) {
 				});
 				return;
 			}
-
 			res.json({
 				status: true,
 				result: result
@@ -367,8 +331,6 @@ exports.postAddData = function(req, res) {
 	}
 }
 
-
-
 /**
  *
  */
@@ -397,9 +359,6 @@ exports.getDeleteData = function(req, res) {
 	});
 };
 
-
-
-
 /**
  *
  */
@@ -427,21 +386,6 @@ exports.getDeleteDataCondition = function(req, res) {
 		});
 	});
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  *
@@ -512,9 +456,6 @@ exports.siteVisitor = function(req, res) {
 
 	res.send("200");
 };
-
-
-
 
 /**
  *

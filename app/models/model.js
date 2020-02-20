@@ -145,9 +145,6 @@ mongoose.model('AdminUsers', AdminUsers);
 
 
 
-
-
-
 var OurClients = new Schema({
 	companyName: String,
 	contactPersonName: String,
@@ -163,8 +160,6 @@ var OurClients = new Schema({
 });
 
 mongoose.model('OurClients', OurClients);
-
-
 
 
 
@@ -204,13 +199,10 @@ var SiteVisitorSchema = mongoose.Schema({
 });
 
 
-
 mongoose.model('Qualifications', QualificationSchema);
 mongoose.model('AreaOfInterest', AreaOfInterestSchema);
 mongoose.model('JobLocations', JobLocations);
 mongoose.model('SiteVisitor', SiteVisitorSchema);
-
-
 
 
 var advertisementSchema = mongoose.Schema({
@@ -226,7 +218,6 @@ var advertisementSchema = mongoose.Schema({
 mongoose.model('advertisement', advertisementSchema);
 
 
-
 var employeeSchema = mongoose.Schema({
     fullname: String,
     email: String,
@@ -236,7 +227,6 @@ var employeeSchema = mongoose.Schema({
 });
 
 mongoose.model('ourEmployee', employeeSchema);
-
 
 
 var attendenceSchema = mongoose.Schema({
