@@ -31,6 +31,7 @@ var justCheckLogin = function($q, $timeout, $http, $location, $rootScope, $state
 }
 
 
+
 var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope, $state) {
     return checkUserIsLoggedOrNot($q, $timeout, $http, $location, $rootScope, $state, true);
 };
@@ -43,8 +44,6 @@ var checkLoggedOut = function($q, $timeout, $http, $location, $rootScope, $state
 var _justCheckLogin = function($q, $timeout, $http, $location, $rootScope, $state) {
     return justCheckLogin($q, $timeout, $http, $location, $rootScope, $state, false);
 };
-
-
 
 
 

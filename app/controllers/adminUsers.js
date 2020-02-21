@@ -231,25 +231,21 @@ exports.getDbCount = function(req, res) {
         getSiteVisitor: function(callback) {
             siteVisitor.find({}).count(function(err, count) {
                 callback(null, count)
-                console.log("Site Visitor")
             });
         },
         getOurClients: function(callback) {
             ourClients.find({}).count(function(err, count) {
                 callback(null, count)
-                console.log("Our Clients")
             });
         },
         getCandidateRegister: function(callback) {
             candidateRegister.find({}).count(function(err, count) {
                 callback(null, count)
-                console.log("Candidate Regidsters")
             });
         },
         getJobsBazaar: function(callback) {
             jobsBazaar.find({ status: 2 }).count(function(err, count) {
                 callback(null, count)
-                console.log("Job Bazar")
             });
         }
     }, function(err, results) {

@@ -153,7 +153,6 @@ exports.getJobsCandidates = function(req, res) {
 		}).lean().exec(function(err, caRes) {
 
 			if (caRes.length) {
-				console.log("CARES:",caRes)
 
 				var qlname = [];
 				for (var row in caRes) {

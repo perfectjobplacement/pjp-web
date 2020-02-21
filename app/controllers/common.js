@@ -265,7 +265,7 @@ exports.postUpdateData = function(req, res) {
 		return res.json([]);
 	}
 
-	commonModel.update({'_id': req.body.entityId}, req.body ).exec(function(err, result) {
+	commonModel.update({'_id': req.body.entityId},req.body ).exec(function(err, result) {
 		res.json(result);
 	});
 }
@@ -321,7 +321,6 @@ exports.postAddData = function(req, res) {
 			var formData = new tcm(data);
 
 			formData.save(function(err, result) {
-				console.log("result >>>", result);
 				save(req.body);
 			});
 		});
@@ -398,8 +397,7 @@ exports.siteVisitor = function(req, res) {
 	request({
 		url: "http://www.geoplugin.net/json.gp?ip=" + IPAddress,
 		json: true
-	}, function(error, response, body) {
-
+	},function(error, response, body) {
 		var currentDate = new Date();
 		currentDate.addHours(-4);
 

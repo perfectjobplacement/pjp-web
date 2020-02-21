@@ -18,7 +18,6 @@ appModule.controller('AboutusController', ['$scope', '$http', '$location', '$sta
             }
         }
 
-
         $scope.absObj.initads = function() {
             if (ENV != 'development') {
                 $timeout(function() {
