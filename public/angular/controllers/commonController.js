@@ -1,7 +1,7 @@
 'use strict';
 
-appModule.controller('CommonController', ['$scope', '$http', '$location', '$uibModal', '$stateParams', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
-    function($scope, $http, $location, $uibModal, $stateParams, $rootScope, $timeout, $state, icdb, alertService) {
+appModule.controller('CommonController', ['$scope', '$rootScope', 'icdb', 'alertService',
+    function($scope, $rootScope, icdb, alertService) {
 
         $scope.comnObj = {};
 

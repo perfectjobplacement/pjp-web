@@ -3,10 +3,14 @@
     <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-          (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-5257119138257770",
-            enable_page_level_ads: true
-          });
+            var ENV = '{{env}}';
+
+            if (ENV != 'development') {
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-5257119138257770",
+                    enable_page_level_ads: true
+                });
+            }
         </script>
         
         <meta charset="utf-8">
@@ -79,13 +83,6 @@
                 <div class="row align-items-center justify-content-between d-flex">
                     <div id="logo">
                         <a href="#!/home">
-                            <!-- <img alt="" class="float-left" height="70" src="img/logo/logo1.png"/>
-                            <div class="logo-text-1">
-                                Perfect Job
-                            </div>
-                            <div class="logo-text-2">
-                                Placement
-                            </div> -->
                             <h4 class="text-white">Perfect Job Placement</h4>
                         </a>
                     </div>

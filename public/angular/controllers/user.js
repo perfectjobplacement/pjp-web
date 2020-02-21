@@ -6,9 +6,11 @@ appModule.controller('UserController', ['$scope', '$http', '$location', '$uibMod
 
 
         $scope.uObj.initAds = function() {
-            $timeout(function() {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }, 1000);
+            if (ENV != 'development') {
+                $timeout(function() {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }, 1000);
+            }
         }
 
 

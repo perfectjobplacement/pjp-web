@@ -8,9 +8,11 @@ appModule.controller('CandidateRegisterController', ['$scope', '$http', '$locati
 
 
         $scope.newReg.initAds = function() {
-            $timeout(function() {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }, 1000);
+            if (ENV != 'development') {
+                $timeout(function() {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }, 1000);
+            }
         }
 
 
