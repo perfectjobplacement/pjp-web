@@ -16,7 +16,6 @@ appModule.controller('AboutusController', ['$scope', '$http', '$location', '$uib
             });
         }
 
-
         $scope.absObj.initads = function() {
             $timeout(function() {
                 (adsbygoogle = window.adsbygoogle || []).push({});

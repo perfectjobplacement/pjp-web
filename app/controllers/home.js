@@ -35,7 +35,6 @@ exports.index1 = function(req, res) {
 	if(req.session && req.session.user && req.session.user._id) {
 		userId = req.session.user._id;
 	}
-
 	
 	if (req.session.user && !req.session.user.isAdmin) {
 		res.redirect('/');
