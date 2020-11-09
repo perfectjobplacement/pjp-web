@@ -46,10 +46,11 @@ exports.getCurrentJobs = function(req, res) {
 		req.body.skip = 0;
 	}
 
-	var finalRes = function(fresponse) {
+	const finalRes = function(fresponse) {
 		getCityName(fresponse, function(result) {
 			jobsModel.countDocuments({ status: 2 }).exec(function(err, count) {
-				var remainingCount = 0;
+
+				let remainingCount = 0;
 
 				if (req.body.skip == 0) {
 					remainingCount = (count - result.length);
@@ -81,7 +82,6 @@ exports.getCurrentJobs = function(req, res) {
 		});
 	}
 
-
 	jobsModel.find({status: 2}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec(function(err, jobResponse) {
 		if (jobResponse && jobResponse.length) {
 			finalRes(jobResponse);
@@ -96,7 +96,7 @@ exports.getCurrentJobs = function(req, res) {
  *
  */
 exports.getJobsByLocation = function(req, res) {
-	var finalRes = function(result) {
+	const finalRes = function(result) {
 		jobsModel.countDocuments({ status: 2 }).exec(function(err, count) {
 			res.json({
 				result: result,
