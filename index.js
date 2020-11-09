@@ -18,12 +18,9 @@ const cookieSession = require('cookie-session');
 
 const app = module.exports = express();
 
-if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = 'development';
-}
-
-mongoose.connect("mongodb://localhost/perfect-job-placement");
-
+mongoose.connect("mongodb://localhost/perfect-job-placement", {
+  useNewUrlParser: true
+});
 
 
 // ExpressJS Configuration
@@ -50,7 +47,7 @@ app.use(cookieSession({
 
 app.use(flash());
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     if(req.session && req.session.user) {
         req.user = req.session.user;
         req.session.user = req.user;
@@ -71,6 +68,6 @@ app.use('/', routes);
  * Server connection..
  */
 const server = http.createServer(app);
-server.listen(process.env.PORT || 3000, function() {
+server.listen(process.env.PORT || 3000, () => {
 	console.log('Express server listening on port: 3000');
 });
