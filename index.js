@@ -1,32 +1,28 @@
-var path = require('path'),
-    http = require('http'),
-    config = require('config'),
-    compression = require('compression'),
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    methodOverride = require('method-override'),
-    multipart = require('connect-multiparty'),
-    multipartMiddleware = multipart(),
-    mongoose = require('mongoose'),
-    morgan = require('morgan'),
-    multiparty = require('multiparty'),
-    expressValidator = require('express-validator'),
-    session = require('express-session'),
-    flash = require('connect-flash'),
-    routes = require('./app/routes/routes'),
-    cookieSession = require('cookie-session');
+const path = require('path');
+const http = require('http');
+const compression = require('compression');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const multiparty = require('multiparty');
+const expressValidator = require('express-validator');
+const session = require('express-session');
+const flash = require('connect-flash');
+const routes = require('./app/routes/routes');
+const cookieSession = require('cookie-session');
 
-
-
-var app = module.exports = express();
-
+const app = module.exports = express();
 
 if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = 'development';
 }
-console.log('-----------------DB Connected -------------------', config.get('mongoDBURI'));
-mongoose.connect(config.get('mongoDBURI'));
+
+mongoose.connect("mongodb://localhost/perfect-job-placement");
 
 
 
@@ -74,9 +70,7 @@ app.use('/', routes);
 /**
  * Server connection..
  */
-var server = http.createServer(app);
-
-
+const server = http.createServer(app);
 server.listen(process.env.PORT || 3000, function() {
 	console.log('Express server listening on port: 3000');
 });

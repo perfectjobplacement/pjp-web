@@ -1,0 +1,499 @@
+[
+    {
+        "status": true,
+        "_id": "5c921c688dada00004794372",
+        "department": "1",
+        "title": "Manager",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921cae8dada00004794376",
+        "department": "1",
+        "title": "Office Assistant",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921cbf8dada00004794377",
+        "department": "1",
+        "title": "Team Leader(TL)",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921c9b8dada00004794375",
+        "department": "1",
+        "title": "Admin Exicutive",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ce78dada00004794378",
+        "department": "1",
+        "title": "Marketing Head",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921c838dada00004794373",
+        "department": "1",
+        "title": "Supervisor",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921d308dada0000479437a",
+        "department": "1",
+        "title": "Professor",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921d1a8dada00004794379",
+        "department": "1",
+        "title": "Sales Head",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921c8d8dada00004794374",
+        "department": "1",
+        "title": "HR",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921da48dada0000479437e",
+        "department": "1",
+        "title": "Accoutant",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921d528dada0000479437c",
+        "department": "1",
+        "title": "PRO",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921dab8dada0000479437f",
+        "department": "2",
+        "title": "Accoutant",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921dba8dada00004794380",
+        "department": "6",
+        "title": "Accoutant",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921d628dada0000479437d",
+        "department": "1",
+        "title": "Teacher",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921dd78dada00004794382",
+        "department": "1",
+        "title": "Receptionist",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921dd18dada00004794381",
+        "department": "2",
+        "title": "Receptionist",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921d3e8dada0000479437b",
+        "department": "1",
+        "title": "Trainer",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ddd8dada00004794383",
+        "department": "6",
+        "title": "Receptionist",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e118dada00004794387",
+        "department": "2",
+        "title": "PRO",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e588dada00004794388",
+        "department": "2",
+        "title": "Store Incharge",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921df88dada00004794385",
+        "department": "2",
+        "title": "Sales Exicutive",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e618dada00004794389",
+        "department": "1",
+        "title": "Store Incharge",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921de98dada00004794384",
+        "department": "1",
+        "title": "Sales Exicutive",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e0b8dada00004794386",
+        "department": "2",
+        "title": "Supervisor",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ea88dada0000479438c",
+        "department": "1",
+        "title": "Tele calling",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e898dada0000479438b",
+        "department": "6",
+        "title": "Counselor",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921e798dada0000479438a",
+        "department": "1",
+        "title": "Counselor",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921eb48dada0000479438e",
+        "department": "6",
+        "title": "Tele calling",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ec58dada00004794390",
+        "department": "6",
+        "title": "Office Boy",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ebc8dada0000479438f",
+        "department": "6",
+        "title": "Driver",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ee18dada00004794392",
+        "department": "6",
+        "title": "Helper",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ed68dada00004794391",
+        "department": "6",
+        "title": "Delivery Boy",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921ef58dada00004794393",
+        "department": "6",
+        "title": "Technician",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f048dada00004794394",
+        "department": "6",
+        "title": "Painter",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f1b8dada00004794395",
+        "department": "6",
+        "title": "Machine Operator",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921eae8dada0000479438d",
+        "department": "2",
+        "title": "Tele calling",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f8d8dada00004794399",
+        "department": "3",
+        "title": "Maintance",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f978dada0000479439a",
+        "department": "3",
+        "title": "PPC",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f758dada00004794397",
+        "department": "3",
+        "title": "Production",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f808dada00004794398",
+        "department": "3",
+        "title": "Quality",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921fa58dada0000479439b",
+        "department": "3",
+        "title": "Shift Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921fbb8dada0000479439d",
+        "department": "3",
+        "title": "Service Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921faf8dada0000479439c",
+        "department": "3",
+        "title": "Site Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921fcf8dada0000479439e",
+        "department": "3",
+        "title": "Telecome Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921f288dada00004794396",
+        "department": "6",
+        "title": "Packing",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220458dada000047943a2",
+        "department": "3",
+        "title": "NDT",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220378dada000047943a1",
+        "department": "3",
+        "title": "Testing Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c92201e8dada0000479439f",
+        "department": "3",
+        "title": "Metallurgist",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c92204d8dada000047943a3",
+        "department": "4",
+        "title": "NDT",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220a38dada000047943a4",
+        "department": "3",
+        "title": "Designer",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220a88dada000047943a5",
+        "department": "4",
+        "title": "Designer",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220c38dada000047943a6",
+        "department": "4",
+        "title": "QC",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220ca8dada000047943a7",
+        "department": "3",
+        "title": "QC",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9220278dada000047943a0",
+        "department": "4",
+        "title": "Metallurgist",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9a9a1a46dd00041c6962",
+        "department": "5",
+        "title": "Wirmen",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9ab01a46dd00041c6963",
+        "department": "5",
+        "title": "Manchine Operator",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9abb1a46dd00041c6964",
+        "department": "5",
+        "title": "Welder",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9ac51a46dd00041c6965",
+        "department": "5",
+        "title": "Fitar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9adc1a46dd00041c6966",
+        "department": "5",
+        "title": "QC",
+        "__v": 0
+    },
+    {
+        "status": false,
+        "_id": "5d5f9ae01a46dd00041c6967",
+        "department": "5",
+        "title": "QC",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9aed1a46dd00041c6968",
+        "department": "5",
+        "title": "Computer Operator",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b191a46dd00041c6969",
+        "department": "4",
+        "title": "PPC",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b241a46dd00041c696a",
+        "department": "4",
+        "title": "Utility",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b351a46dd00041c696b",
+        "department": "4",
+        "title": "Site Eng.",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b441a46dd00041c696c",
+        "department": "4",
+        "title": "Maintance",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b491a46dd00041c696d",
+        "department": "5",
+        "title": "Maintance",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b531a46dd00041c696e",
+        "department": "5",
+        "title": "Production",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b5b1a46dd00041c696f",
+        "department": "4",
+        "title": "Production",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b7c1a46dd00041c6970",
+        "department": "4",
+        "title": "Supervisior",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b801a46dd00041c6971",
+        "department": "3",
+        "title": "Supervisior",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d5f9b851a46dd00041c6972",
+        "department": "5",
+        "title": "Supervisior",
+        "__v": 0
+    }
+]

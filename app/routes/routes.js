@@ -1,13 +1,13 @@
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var cors = require('cors');
-var connectMultiparty = require('connect-multiparty');
-var multipartMiddleware = connectMultiparty();
+const express = require('express');
+const router = express.Router();
+const cors = require('cors');
+const connectMultiparty = require('connect-multiparty');
+const multipartMiddleware = connectMultiparty();
 require('../models/model');
 
-var ctrl = {
+const ctrl = {
     home: require('../controllers/home'),
     common: require('../controllers/common'),
     siteMgmt: require('../controllers/siteMgmt'),

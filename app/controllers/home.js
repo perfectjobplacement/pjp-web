@@ -1,19 +1,19 @@
 // Global var
-var uid = require('uid');
+const uid = require('uid');
 
 
 
 /**
  * Site dashboard
  */
-exports.index = function(req, res) {
+exports.index = (req, res) => {
 	if (req.session.user && req.session.user.isAdmin) {
 		res.redirect('/admin#!/dashboard');
 		return;	
 	}
 
 	res.render('siteLayout', {
-		env: process.env.NODE_ENV
+		env: "prod"
 	});
 }
 
@@ -21,13 +21,13 @@ exports.index = function(req, res) {
 /**
  * Admin dashboard
  */
-exports.index1 = function(req, res) {	
+exports.index1 = (req, res) => {
 	if (req.session.user && !req.session.user.isAdmin) {
 		res.redirect('/');
 		return;	
 	}
 
     res.render('adminIndex', {
-		env: process.env.NODE_ENV
+		env: "prod"
     });
 }

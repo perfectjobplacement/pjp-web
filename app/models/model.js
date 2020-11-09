@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose  = require('mongoose'),
-    Schema    = mongoose.Schema;
+const mongoose  = require('mongoose');
+const Schema = mongoose.Schema;
 
 
-var AppConfig = new Schema({
+const AppConfig = new Schema({
 	appTitle: String,
 	headerTitle: String,
 	appTagline: String,
@@ -28,8 +28,7 @@ var AppConfig = new Schema({
 	whatsAppinLink: String,
 });
 
-
-var OurTeam = new Schema({
+const OurTeam = new Schema({
 	fullname: String,
 	position: String,
 	mobile: Number,
@@ -40,7 +39,7 @@ var OurTeam = new Schema({
 	linkedinlink: String,
 });
 
-var AdminUsers = new Schema({
+const AdminUsers = new Schema({
 	firstName: String,
 	lastName: String,
 	email: String,
@@ -50,7 +49,7 @@ var AdminUsers = new Schema({
 	isActive: {type: Boolean, default: true},
 });
 
-var Inquiry = new Schema({
+const Inquiry = new Schema({
 	type: String,
 	name: String,
 	email: String,
@@ -62,7 +61,7 @@ var Inquiry = new Schema({
 	status: {type: Boolean, default: false},
 });
 
-var CandidateRegister = new Schema({
+const CandidateRegister = new Schema({
 	name: String,
 	email: String,
 	password: String,
@@ -84,7 +83,7 @@ var CandidateRegister = new Schema({
 	status: {type: Boolean, default: false},
 });
 
-var TrackUniqueContact = new Schema({
+const TrackUniqueContact = new Schema({
 	jobId: String,
 	contact: String,
 	platform: String,
@@ -92,7 +91,7 @@ var TrackUniqueContact = new Schema({
 	status: {type: Boolean, default: false},
 });
 
-var JobsBazaar = new Schema({
+const JobsBazaar = new Schema({
 	jobTitle: String,
 	notes: String,
 	image: String,
@@ -145,7 +144,7 @@ mongoose.model('AdminUsers', AdminUsers);
 
 
 
-var OurClients = new Schema({
+const OurClients = new Schema({
 	companyName: String,
 	contactPersonName: String,
 	email: String,
@@ -163,24 +162,24 @@ mongoose.model('OurClients', OurClients);
 
 
 
-var QualificationSchema = new Schema({
+const QualificationSchema = new Schema({
 	name: String,
 	qualifyIn: String,
 	status: {type: Boolean, default: false}
 });
 
-var AreaOfInterestSchema = new Schema({
+const AreaOfInterestSchema = new Schema({
 	title: String,
 	department: String,
 	status: {type: Boolean, default: false}
 });
 
-var JobLocations = new Schema({
+const JobLocations = new Schema({
 	city: String,
 	status: {type: Boolean, default: false}
 });
 
-var SiteVisitorSchema = mongoose.Schema({
+const SiteVisitorSchema = mongoose.Schema({
     session_id: String,
     site_mgmt_id: String,
     ip_address: String,
@@ -205,7 +204,7 @@ mongoose.model('JobLocations', JobLocations);
 mongoose.model('SiteVisitor', SiteVisitorSchema);
 
 
-var advertisementSchema = mongoose.Schema({
+const advertisementSchema = mongoose.Schema({
     title: String,
     subTitle: String,
     description: String,
@@ -217,8 +216,7 @@ var advertisementSchema = mongoose.Schema({
 
 mongoose.model('advertisement', advertisementSchema);
 
-
-var employeeSchema = mongoose.Schema({
+const employeeSchema = mongoose.Schema({
     fullname: String,
     email: String,
     address: String,
@@ -228,8 +226,7 @@ var employeeSchema = mongoose.Schema({
 
 mongoose.model('ourEmployee', employeeSchema);
 
-
-var attendenceSchema = mongoose.Schema({
+const attendenceSchema = mongoose.Schema({
     userId: String,
     email: String,
     address: String,

@@ -1,0 +1,368 @@
+[
+    {
+        "status": true,
+        "_id": "5c908e865ef96c0004cbcb88",
+        "city": "Rajkot",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c908ea05ef96c0004cbcb89",
+        "city": "Gondal",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c908eab5ef96c0004cbcb8a",
+        "city": "Jetpur",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c908ebc5ef96c0004cbcb8b",
+        "city": "Junagadh",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9219bf8dada0000479435a",
+        "city": "Keshod",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9219d48dada0000479435b",
+        "city": "Morbi",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9219e68dada0000479435c",
+        "city": "Kalawad",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a0f8dada0000479435d",
+        "city": "Jamnagar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a348dada0000479435e",
+        "city": "Ahmedabad",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a518dada0000479435f",
+        "city": "Jasdan",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a5e8dada00004794360",
+        "city": "Amreli",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a648dada00004794361",
+        "city": "Porbandar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a718dada00004794362",
+        "city": "Gandhidham",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a7b8dada00004794363",
+        "city": "Gandhinagar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a8f8dada00004794365",
+        "city": "Surat",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a9b8dada00004794366",
+        "city": "Kutch",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921aba8dada00004794367",
+        "city": "Dwarka",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921a888dada00004794364",
+        "city": "Baroda",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921b498dada00004794369",
+        "city": "Kodinar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921b808dada0000479436b",
+        "city": "Dang",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921b538dada0000479436a",
+        "city": "Gir Somnath",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921b988dada0000479436c",
+        "city": "Mehsana",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921bbb8dada0000479436e",
+        "city": "Padadhari",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921baf8dada0000479436d",
+        "city": "Wankaner",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921c4c8dada00004794371",
+        "city": "Virpur",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c926fba4a25640004f57a23",
+        "city": "Metoda (Rajkot)",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921adc8dada00004794368",
+        "city": "Upleta",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c926fd74a25640004f57a24",
+        "city": "Shapar (Rajkot)",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921bd48dada0000479436f",
+        "city": "Jam Jodhpur",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9270074a25640004f57a25",
+        "city": "Kuvadva (Rajkot)",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9273f84a25640004f57a2b",
+        "city": "All Gujarat",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c921bdd8dada00004794370",
+        "city": "Chotila",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5c9274014a25640004f57a2c",
+        "city": "All India",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb6fca3b09200048f1472",
+        "city": "Surendranagar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb737a3b09200048f1473",
+        "city": "Botad",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb6eba3b09200048f1471",
+        "city": "Kachchh",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb76ca3b09200048f1477",
+        "city": "Navsari",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb757a3b09200048f1475",
+        "city": "Valsad",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb780a3b09200048f1478",
+        "city": "Narmada",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb796a3b09200048f1479",
+        "city": "Bharuch",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb7c8a3b09200048f147a",
+        "city": "Sabarkantha",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb7d2a3b09200048f147b",
+        "city": "Patan",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb7e8a3b09200048f147c",
+        "city": "Banaskantha",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb745a3b09200048f1474",
+        "city": "Bhavnagar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb762a3b09200048f1476",
+        "city": "Tapi",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb822a3b09200048f1480",
+        "city": "Kheda",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb82da3b09200048f1481",
+        "city": "Dahod",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb80da3b09200048f147e",
+        "city": "Panchmahal",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb818a3b09200048f147f",
+        "city": "Mahisagar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb842a3b09200048f1483",
+        "city": "Anand",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb837a3b09200048f1482",
+        "city": "Chhota Udaipur",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb84fa3b09200048f1484",
+        "city": "Vadodara",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbc094a3b09200048f148d",
+        "city": "Bawala (Ahemdabad)",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbc0a5a3b09200048f148e",
+        "city": "Sanand",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5ccbb7f2a3b09200048f147d",
+        "city": "Aravalli",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d430b8d74ec2b00041b2f4e",
+        "city": "Aatkot",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d430bb674ec2b00041b2f4f",
+        "city": "Gomta",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d430bc074ec2b00041b2f50",
+        "city": "Limadi",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d430bc974ec2b00041b2f51",
+        "city": "Dhasha",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d430be374ec2b00041b2f52",
+        "city": "Madhapar",
+        "__v": 0
+    },
+    {
+        "status": true,
+        "_id": "5d85a872b66c980004ad475c",
+        "city": "Ankleshwar",
+        "__v": 0
+    }
+]
