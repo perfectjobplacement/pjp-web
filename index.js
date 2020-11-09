@@ -18,10 +18,10 @@ const cookieSession = require('cookie-session');
 
 const app = module.exports = express();
 
-mongoose.connect("mongodb://localhost/perfect-job-placement", {
-  useNewUrlParser: true
-});
-
+mongoose.connect("mongodb://localhost:27017/perfect-job-placement", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, (res) => {});
 
 // ExpressJS Configuration
 app.set('views', __dirname + '/app/views');
