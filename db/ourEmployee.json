@@ -1,6 +1,6 @@
 [
     {
-        "_id": ObjectId("5cfe9e37378f370004c64a0b"),
+        "_id": {"$oid":"5cfe9e37378f370004c64a0b"},
         "fullname": "Jashu Ram",
         "email": "jashuram555@gmail.com",
         "address": "Ami Complex,1st Floor,, Chandrapark Main Road,, Opp. Konark Appartment,, B/H Big Bazaar,Rajkot-360005, Phone: +917202010707 / 7202050404, Email: stepupithub@gmail.com",
@@ -9,7 +9,7 @@
         "__v": 0
     },
     {
-        "_id": ObjectId("5cfe9e5a378f370004c64a0c"),
+        "_id": {"$oid":"5cfe9e5a378f370004c64a0c"},
         "fullname": "Anil Patel",
         "email": "anil@gmail.com",
         "address": "Ami Complex,1st Floor,, Chandrapark Main Road,, Opp. Konark Appartment,, B/H Big Bazaar,Rajkot-360005, Phone: +917202010707 / 7202050404, Email: stepupithub@gmail.com",
@@ -18,7 +18,7 @@
         "__v": 0
     },
     {
-        "_id": ObjectId("5cfe9e7c378f370004c64a0d"),
+        "_id": {"$oid":"5cfe9e7c378f370004c64a0d"},
         "fullname": "Ravina",
         "email": "ravina@gmail.com",
         "address": "rajkot",

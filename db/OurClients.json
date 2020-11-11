@@ -1,7 +1,7 @@
 [
     {
         "isActive": true,
-        "_id": ObjectId("5ce547612908bf0004d8381e"),
+        "_id": {"$oid":"5ce547612908bf0004d8381e"},
         "companyName": "AARYA VEER",
         "contactPersonName": "MAYAPALSINH KHODUBHA VADHER",
         "email": "mahipalsinh.vadher@gmail.com",
@@ -16,7 +16,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5d42987374ec2b00041b2ea3"),
+        "_id": {"$oid":"5d42987374ec2b00041b2ea3"},
         "companyName": "Gujarat sidhee cement",
         "contactPersonName": "Hitendra Mori",
         "email": "hrm9411@gmail.com",
@@ -30,7 +30,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5d8098259484530004af8caf"),
+        "_id": {"$oid":"5d8098259484530004af8caf"},
         "companyName": "Anand Industries",
         "contactPersonName": "Dhiren",
         "email": "anandindustries1985@gmail.com",
@@ -44,7 +44,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5dcf9fa070413d0004418084"),
+        "_id": {"$oid":"5dcf9fa070413d0004418084"},
         "companyName": "Alfa Group",
         "email": "documents.alfa@gmail.com",
         "contact": 9512010908,
@@ -58,7 +58,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5de1418af1b0390004ce06b0"),
+        "_id": {"$oid":"5de1418af1b0390004ce06b0"},
         "companyName": "SHYAMART GROUP OF COMPANIES",
         "contactPersonName": "VIREN SHAH",
         "email": "hr@shyamart.in",
@@ -72,7 +72,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5e42735920f1d80004766984"),
+        "_id": {"$oid":"5e42735920f1d80004766984"},
         "companyName": "brewcastle services LLP",
         "contactPersonName": "Hitesh Baldev",
         "email": "info@plateable.in",
@@ -87,7 +87,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5e4e229340f9ec00044cf10c"),
+        "_id": {"$oid":"5e4e229340f9ec00044cf10c"},
         "companyName": "Cloudedots",
         "contactPersonName": "Darshita Kurani",
         "email": "hr@cloudedots.com",
@@ -102,7 +102,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5ef9e2df5f52ab0004cf3d01"),
+        "_id": {"$oid":"5ef9e2df5f52ab0004cf3d01"},
         "companyName": "ANKUR V BARIA & CO",
         "contactPersonName": "CA ANKUR BARIA",
         "email": "caankurbaria1@gmail.com",
@@ -116,7 +116,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5f042c3d4174d300049e2e41"),
+        "_id": {"$oid":"5f042c3d4174d300049e2e41"},
         "companyName": "ANKUR V BARIA & CO",
         "contactPersonName": "ANKUR BARIA",
         "email": "caankurbaria@gmail.com",
@@ -130,7 +130,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5f438235f1154e0004850ef5"),
+        "_id": {"$oid":"5f438235f1154e0004850ef5"},
         "companyName": "Rajeshwer Software Solution",
         "contactPersonName": "Nihil Khagram",
         "email": "info@rajeshwersoftsolution.com",
@@ -144,7 +144,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5f572da9afaeea000455f564"),
+        "_id": {"$oid":"5f572da9afaeea000455f564"},
         "companyName": "midinfotech",
         "contactPersonName": "alpesh",
         "email": "growb2017@gmail.com",
@@ -158,7 +158,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5f8d37bb5a539e0004ca7e58"),
+        "_id": {"$oid":"5f8d37bb5a539e0004ca7e58"},
         "companyName": "PAN HEALTH CARE PVT LTD",
         "contactPersonName": "JIGNESH KUMAR",
         "email": "hr@panhealthcare.co.in",
@@ -173,7 +173,7 @@
     },
     {
         "isActive": true,
-        "_id": ObjectId("5f9a5ffdce1f170004db8f7f"),
+        "_id": {"$oid":"5f9a5ffdce1f170004db8f7f"},
         "companyName": "Tech Integrity Services",
         "contactPersonName": "Rutu",
         "email": "samaira@techintegrity.in",

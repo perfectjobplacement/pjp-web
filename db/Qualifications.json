@@ -1,511 +1,511 @@
 [
     {
         "status": true,
-        "_id": ObjectId("5c8beea5cd5a10131983b3ec"),
+        "_id": {"$oid":"5c8beea5cd5a10131983b3ec"},
         "qualifyIn": "1",
         "name": "MCA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210a98dada0000479431f"),
+        "_id": {"$oid":"5c9210a98dada0000479431f"},
         "qualifyIn": "1",
         "name": "M.com",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210ad8dada00004794320"),
+        "_id": {"$oid":"5c9210ad8dada00004794320"},
         "qualifyIn": "1",
         "name": "MA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210cd8dada00004794321"),
+        "_id": {"$oid":"5c9210cd8dada00004794321"},
         "qualifyIn": "1",
         "name": "MSW",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210e58dada00004794322"),
+        "_id": {"$oid":"5c9210e58dada00004794322"},
         "qualifyIn": "1",
         "name": "MSc",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92110d8dada00004794323"),
+        "_id": {"$oid":"5c92110d8dada00004794323"},
         "qualifyIn": "1",
         "name": "M.Ed",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211238dada00004794324"),
+        "_id": {"$oid":"5c9211238dada00004794324"},
         "qualifyIn": "1",
         "name": "M.Phil",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210a28dada0000479431e"),
+        "_id": {"$oid":"5c9210a28dada0000479431e"},
         "qualifyIn": "1",
         "name": "MSc IT",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9210978dada0000479431d"),
+        "_id": {"$oid":"5c9210978dada0000479431d"},
         "qualifyIn": "1",
         "name": "MBA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92115e8dada00004794328"),
+        "_id": {"$oid":"5c92115e8dada00004794328"},
         "qualifyIn": "2",
         "name": "B.com",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211558dada00004794327"),
+        "_id": {"$oid":"5c9211558dada00004794327"},
         "qualifyIn": "2",
         "name": "BA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211668dada00004794329"),
+        "_id": {"$oid":"5c9211668dada00004794329"},
         "qualifyIn": "2",
         "name": "BSW",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92116d8dada0000479432a"),
+        "_id": {"$oid":"5c92116d8dada0000479432a"},
         "qualifyIn": "2",
         "name": "B.Ed",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211818dada0000479432c"),
+        "_id": {"$oid":"5c9211818dada0000479432c"},
         "qualifyIn": "2",
         "name": "BBA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211778dada0000479432b"),
+        "_id": {"$oid":"5c9211778dada0000479432b"},
         "qualifyIn": "2",
         "name": "B.Voc",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211cf8dada0000479432d"),
+        "_id": {"$oid":"5c9211cf8dada0000479432d"},
         "qualifyIn": "3",
         "name": "BE Mechanical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211428dada00004794325"),
+        "_id": {"$oid":"5c9211428dada00004794325"},
         "qualifyIn": "2",
         "name": "BCA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92114e8dada00004794326"),
+        "_id": {"$oid":"5c92114e8dada00004794326"},
         "qualifyIn": "2",
         "name": "BSc IT",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211fc8dada00004794331"),
+        "_id": {"$oid":"5c9211fc8dada00004794331"},
         "qualifyIn": "3",
         "name": "BE Computer",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212288dada00004794332"),
+        "_id": {"$oid":"5c9212288dada00004794332"},
         "qualifyIn": "3",
         "name": "BE EC",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212308dada00004794333"),
+        "_id": {"$oid":"5c9212308dada00004794333"},
         "qualifyIn": "3",
         "name": "BE IC",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211f18dada00004794330"),
+        "_id": {"$oid":"5c9211f18dada00004794330"},
         "qualifyIn": "3",
         "name": "BE Chemical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212568dada00004794334"),
+        "_id": {"$oid":"5c9212568dada00004794334"},
         "qualifyIn": "3",
         "name": "BE Automobile",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212728dada00004794335"),
+        "_id": {"$oid":"5c9212728dada00004794335"},
         "qualifyIn": "3",
         "name": "BE IT",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211dd8dada0000479432e"),
+        "_id": {"$oid":"5c9211dd8dada0000479432e"},
         "qualifyIn": "3",
         "name": "BE Electrical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212e18dada00004794337"),
+        "_id": {"$oid":"5c9212e18dada00004794337"},
         "qualifyIn": "4",
         "name": "Diploma Electrical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212c58dada00004794336"),
+        "_id": {"$oid":"5c9212c58dada00004794336"},
         "qualifyIn": "4",
         "name": "Diploma Mechanical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9211e68dada0000479432f"),
+        "_id": {"$oid":"5c9211e68dada0000479432f"},
         "qualifyIn": "3",
         "name": "BE Civil",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92130c8dada0000479433b"),
+        "_id": {"$oid":"5c92130c8dada0000479433b"},
         "qualifyIn": "4",
         "name": "Diploma Chemical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92131c8dada0000479433c"),
+        "_id": {"$oid":"5c92131c8dada0000479433c"},
         "qualifyIn": "4",
         "name": "Diploma Automobile",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9213008dada0000479433a"),
+        "_id": {"$oid":"5c9213008dada0000479433a"},
         "qualifyIn": "4",
         "name": "Diploma Civil",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92136f8dada0000479433d"),
+        "_id": {"$oid":"5c92136f8dada0000479433d"},
         "qualifyIn": "4",
         "name": "Diploma in Metallurgy",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9213a88dada0000479433e"),
+        "_id": {"$oid":"5c9213a88dada0000479433e"},
         "qualifyIn": "3",
         "name": "BE Metallurgy",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212ec8dada00004794338"),
+        "_id": {"$oid":"5c9212ec8dada00004794338"},
         "qualifyIn": "4",
         "name": "Diploma Computer",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9215ed8dada00004794340"),
+        "_id": {"$oid":"5c9215ed8dada00004794340"},
         "qualifyIn": "5",
         "name": "ITI Draughtsman Civil",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9215d28dada0000479433f"),
+        "_id": {"$oid":"5c9215d28dada0000479433f"},
         "qualifyIn": "5",
         "name": "ITI Electrician",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9212f78dada00004794339"),
+        "_id": {"$oid":"5c9212f78dada00004794339"},
         "qualifyIn": "4",
         "name": "Diploma IT",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92160a8dada00004794341"),
+        "_id": {"$oid":"5c92160a8dada00004794341"},
         "qualifyIn": "5",
         "name": "ITI Draughtsman Mechanical",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216478dada00004794344"),
+        "_id": {"$oid":"5c9216478dada00004794344"},
         "qualifyIn": "5",
         "name": "ITI Fitter",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216558dada00004794345"),
+        "_id": {"$oid":"5c9216558dada00004794345"},
         "qualifyIn": "5",
         "name": "ITI Machinist",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216628dada00004794346"),
+        "_id": {"$oid":"5c9216628dada00004794346"},
         "qualifyIn": "5",
         "name": "ITI Painter",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216718dada00004794347"),
+        "_id": {"$oid":"5c9216718dada00004794347"},
         "qualifyIn": "5",
         "name": "ITI Turner",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216808dada00004794348"),
+        "_id": {"$oid":"5c9216808dada00004794348"},
         "qualifyIn": "5",
         "name": "ITI Wireman",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216948dada00004794349"),
+        "_id": {"$oid":"5c9216948dada00004794349"},
         "qualifyIn": "5",
         "name": "ITI Carpenter",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216a88dada0000479434a"),
+        "_id": {"$oid":"5c9216a88dada0000479434a"},
         "qualifyIn": "5",
         "name": "ITI Plumber",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216208dada00004794342"),
+        "_id": {"$oid":"5c9216208dada00004794342"},
         "qualifyIn": "5",
         "name": "ITI Surveyor",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216348dada00004794343"),
+        "_id": {"$oid":"5c9216348dada00004794343"},
         "qualifyIn": "5",
         "name": "ITI Tool and Die Maker",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216ba8dada0000479434b"),
+        "_id": {"$oid":"5c9216ba8dada0000479434b"},
         "qualifyIn": "5",
         "name": "Welder (Gas and Electric)",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92170b8dada0000479434f"),
+        "_id": {"$oid":"5c92170b8dada0000479434f"},
         "qualifyIn": "5",
         "name": "Hair and Skin Care",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92171d8dada00004794350"),
+        "_id": {"$oid":"5c92171d8dada00004794350"},
         "qualifyIn": "5",
         "name": "Steno English",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9217298dada00004794351"),
+        "_id": {"$oid":"5c9217298dada00004794351"},
         "qualifyIn": "5",
         "name": "Steno Hindi",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216d88dada0000479434c"),
+        "_id": {"$oid":"5c9216d88dada0000479434c"},
         "qualifyIn": "5",
         "name": "Digital Photography",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216fe8dada0000479434e"),
+        "_id": {"$oid":"5c9216fe8dada0000479434e"},
         "qualifyIn": "5",
         "name": "Fashion Technology",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92173c8dada00004794352"),
+        "_id": {"$oid":"5c92173c8dada00004794352"},
         "qualifyIn": "5",
         "name": "Call Centre Assistant",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92174c8dada00004794353"),
+        "_id": {"$oid":"5c92174c8dada00004794353"},
         "qualifyIn": "5",
         "name": "Data Entry Operator",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92175b8dada00004794354"),
+        "_id": {"$oid":"5c92175b8dada00004794354"},
         "qualifyIn": "5",
         "name": "Front Office Assistant",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9217c58dada00004794355"),
+        "_id": {"$oid":"5c9217c58dada00004794355"},
         "qualifyIn": "6",
         "name": "8th Pass",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9216e58dada0000479434d"),
+        "_id": {"$oid":"5c9216e58dada0000479434d"},
         "qualifyIn": "5",
         "name": "Dress Making",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9217db8dada00004794357"),
+        "_id": {"$oid":"5c9217db8dada00004794357"},
         "qualifyIn": "6",
         "name": "12th Pass",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9218628dada00004794359"),
+        "_id": {"$oid":"5c9218628dada00004794359"},
         "qualifyIn": "6",
         "name": "Any Post Graduates",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9221908dada000047943a8"),
+        "_id": {"$oid":"5c9221908dada000047943a8"},
         "qualifyIn": "2",
         "name": "BSc",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9221b98dada000047943a9"),
+        "_id": {"$oid":"5c9221b98dada000047943a9"},
         "qualifyIn": "3",
         "name": "Network Eng.",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9221ed8dada000047943aa"),
+        "_id": {"$oid":"5c9221ed8dada000047943aa"},
         "qualifyIn": "4",
         "name": "Network Eng",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c92226f8dada000047943ab"),
+        "_id": {"$oid":"5c92226f8dada000047943ab"},
         "qualifyIn": "2",
         "name": "BSc Chemistry",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9218248dada00004794358"),
+        "_id": {"$oid":"5c9218248dada00004794358"},
         "qualifyIn": "6",
         "name": "Any Graduates",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9222788dada000047943ac"),
+        "_id": {"$oid":"5c9222788dada000047943ac"},
         "qualifyIn": "1",
         "name": "MSc Chemistry",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5c9217d18dada00004794356"),
+        "_id": {"$oid":"5c9217d18dada00004794356"},
         "qualifyIn": "6",
         "name": "10th Pass",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5d68e4a26469e900043994ec"),
+        "_id": {"$oid":"5d68e4a26469e900043994ec"},
         "qualifyIn": "6",
         "name": "Any IT Graduates.",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5d68e4af6469e900043994ed"),
+        "_id": {"$oid":"5d68e4af6469e900043994ed"},
         "qualifyIn": "6",
         "name": "Any IT Post Graduates.",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5d68e4e76469e900043994ee"),
+        "_id": {"$oid":"5d68e4e76469e900043994ee"},
         "qualifyIn": "6",
         "name": "Any Commerce Graduate",
         "__v": 0
     },
     {
         "status": false,
-        "_id": ObjectId("5dd771ce8414c80004b7dcfb"),
+        "_id": {"$oid":"5dd771ce8414c80004b7dcfb"},
         "qualifyIn": "5",
         "name": "ITI Welder",
         "__v": 0
     },
     {
         "status": false,
-        "_id": ObjectId("5e0c70310f7b980004691689"),
+        "_id": {"$oid":"5e0c70310f7b980004691689"},
         "qualifyIn": "6",
         "name": "CA",
         "__v": 0
     },
     {
         "status": true,
-        "_id": ObjectId("5f49d806ad8b790004565177"),
+        "_id": {"$oid":"5f49d806ad8b790004565177"},
         "qualifyIn": "4",
         "name": "DMLT",
         "__v": 0
