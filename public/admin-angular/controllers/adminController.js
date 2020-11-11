@@ -3,9 +3,7 @@
 appModule.controller('AdminController', ['$scope', '$http', '$location', '$uibModal', '$stateParams', '$rootScope', '$timeout', '$state', 'icdb', 'alertService',
     function($scope, $http, $location, $uibModal, $stateParams, $rootScope, $timeout, $state, icdb, alertService) {
 
-
     	$scope.adminObj = {};
-
 		$rootScope.globalvarObj = {};
 		$rootScope.globalObj = {};
 
@@ -13,6 +11,7 @@ appModule.controller('AdminController', ['$scope', '$http', '$location', '$uibMo
 
 			icdb.get('JobLocations', function(response) {
 				$rootScope.globalvarObj.cites = response;
+				console.log($rootScope.globalvarObj.cites);
 			});
 
 		    icdb.get('Qualifications', function(response) {

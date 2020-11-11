@@ -1,32 +1,32 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var uid = require('uid');
-var async = require('async');
-var helperCTRL = require('./helper');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const uid = require('uid');
+const async = require('async');
+const helperCTRL = require('./helper');
 
-var jobsModel = mongoose.model('JobsBazaar');
-var cityModel = mongoose.model('JobLocations');
-var trackContact = mongoose.model('TrackUniqueContact');
-var qualificationModel = mongoose.model('Qualifications');
-var locationsModel = mongoose.model('JobLocations');
-var areaOfInterestModel = mongoose.model('AreaOfInterest');
-var candidateRegisterModel = mongoose.model('CandidateRegister');
+const jobsModel = mongoose.model('JobsBazaar');
+const cityModel = mongoose.model('JobLocations');
+const trackContact = mongoose.model('TrackUniqueContact');
+const qualificationModel = mongoose.model('Qualifications');
+const locationsModel = mongoose.model('JobLocations');
+const areaOfInterestModel = mongoose.model('AreaOfInterest');
+const candidateRegisterModel = mongoose.model('CandidateRegister');
 
 
-var getCityName = function(result, cb) {
-	var jobCityids = [];
+const getCityName = (result, cb) => {
+	let jobCityids = [];
 
-	for (var i in result) {
+	for (let i in result) {
 		if (result[i].jobCity) {
 			jobCityids.push(result[i].jobCity);
 		}
 	}
 
-	cityModel.find({_id: {$in: jobCityids,}}, {city: true}).lean().exec(function(err, cityRes) {
-		for (var i in result) {
-			for (var j in cityRes) {
+	cityModel.find({_id: {$in: jobCityids}}, {city: true}).lean().exec((err, cityRes) => {
+		for (let i in result) {
+			for (let j in cityRes) {
 				if (cityRes[j]._id == result[i].jobCity) {
 					result[i].cityName = cityRes[j].city;
 				}
@@ -41,14 +41,14 @@ var getCityName = function(result, cb) {
 /**
  *
  */
-exports.getCurrentJobs = function(req, res) {
+exports.getCurrentJobs = (req, res) => {
 	if (!req.body.skip) {
 		req.body.skip = 0;
 	}
 
-	const finalRes = function(fresponse) {
-		getCityName(fresponse, function(result) {
-			jobsModel.countDocuments({ status: 2 }).exec(function(err, count) {
+	const finalRes = (fresponse) => {
+		getCityName(fresponse, (result) => {
+			jobsModel.countDocuments({ status: 2 }).exec((err, count) => {
 
 				let remainingCount = 0;
 
@@ -82,7 +82,9 @@ exports.getCurrentJobs = function(req, res) {
 		});
 	}
 
-	jobsModel.find({status: 2}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec(function(err, jobResponse) {
+	jobsModel.find({status: 2}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec((err, jobResponse) => {
+		console.log(jobResponse);
+
 		if (jobResponse && jobResponse.length) {
 			finalRes(jobResponse);
 		} else{
@@ -95,9 +97,9 @@ exports.getCurrentJobs = function(req, res) {
 /**
  *
  */
-exports.getJobsByLocation = function(req, res) {
-	const finalRes = function(result) {
-		jobsModel.countDocuments({ status: 2 }).exec(function(err, count) {
+exports.getJobsByLocation = (req, res) => {
+	const finalRes = (result) => {
+		jobsModel.countDocuments({ status: 2 }).exec((err, count) => {
 			res.json({
 				result: result,
 				count: count
@@ -105,33 +107,32 @@ exports.getJobsByLocation = function(req, res) {
         });
 	}
 
-
-	cityModel.find({},{city: true}).lean().exec(function(err, cityRes) {
+	cityModel.find({},{city: true}).lean().exec((err, cityRes) => {
 
 		if (cityRes && cityRes.length) {
-			var cityids = [];
-			var cityArray = [];
+			let cityids = [];
+			let cityArray = [];
 
-			for (var j in cityRes) {
+			for (let j in cityRes) {
 				cityids.push(cityRes[j]._id);
 			}
 
-			jobsModel.find({ jobCity: { $in: cityids }}, {jobCity: true,}).exec(function(err, jobResponse) {
-				for (var i in jobResponse) {
+			jobsModel.find({ jobCity: { $in: cityids }}, {jobCity: true,}).exec((err, jobResponse) => {
+				for (let i in jobResponse) {
 					if (!cityArray[jobResponse[i].jobCity]) {
 						cityArray[jobResponse[i].jobCity] = [];
 					}
 					cityArray[jobResponse[i].jobCity].push(jobResponse[i].jobCity);
 				}
 
-				for (var i in cityRes) {
+				for (let i in cityRes) {
 					if (cityArray[cityRes[i]._id]) {
 						cityRes[i].count = cityArray[cityRes[i]._id].length;
 					}
 				}
 
-				var cttArr = [];
-				for (var i in cityRes) {
+				let cttArr = [];
+				for (let i in cityRes) {
 					if (cityRes[i].count && cityRes[i].count > 0) {
 						cttArr.push(cityRes[i]);
 					}
@@ -145,15 +146,14 @@ exports.getJobsByLocation = function(req, res) {
 };
 
 
-
-
 /**
  *
  */
-exports.getJobsByFilter = function(req, res) {
+exports.getJobsByFilter = (req, res) => {
 	req.body.condition.status = 2;
-	var finalRes = function(result) {
-		jobsModel.countDocuments(req.body.condition).exec(function(err, count) {
+
+	const finalRes = (result) => {
+		jobsModel.countDocuments(req.body.condition).exec((err, count) => {
 			res.json({
 				result: result,
 				count: count
@@ -161,7 +161,7 @@ exports.getJobsByFilter = function(req, res) {
         });
 	}
 
-	jobsModel.find(req.body.condition).skip(req.body.skip).limit(100).lean().exec(function(err, jobResponse) {
+	jobsModel.find(req.body.condition).skip(req.body.skip).limit(100).lean().exec((err, jobResponse) => {
 		finalRes(jobResponse);
 	});
 };
@@ -170,8 +170,8 @@ exports.getJobsByFilter = function(req, res) {
 /**
  *
  */
-exports.getAppJobsByFilter = function(req, res) {
-	var condition = {
+exports.getAppJobsByFilter = (req, res) => {
+	let condition = {
 		status: 2,
 	};
 
@@ -182,11 +182,11 @@ exports.getAppJobsByFilter = function(req, res) {
 		condition.jobCity = req.body.id;
 	}
 
-	var finalRes = function(fresponse) {
-		getCityName(fresponse, function(result) {
-			jobsModel.countDocuments(condition).exec(function(err, count) {
+	const finalRes = (fresponse) => {
+		getCityName(fresponse, (result) => {
+			jobsModel.countDocuments(condition).exec((err, count) => {
 				if (result && result.length) {
-					for (var i in result) {
+					for (let i in result) {
 						if (!result[i].totalView) {
 							result[i].totalView = 0;
 						}

@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
-const morgan = require('morgan');
 const expressValidator = require('express-validator');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -15,11 +14,13 @@ const cookieSession = require('cookie-session');
 
 const app = module.exports = express();
 
-// mongoose.connect("mongodb://localhost:27017/perfect-job-placement", {
-mongoose.connect("mongodb://pjp:pjp12345@ds251877.mlab.com:51877/heroku_qxw6gfmb", {
+mongoose.connect("mongodb://localhost:27017/pjp", {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}, (res) => {});
+}, (err, res) => {
+  // console.log(err);
+  // console.log(res);
+});
 
 // ExpressJS Configuration
 app.set('views', __dirname + '/app/views');
