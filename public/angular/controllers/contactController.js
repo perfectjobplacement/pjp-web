@@ -8,11 +8,11 @@ appModule.controller('ContactController', ['$scope', '$http', '$location', '$sta
 
 
         $scope.conObj.initAds = function() {
-            if (ENV != 'development') {
-                $timeout(function() {
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                }, 1000);
-            }
+            // if (ENV != 'development') {
+            //     $timeout(function() {
+            //         (adsbygoogle = window.adsbygoogle || []).push({});
+            //     }, 1000);
+            // }
         }
 
 

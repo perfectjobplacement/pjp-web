@@ -35,9 +35,9 @@ appModule.controller('HomeController', ['$scope', '$http', '$location', '$uibMod
 
 
         $scope.homeObj.initads = function() {
-            if (ENV != 'development') {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
+            // if (ENV != 'development') {
+            //     (adsbygoogle = window.adsbygoogle || []).push({});
+            // }
         }
 
         // ------------------- Common Section ------------------------
