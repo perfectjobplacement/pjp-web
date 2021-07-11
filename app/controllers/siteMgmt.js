@@ -83,7 +83,7 @@ exports.getCurrentJobs = (req, res) => {
 	}
 
 	jobsModel.find({status: 2}).sort({ createdAt: -1 }).skip(req.body.skip).limit(250).lean().exec((err, jobResponse) => {
-		console.log(jobResponse);
+		// console.log(jobResponse);
 
 		if (jobResponse && jobResponse.length) {
 			finalRes(jobResponse);

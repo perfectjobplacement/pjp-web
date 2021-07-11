@@ -80,10 +80,10 @@ router.all('/api/v1/app/get-jobs-id', cors(), ctrl.siteMgmt.getJobsId);
 router.all('/api/v1/app/password/reset', cors(), ctrl.siteMgmt.resetPass);
 
 
-router.all('/api/v1/app/resume-make/create', cors(), ctObj.resuMemakeCtrl.createResume);
-router.all('/api/v1/app/resume-make/download/:file', cors(), ctObj.resuMemakeCtrl.downloadResume);
-router.all('/api/v1/app/resume-make/get-template', cors(), ctObj.resuMemakeCtrl.getTemplate);
-router.all('/api/v1/app/get/appcleaner', cors(), ctObj.resuMemakeCtrl.getAppcleanerdata);
+router.all('/api/v1/app/resume-make/create', cors(), ctrl.resuMemakeCtrl.createResume);
+router.all('/api/v1/app/resume-make/download/:file', cors(), ctrl.resuMemakeCtrl.downloadResume);
+router.all('/api/v1/app/resume-make/get-template', cors(), ctrl.resuMemakeCtrl.getTemplate);
+router.all('/api/v1/app/get/appcleaner', cors(), ctrl.resuMemakeCtrl.getAppcleanerdata);
 
 
 module.exports = router;

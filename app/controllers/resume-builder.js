@@ -18,7 +18,7 @@ exports.createResume = (req, res) => {
 	const tempFile = req.body.firstName + "_" +req.body.lastName + "_" + dt +'.html';
 	let tempUrl = 'resume1.html';
 
-	console.log("req.body.templateId >>>", req.body.templateId);
+	// console.log("req.body.templateId >>>", req.body.templateId);
 
 	if (req.body.templateId == 2 || req.body.templateId == "2")	{
 		tempUrl = 'resume2.html';
@@ -30,7 +30,7 @@ exports.createResume = (req, res) => {
 		tempUrl = 'resume4.html';
 	}
 
-	console.log("tempUrl >>>", tempUrl);
+	// console.log("tempUrl >>>", tempUrl);
 
 	if (req.body.isFresher == "true" || req.body.isFresher == true)	{
 		req.body.isFresher = "true";
