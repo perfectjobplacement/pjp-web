@@ -85,7 +85,6 @@ appModule.controller('AdvertisementController', ['$scope', '$http', '$location',
                         }, 10);
                     },
                     success: function(data, resData) {
-                        console.log(resData);
                         if (resData) {
                             $scope.advObj.add.model.image = resData.image;
                         }

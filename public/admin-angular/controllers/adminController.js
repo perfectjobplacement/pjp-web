@@ -11,7 +11,7 @@ appModule.controller('AdminController', ['$scope', '$http', '$location', '$uibMo
 
 			icdb.get('JobLocations', function(response) {
 				$rootScope.globalvarObj.cites = response;
-				console.log($rootScope.globalvarObj.cites);
+				// console.log($rootScope.globalvarObj.cites);
 			});
 
 		    icdb.get('Qualifications', function(response) {

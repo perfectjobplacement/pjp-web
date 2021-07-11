@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Resume Maker</title>
+
+   <style type="text/css">
+    	#cv {
+		    width: 100%;
+		    background: #fffcf4;
+		    /*border: 2px solid #83b8fa;*/
+		    padding: 0px 15px;
+		    -webkit-print-color-adjust: exact;
+		}
+
+		p {
+			font-family: sans-serif;
+		}
+
+		
+		.contect {
+			margin-left: 0px;
+		    padding: 6px;
+		    border-radius: 12px;
+		    background-color: #83b8fa;
+		    text-align: center;
+		    color: #051229;
+		    font-weight: 1000;
+		}
+		#top{
+			background: #181818;
+		}
+
+		.main{
+			margin-top: 5px;
+			margin-left: -12px;
+			margin-bottom: 5px;
+		    background-color: #007bff85;
+		    font-weight: 1000;
+		    color: #000;
+		    border-radius: 12px;
+		    padding: 2px;
+		    font-weight: 800;
+		}
+
+		.main-title {
+			margin-left: -12px;
+		    margin-bottom: 5px;
+		    background-color: #83b8fa;
+		    font-weight: 1000;
+		    color: #000608;
+		    border-radius: 12px;
+		    padding: 2px;
+		    font-weight: 800;
+		}
+		.main-title1 {
+			margin-bottom: 5px;
+		    background-color: #3a3737;;
+		    font-weight: 1000;
+		    color: white;
+		    border-radius: 12px;
+		    padding: 2px;
+		    font-weight: 800;
+		}
+		.h4{
+			margin: 5px 10px ;
+		}
+		.h4, h4 {
+		    font-size: 16px;
+		}
+		.h1{
+		    margin-left: -42px;
+			margin-top: 19px;
+		}
+		.p{
+			margin-top: 14px;
+		    margin-bottom: 1rem;
+		    margin-left: -55px;
+		}
+		.Gender{
+			margin-bottom: 20px; 
+		}
+		.place{
+			padding: 25px 35px;
+		    border-bottom: 2px solid #cf8a05;
+		    background: #ededed;
+		    color: #cf8a05;
+			font-weight: 900;
+			margin-top: 17px;
+			margin-left: -7px;
+		}
+		#contactDetails {
+			float: right;
+		}
+
+		b, strong {
+		    color: #004085;
+		}
+    </style>
+
+
+  </head>
+  <body id="top">
+    <div class="_container" id="cv" style="padding: 0 20px 93px 30px;">
+    	<div class="row header">
+    		{{#if photo}}
+    		<div class="col-md-2">
+				<img src="{{photo}}" height="140" width="110">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+			<div class="col-md-5" style="margin-top: 4%;">
+				<h1 style="color: #004085;">{{firstName}} {{lastName}}</h1>
+			</div>
+			{{else}}
+				<div class="col-md-7" style="margin-top: 4%;">
+				<h1 style="color: #004085;">{{firstName}} {{lastName}}</h1>
+			</div>
+			{{/if}}
+
+			
+			<div class="col-md-5" style="margin-top:10px;">
+				<h6 class="contect"> C o n t a c t </h6>
+				<p style="margin-top: 20px;"><i class="fa fa-mobile" aria-hidden="true"></i> {{mobile}}</p> 
+				{{#if email}}<p><i class="fa fa-envelope-o" aria-hidden="true"></i> {{email}}</p> {{/if}}
+			</div>
+    	</div>
+    	<hr>
+		{{#if carrierObjective}}
+    	<div>
+			<div class="main">
+				<h4 class="h4"> Carrier Objective </h4>
+			</div>
+			<p>{{carrierObjective}}</p>    		   		
+    	</div>
+    	{{/if}}
+    	
+    	<div class="main-title">
+			<h4 class="h4"> Personal Details </h4>
+		</div>
+		
+    	<div class="row">
+    		<div class="col-md-6">
+    			<table class="table" style="background: #fffcf4;">
+				    <tbody>
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Name</b>
+				            </td>
+				            <td>
+				                <p>{{firstName}} {{lastName}}</p>
+				            </td>
+				        </tr>
+				        {{#if gender}}
+				        <tr>
+				            <td style="width: 30%" class="font-bold Gender">
+				                <b>Gender</b>
+				            </td>
+				            <td>
+				                <p>{{gender}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				        {{#if place}}
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>City</b>
+				            </td>
+				            <td>
+				                <p>{{place}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				        {{#if maritalStatus}}
+				        <tr>
+				            <td style="width: 40%" class="font-bold">
+				                <b>Marital Status</b>
+				            </td>
+				            <td>
+				                <p>{{maritalStatus}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				    </tbody>
+				</table>
+    		</div>
+    		<div class="col-md-6">
+    			<table class="table" style="background: #fffcf4;">
+				    <tbody>
+				    	{{#if mobile}}
+				    	<tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Mobile</b>
+				            </td>
+				            <td>
+				                <p>{{mobile}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				        {{#if dob}}
+				        <tr>
+				            <td style="width: 40%" class="font-bold">
+				                <b>Date Of Birth</b>
+				            </td>
+				            <td>
+				                <p>{{dob}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				        {{#if nationality}}
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Nationality</b>
+				            </td>
+				            <td>
+				                <p>{{nationality}}</p>
+				            </td>
+				        </tr>
+				        {{/if}}
+				        {{#if religion}}
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Religion</b>
+				            </td>
+				            <td>
+				                <p>{{religion}}</p>
+				            </td>
+				        </tr>
+				         {{/if}}				        
+				    </tbody>
+				</table>    			
+    		</div>
+    		<div class="col-md-12" style="margin-top: -12px;">
+    			<table class="table" style="background: #fffcf4;">
+				    <tbody>	
+				      {{#if localAddress}}			    	
+				        <tr>
+				            <td style="width: 25%" class="font-bold">
+				                <b>Current Address</b>
+				            </td>
+				            <td>
+				                <p>{{localAddress}}</p>
+				            </td>
+				        </tr>
+				         {{/if}}
+				         {{#if permanentAddress}}			
+		    			<tr>
+				            <td style="width: 25%" class="font-bold">
+				                <b>Permanent Address</b>
+				            </td>
+				            <td>
+				                <p>{{permanentAddress}}</p>
+				            </td>
+				        </tr>
+				         {{/if}}
+				    </tbody>
+				</table>
+    		</div>
+
+    	</div>
+    	
+    	{{#if educations.[0].course}}
+		<div class="main-title mt-2">
+			<h4 class="h4"> Education Details </h4>
+		</div>
+		
+    	<div>
+    		{{#each educations}}
+    		<div class="row">
+				<table class="table" style="background: #fffcf4;">				   
+				    <tbody>
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Course</b>
+				            </td>
+				            <td>
+				                <p>{{course}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Institute</b>
+				            </td>
+				            <td>
+				                <p>{{institute}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Percentage/Grade	</b>
+				            </td>
+				            <td>
+				                <p>{{percentage}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Year Of Passing</b>
+				            </td>
+				            <td>
+				                <p>{{yearOfPassing}}</p>
+				            </td>
+				        </tr>
+				    </tbody>				    
+				</table>
+			</div>	
+			{{/each}}		
+    	</div>
+    	{{/if}}
+
+
+    	<div class="main-title mt-2">
+			<h4 class="h4"> Work Experience </h4>
+		</div>
+		
+    	<div>
+    		<div class="row">
+    			{{#if isFresher}}
+    			<table class="table" style="background: #fffcf4;">
+			            <tbody>
+					        <tr>
+					            <td>
+					                Fresher
+					            </td>					           
+					        </tr>
+					    </tbody>
+				</table>
+				{{else}}
+				{{#each experiences}}
+				<table class="table" style="background: #fffcf4;">				   
+				    <tbody>
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Job Title</b>
+				            </td>
+				            <td>
+				                <p>{{jobTitle}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Organization</b>
+				            </td>
+				            <td>
+				                <p>{{organization}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Role</b>
+				            </td>
+				            <td>
+				                <p>{{role}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Work Duration</b>
+				            </td>
+				            <td>
+				                <p>{{from}} - {{to}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Description</b>
+				            </td>
+				            <td>
+				                <p>{{description}}</p>
+				            </td>
+				        </tr>				       
+				    </tbody>				    
+				</table>
+				{{/each}}
+				{{/if}}	
+			</div>			
+    	</div>
+
+		{{#if projects.[0].projectTitle}}
+    	<div class="main-title mt-2">
+			<h4 class="h4"> Project Details </h4>
+		</div>
+		
+    	<div>
+    		<div class="row">
+    			{{#each projects}}
+				<table class="table" style="background: #fffcf4;">
+				    <tbody>
+				        <tr>
+				            <td style="width: 30%" class="font-bold">
+				                <b>Project Title</b>
+				            </td>
+				            <td>
+				               <p>{{projectTitle}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Role</b>
+				            </td>
+				            <td>
+				                <p>{{projectRole}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Duration</b>
+				            </td>
+				            <td>
+				                <p>{{duration}}</p>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td style="width: 20%" class="font-bold">
+				                <b>Project Description</b>
+				            </td>
+				            <td>
+				                <p>{{projectDescription}}</p>
+				            </td>
+				        </tr>				       
+				    </tbody>				    
+				</table>
+				{{/each}}
+			</div>			
+    	</div>
+    	{{/if}}		
+    	
+
+    	{{#if achivement}}
+    	<div>
+    	    <div class="main">
+			    <h4 class="h4"> Achivement </h4>
+			</div>
+			<p>{{achivement}}</p> 
+		</div>   		   		
+    	{{/if}}
+    	
+		{{#if hobbie}}
+		<div>
+    		<div class="main">
+				<h4 class="h4"> Hobbies </h4>
+			</div>
+			<p>{{hobbie}}</p>
+		</div>    		   		
+    	{{/if}}
+    	
+
+    	{{#if language}}
+    	<div>
+    	<div class="main">
+				<h4 class="h4"> Language Known </h4>
+			</div>
+			<p>{{language}}</p> 
+		</div>   		   		
+    	{{/if}}
+    	
+    	{{#if strength}}
+    	<div>
+    	<div class="main">
+				<h4 class="h4"> Strength </h4>
+			</div>
+			<p>{{strength}}</p>
+		</div>    		   		
+    	{{/if}}
+    	
+    	{{#if skills.[0].skillName}}
+    	<div>
+    	<div class="main">
+				<h4 class="h4"> Skills </h4>
+			</div>			
+			<ul>
+				{{#each skills}}
+				<li>
+					<p>{{skillName}}</p>
+				</li>
+				{{/each}}				
+			</ul> 
+		</div> 		   		
+    	{{/if}}
+
+    	{{#if declaration}}
+    	<div>
+    	<div class="main">
+				<h4 class="h4"> Declaration </h4>
+			</div>
+			<p>{{declaration}}</p>  
+		</div>
+    	{{/if}}
+    	<hr>
+    	
+    	
+    	<div class="mainDetails">
+
+    		{{#if place}}
+			<div id="contactDetails" class="Place" style="float: left;">										
+					<span style="color: #004085; font-weight: 900;">Place : </span><a> {{place}} </a>
+			</div>
+			{{/if}}
+			
+			<div id="contactDetails" class="">
+				<ul style=" list-style-type: none;">
+					<li>
+						<span style="color: #004085; font-weight: 900;">Your Sincerely,
+						</span>	
+					</li>
+					<li>
+						{{firstName}} {{lastName}}
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+
+  </body>
+</html>

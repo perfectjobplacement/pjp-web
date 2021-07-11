@@ -1,0 +1,22 @@
+[
+	{
+		"templateId" : "1",
+		"tempName" : "Simple",
+		"tempImage" : "resume1.png"
+	},
+	{
+		"templateId" : "2",
+		"tempName" : "Professional",
+		"tempImage" : "resume2.png"
+	},
+	{
+		"templateId" : "3",
+		"tempName" : "Stylish",
+		"tempImage" : "resume3.png"
+	},
+	{
+		"templateId" : "4",
+		"tempName" : "Special",
+		"tempImage" : "resume4.png"
+	}
+]

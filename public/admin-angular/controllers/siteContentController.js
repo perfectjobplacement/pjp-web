@@ -14,19 +14,30 @@ appModule.controller('SiteMgmtController', ['$scope', '$http', '$location', '$ui
 
 		$scope.stMgmt.siteObj.appsSettings.init = function() {
 			icdb.get('AppConfig', function(result) {
-				$scope.stMgmt.siteObj.appsSettings.model = result[result.length-1];
+				if (result && result.length) {
+					$scope.stMgmt.siteObj.appsSettings.model = result[0];
+				}
 	        });
 		}
 
 		$scope.stMgmt.siteObj.appsSettings.submit = function() {
-
 			if (!$scope.stMgmt.siteObj.appsSettings.model._id) {
 				icdb.insert('AppConfig', $scope.stMgmt.siteObj.appsSettings.model, function(result) {
 					alertService.flash('success', 'AppConfig has been created successfully.');
+					icdb.get('AppConfig', function(result) {
+						if (result && result.length) {
+							$scope.stMgmt.siteObj.appsSettings.model = result[0];
+						}
+			        });
 				});
 			} else {
 				icdb.update('AppConfig', $scope.stMgmt.siteObj.appsSettings.model._id, $scope.stMgmt.siteObj.appsSettings.model, function(result) {
 					alertService.flash('success', 'AppConfig has been updated successfully.');
+					icdb.get('AppConfig', function(result) {
+						if (result && result.length) {
+							$scope.stMgmt.siteObj.appsSettings.model = result[0];
+						}
+			        });
 				});
 			}
 		}

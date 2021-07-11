@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Resume Maker</title>
+		<meta name="viewport" content="width=device-width"/>
+		<meta name="description" content="Resume Maker 2019 - Stepup It Hub."/>
+		<meta charset="UTF-8"> 
+
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+		
+		<style type="text/css">
+			html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
+			border:0;
+			font:inherit;
+			font-size:100%;
+			margin:0;
+			padding:0;
+			vertical-align:baseline;
+			}
+
+			.tab {
+				text-align: center;
+			}
+
+			article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+			display:block;
+			}
+
+			html, body {font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #222;}
+
+			.clear {clear: both;}
+
+			p {
+				font-size: 1em;
+				line-height: 1.4em;
+				margin-bottom: 20px;
+				color: #444;
+			}
+
+			#cv {
+				width: 100%;
+				/*background: #f3f3f3;*/
+			}
+
+			.mainDetails {
+				padding: 25px 35px;
+				border-bottom: 2px solid #cf8a05;
+				background: #ededed;
+			}
+
+			#name h1 {
+				font-size: 2.5em;
+				font-weight: 700;
+				font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+				margin-bottom: -6px;
+			}
+
+			#name h2 {
+				font-size: 2em;
+				margin-left: 2px;
+				font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+			}
+
+			#mainArea {
+				padding: 0 40px;
+			}
+
+			#headshot {
+				width: 12.5%;
+				float: left;
+				margin-right: 30px;
+			}
+
+			#headshot img {
+				width: 100%;
+				height: auto;
+				-webkit-border-radius: 50px;
+				border-radius: 50px;
+			}
+
+			#name {
+				float: left;
+			}
+
+			#contactDetails {
+				float: right;
+			}
+
+			#contactDetails ul {
+				list-style-type: none;
+				font-size: 0.9em;
+				margin-top: 2px;
+			}
+
+			#contactDetails ul li {
+				margin-bottom: 3px;
+				color: #444;
+			}
+
+			#contactDetails ul li a, a[href^=tel] {
+				color: #444; 
+				text-decoration: none;
+				-webkit-transition: all .3s ease-in;
+				-moz-transition: all .3s ease-in;
+				-o-transition: all .3s ease-in;
+				-ms-transition: all .3s ease-in;
+				transition: all .3s ease-in;
+			}
+
+			#contactDetails ul li a:hover { 
+				color: #cf8a05;
+			}
+
+
+			section {
+				border-top: 1px solid #dedede;
+				padding: 20px 0 0;
+			}
+
+			section:first-child {
+				border-top: 0;
+			}
+
+			section:last-child {
+				padding: 20px 0 10px;
+			}
+
+			.sectionTitle {
+				float: left;
+				width: 25%;
+			}
+
+			.sectionContent {
+				float: right;
+				width: 72.5%;
+			}
+
+			.sectionTitle h1 {
+				font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+				font-style: italic;
+				font-size: 1.5em;
+				color: #cf8a05;
+			}
+
+			.sectionContent h2 {
+				font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+				font-size: 1.5em;
+				margin-bottom: -2px;
+			}
+
+			.subDetails {
+				font-size: 0.8em;
+				font-style: italic;
+				margin-bottom: 3px;
+			}
+
+			.keySkills {
+				list-style-type: none;
+				-moz-column-count:3;
+				-webkit-column-count:3;
+				column-count:3;
+				margin-bottom: 20px;
+				font-size: 1em;
+				color: #444;
+			}
+
+			.keySkills ul li {
+				margin-bottom: 3px;
+			}
+
+			@media all and (min-width: 602px) and (max-width: 800px) {
+				#headshot {
+					display: none;
+				}
+				
+				.keySkills {
+				-moz-column-count:2;
+				-webkit-column-count:2;
+				column-count:2;
+				}
+			}
+
+			@media all and (max-width: 601px) {
+				#cv {
+					width: 95%;
+					margin: 10px auto;
+					min-width: 280px;
+				}
+				
+				#headshot {
+					display: none;
+				}
+				
+				#name, #contactDetails {
+					float: none;
+					width: 100%;
+					text-align: center;
+				}
+				
+				.sectionTitle, .sectionContent {
+					float: none;
+					width: 100%;
+				}
+				
+				.sectionTitle {
+					margin-left: -2px;
+					font-size: 1.25em;
+				}
+				
+				.keySkills {
+					-moz-column-count:2;
+					-webkit-column-count:2;
+					column-count:2;
+				}
+			}
+
+			@media all and (max-width: 480px) {
+				.mainDetails {
+					padding: 15px 15px;
+				}
+				
+				section {
+					padding: 15px 0 0;
+				}
+				
+				#mainArea {
+					padding: 0 25px;
+				}
+
+				
+				.keySkills {
+				-moz-column-count:1;
+				-webkit-column-count:1;
+				column-count:1;
+				}
+				
+				#name h1 {
+					line-height: .8em;
+					margin-bottom: 4px;
+				}
+			}
+
+			@media print {
+			    #cv {
+			        width: 100%;
+			    }
+			}
+
+			@-webkit-keyframes reset {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+
+			@-webkit-keyframes fade-in {
+				0% {
+					opacity: 0;
+				}
+				40% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			@-moz-keyframes reset {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+
+			@-moz-keyframes fade-in {
+				0% {
+					opacity: 0;
+				}
+				40% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			@keyframes reset {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+
+			@keyframes fade-in {
+				0% {
+					opacity: 0;
+				}
+				40% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.instaFade {
+			    -webkit-animation-name: reset, fade-in;
+			    -webkit-animation-duration: 1.5s;
+			    -webkit-animation-timing-function: ease-in;
+				
+				-moz-animation-name: reset, fade-in;
+			    -moz-animation-duration: 1.5s;
+			    -moz-animation-timing-function: ease-in;
+				
+				animation-name: reset, fade-in;
+			    animation-duration: 1.5s;
+			    animation-timing-function: ease-in;
+			}
+
+			.quickFade {
+			    -webkit-animation-name: reset, fade-in;
+			    -webkit-animation-duration: 2.5s;
+			    -webkit-animation-timing-function: ease-in;
+				
+				-moz-animation-name: reset, fade-in;
+			    -moz-animation-duration: 2.5s;
+			    -moz-animation-timing-function: ease-in;
+				
+				animation-name: reset, fade-in;
+			    animation-duration: 2.5s;
+			    animation-timing-function: ease-in;
+			}
+			 
+			.delayOne {
+				-webkit-animation-delay: 0, .5s;
+				-moz-animation-delay: 0, .5s;
+				animation-delay: 0, .5s;
+			}
+
+			.delayTwo {
+				-webkit-animation-delay: 0, 1s;
+				-moz-animation-delay: 0, 1s;
+				animation-delay: 0, 1s;
+			}
+
+			.delayThree {
+				-webkit-animation-delay: 0, 1.5s;
+				-moz-animation-delay: 0, 1.5s;
+				animation-delay: 0, 1.5s;
+			}
+
+			.delayFour {
+				-webkit-animation-delay: 0, 2s;
+				-moz-animation-delay: 0, 2s;
+				animation-delay: 0, 2s;
+			}
+
+			.delayFive {
+				-webkit-animation-delay: 0, 2.5s;
+				-moz-animation-delay: 0, 2.5s;
+				animation-delay: 0, 2.5s;
+			}
+			.main-title {
+				background-color: #d8d8d8;
+			    padding: 10px;
+			    font-weight: 800;
+			}
+			.table {
+				width: 100%;
+			    max-width: 100%;
+			    margin-bottom: 20px;
+			    border: 1px solid #dddddd;
+			}
+			table {
+				background-color: transparent;
+			}
+			table th{
+				font-weight: 900;
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+			    padding: 8px;
+			    line-height: 1.42857143;
+			    vertical-align: top;
+			    border-top: 1px solid #ddd;
+				text-align: left;
+			}
+			.font-bold {
+				font-weight: 900;
+			}
+			.tab {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+
+	<body id="top">
+		<div id="cv" class="instaFade">
+			<div class="mainDetails">
+				{{#if photo}}
+				<div id="name">
+					<img src="{{photo}}" height="110" width="90" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				{{/if}}
+				<div id="name" style="margin-top:65px">
+					<h1 class="quickFade delayTwo">{{firstName}} {{lastName}}</h1>					
+					<h2 class="quickFade delayThree">{{jobTitle}}</h2>
+				</div>
+				
+				<div id="contactDetails" class="quickFade delayFour" style="margin-top:65px">
+					<ul>
+						{{#if email}}<li><span style="color: #cf8a05; font-weight: 900;">email</span>: <a>{{email}}</a></li>{{/if}}
+						<li><span style="color: #cf8a05; font-weight: 900;">Mobile</span>: {{mobile}}</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div id="mainArea" class="quickFade delayFive">
+				{{#if carrierObjective}}
+				<section>
+					<div class="main-title">
+						<h6>Carrier Objective</h6>
+					</div>
+					<p>{{carrierObjective}}</p>
+					<div class="clear"></div>
+				</section>
+				{{/if}}				
+				{{#if educations.[0].course}}
+				<section>					
+					<div class="main-title">
+						<h6>Education Details</h6>
+					</div>
+					<table class="table">
+						<thead>
+					      <tr>
+					        <th>Course</th>
+					        <th>Institute</th>
+					        <th>Percentage/Grade</th>
+					        <th>Year Of Passing</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	{{#each educations}}
+					        <tr>
+					            <td>
+					                {{course}}
+					            </td>
+					            <td>
+					                {{institute}}
+					            </td>
+					            <td>
+					                {{percentage}}
+					            </td>
+					            <td>
+					                {{yearOfPassing}}
+					            </td>
+					        </tr>
+					    	{{/each}}
+					    </tbody>
+					</table>					
+				</section>
+				{{/if}}
+				
+				<section>					
+					<div class="main-title">
+						<h6>Work Experience</h6>
+					</div>
+					{{#if isFresher}}
+					<table class="table">
+			            <tbody>
+					        <tr>
+					            <td style="width: 30%">
+					                Fresher
+					            </td>					           
+					        </tr>
+					    </tbody>
+					</table>
+			        {{else}}
+					<table class="table">
+					    {{#each experiences}}
+					    <tbody>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Job Title</b>
+					            </td>
+					            <td>
+					                {{jobTitle}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                Organization
+					            </td>
+					            <td>
+					                {{organization}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                Role
+					            </td>
+					            <td>
+					                {{role}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                Work Duration
+					            </td>
+					            <td>
+					                {{from}} - {{to}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                Description
+					            </td>
+					            <td>
+					                {{description}}
+					            </td>
+					        </tr>
+					    </tbody>
+					    {{/each}}
+					</table>
+					{{/if}}					
+				</section>
+				
+				{{#if achivement}}
+				<section>
+					<div class="main-title">
+						<h6>Achivement</h6>
+					</div>
+					<div class="_sectionContent">
+						<p>{{achivement}}</p>
+					</div>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				{{#if hobbie}}
+				<section>
+					<div class="main-title">
+						<h6>Hobbies</h6>
+					</div>
+					<div class="_sectionContent">
+						<p>{{hobbie}}</p>
+					</div>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				{{#if language}}
+				<section>
+					<div class="main-title">
+						<h6>Language Known</h6>
+					</div>
+					<div class="_sectionContent">
+						<p>{{language}}</p>
+					</div>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				{{#if strength}}
+				<section>
+					<div class="main-title">
+						<h6>Strength</h6>
+					</div>
+						
+					<p>{{strength}}</p>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				{{#if skills.[0].skillName}}
+				<section>					
+					<div class="main-title">
+						<h1>Key Skills</h1>
+					</div>
+					
+					<div class="_sectionContent" style="margin-bottom: 20px;">
+						{{#each skills}}
+						<div><span style="font-size: 20px;">→</span> {{skillName}}</div>
+						{{/each}}
+					</div>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				{{#if projects.[0].projectTitle}}
+				<section>
+					<div class="main-title">
+						<h6>Projects Details</h6>
+					</div>
+					<table class="table">
+					    {{#each projects}}
+					    <tbody>
+					        <tr>
+					            <td>
+					                Project Title
+					            </td>
+					            <td>
+					                {{projectTitle}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td>
+					                ProjectRole
+					            </td>
+					            <td>
+					                {{projectRole}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td>
+					                Duration
+					            </td>
+					            <td>
+					                {{duration}}
+					            </td>
+					        </tr>
+					        <tr>
+					            <td>
+					                Project Description
+					            </td>
+					            <td>
+					                {{projectDescription}}
+					            </td>
+					        </tr>
+					    </tbody>
+					    {{/each}}
+					</table>					
+				</section>
+				{{/if}}
+				<section>
+					<div class="main-title">
+						<h6>Personal Details</h6>
+					</div>
+					<table class="table">
+					    <tbody>
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Name</b>
+					            </td>
+					            <td>
+					                {{firstName}} {{lastName}}
+					            </td>
+					        </tr>
+					         {{#if gender}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Gender</b>
+					            </td>
+					            <td>
+					                {{gender}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if mobile}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Mobile</b>
+					            </td>
+					            <td>
+					                {{mobile}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if localAddress}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Current Address</b>
+					            </td>
+					            <td>
+					                {{localAddress}}
+					            </td>
+					        </tr>
+					         {{/if}}
+					         {{#if permanentAddress}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                Permanent Address
+					            </td>
+					            <td>
+					                {{permanentAddress}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if dob}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Date Of Birth</b>
+					            </td>
+					            <td>
+					                {{dob}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if place}}
+							<tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>City</b>
+					            </td>
+					            <td>
+					                {{place}}
+					            </td>
+					        </tr>
+					         {{/if}}
+					         {{#if nationality}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Nationality</b>
+					            </td>
+					            <td>
+					                {{nationality}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if maritalStatus}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Marital Status</b>
+					            </td>
+					            <td>
+					                {{maritalStatus}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if religion}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Religion</b>
+					            </td>
+					            <td>
+					                {{religion}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if portfolioUrl}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>Portfolio</b>
+					            </td>
+					            <td>
+					                {{portfolioUrl}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if linkedinUrl}}
+					        <tr>
+					            <td style="width: 30%" class="font-bold">
+					                <b>LinkedIn</b>
+					            </td>
+					            <td>
+					                {{linkedinUrl}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					    </tbody>
+					</table>
+				</section>
+
+				{{#if references.[0].name}}
+				<section>
+					<div class="main-title">
+						<h6>References</h6>
+					</div>					
+					<table class="table">
+					    {{#each references}}
+					    <tbody>
+					    	{{#if name}}
+					        <tr>
+					            <td>
+					                Name
+					            </td>
+					            <td>
+					                {{name}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if position}}
+					        <tr>
+					            <td>
+					                Position
+					            </td>
+					            <td>
+					                {{position}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					        {{#if mobNo}}
+					        <tr>
+					            <td>
+					                Mobile
+					            </td>
+					            <td>
+					                {{mobNo}}
+					            </td>
+					        </tr>
+					        {{/if}}
+					       {{#if about}}
+					        <tr>
+					            <td>
+					                About
+					            </td>
+					            <td>
+					                {{about}}
+					            </td>
+					        </tr>
+					        {{/if}}					         
+					    </tbody>
+					    {{/each}}
+					</table>					
+				</section>
+				{{/if}}
+
+				{{#if declaration}}
+				<section>
+					<div class="main-title">
+						<h6>Declaration</h6>
+					</div>
+					<p>{{declaration}}</p>
+					<div class="clear"></div>
+				</section>
+				{{/if}}
+				
+				<div class="mainDetails">				
+				{{#if place}}
+				<div id="contactDetails" class="quickFade delayFour" style="float: left;">
+					<ul>						
+						<li><span style="color: #cf8a05; font-weight: 900;">Place : </span><a>{{place}}</a></li>
+					</ul>					
+				</div>
+				{{/if}}
+				<div id="contactDetails" class="quickFade delayFour">
+					<ul>						
+						<li><span style="color: #cf8a05; font-weight: 900;"><u>Your Sincerely,</u></span></li>
+						<li><a>{{firstName}} {{lastName}}</a></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -19,7 +19,7 @@ gulp.task('sass', function() {
 
 gulp.task('default', function() {
     nodemon({
-        script: 'development.js',
+        script: 'index.js',
         ext: 'js html',
         env: {},
         ignore: ['public']
